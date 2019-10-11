@@ -8,6 +8,10 @@
 
 class Estacion {
 
+	int Id;
 	std::string nombre;
+	std::string calle1;
+	std::string calle2;
 
 };
+
