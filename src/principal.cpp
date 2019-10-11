@@ -5,6 +5,8 @@
  *      Author: agustin
  */
 
-
+int main(){
+	return 1;
+}
 
 
