@@ -12,10 +12,13 @@
 
 class Estacion {
 
-	int Id;
+private:
 	std::string nombre;
-	std::string calle1;
-	std::string calle2;
+	int id;
+	int numero;
+	int idEstacion;
+	int latitud;
+	int longitud;
 
 };
 
