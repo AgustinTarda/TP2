@@ -6,8 +6,4 @@
  */
 #include "estacion.h"
 
-class Estacion {
 
-	std::string nombre;
-
-};
