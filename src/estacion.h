@@ -11,6 +11,7 @@
 #include <string>
 
 class Estacion {
+
 private:
 	std::string nombre;
 	int id;
@@ -18,6 +19,7 @@ private:
 	int idEstacion;
 	int latitud;
 	int longitud;
+
 };
 
 #endif /* SRC_ESTACION_H_ */
