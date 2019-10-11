@@ -10,6 +10,13 @@
 
 #include <string>
 
+class Estacion {
 
+	int Id;
+	std::string nombre;
+	std::string calle1;
+	std::string calle2;
+
+};
 
 #endif /* SRC_ESTACION_H_ */
