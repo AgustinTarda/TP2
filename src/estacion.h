@@ -19,6 +19,8 @@ private:
 	int idEstacion;
 	int latitud;
 	int longitud;
+	int prueba;
+	int mel;
 
 };
 
