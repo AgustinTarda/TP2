@@ -19,6 +19,8 @@ private:
 	int idEstacion;
 	int latitud;
 	int longitud;
+	std::string interseccion;
+	int linea;
 	int prueba;
 	int mel;
 
