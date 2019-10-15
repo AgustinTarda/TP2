@@ -21,6 +21,8 @@ private:
 	int longitud;
 	std::string interseccion;
 	int linea;
+	int prueba;
+	int mel;
 
 };
 
