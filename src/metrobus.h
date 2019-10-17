@@ -8,11 +8,4 @@
 #ifndef SRC_METROBUS_H_
 #define SRC_METROBUS_H_
 
-
-
-
-
-
-
-
 #endif /* SRC_METROBUS_H_ */
