@@ -13,9 +13,9 @@
 class EstacionFerrocarril{
 
 private:
-	int longitud;
-	int latitud;
-	int id;
+	unsigned int longitud;
+	unsigned int latitud;
+	unsigned int id;
 	std:: string nombre;
 	std:: string linea;
 	std:: string linea2;
@@ -24,8 +24,6 @@ private:
 	std:: string comuna;
 	std:: string localidad;
 	std:: string partido;
-
-
 
 
 };
