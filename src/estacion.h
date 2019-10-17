@@ -20,7 +20,7 @@ private:
 	int latitud;
 	int longitud;
 	std::string interseccion;
-	int linea;
+	int linea ;
 	int prueba;
 	int mel;
 
