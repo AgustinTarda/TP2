@@ -13,8 +13,8 @@
 class EstacionFerrocarril {
 
 private:
-	unsigned int longitud;
-	unsigned int latitud;
+	double int longitud;
+	double int latitud;
 	unsigned int id;
 	std::string nombre;
 	std::string linea;
