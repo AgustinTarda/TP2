@@ -25,6 +25,13 @@ private:
 	std::string localidad;
 	std::string partido;
 
+
+public:
+	EstacionFerrocarril(unsigned int longitud, unsigned int latitud, unsigned int id, std::string nombre, std::string linea,
+			std::string linea2, std::string ramal, std::string barrio, std::string comuna, std::string localidad,
+			std::string nombreSentido, std::string partido);
+
+
 };
 
 #endif /* FERROCARRIL_H_ */
