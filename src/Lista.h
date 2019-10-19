@@ -10,6 +10,7 @@
 
 #include "Nodo.h"
 #include "Metrobus.h"
+#include "ferrocarril.h"
 
 /*
  * Una Lista es una colección dinámica de elementos dispuestos en una secuencia.
@@ -32,7 +33,7 @@ private:
 
 public:
 
-	/*
+	/*Metrobus
 	 * post: Lista vacía.
 	 */
 	Lista();

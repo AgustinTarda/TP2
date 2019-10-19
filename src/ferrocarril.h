@@ -10,11 +10,11 @@
 
 #include <string>
 
-class EstacionFerrocarril {
+class EstacionFerrocarril{
 
 private:
-	double int longitud;
-	double int latitud;
+	double longitud;
+	double latitud;
 	unsigned int id;
 	std::string nombre;
 	std::string linea;
@@ -27,9 +27,18 @@ private:
 
 
 public:
-	EstacionFerrocarril(unsigned int longitud, unsigned int latitud, unsigned int id, std::string nombre, std::string linea,
-			std::string linea2, std::string ramal, std::string barrio, std::string comuna, std::string localidad,
-			std::string nombreSentido, std::string partido);
+	EstacionFerrocarril(double longitud, double latitud, unsigned int id,
+			std::string nombre,
+			std::string linea,
+			std::string linea2,
+			std::string ramal,
+			std::string barrio,
+			std::string comuna,
+			std::string localidad,
+			std::string partido);
+
+	EstacionFerrocarril(const EstacionFerrocarril &otraEstacion);
+	EstacionFerrocarril();
 
 
 };
