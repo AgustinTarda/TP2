@@ -24,6 +24,14 @@ private:
 	float comuna;
 	unsigned int codigoPostal;
 	std::string codigoPostalArgentino;
+
+public:
+	Garage(double longitud, double latitud, std::string smp, std::string nombreDeLaCalle,
+			unsigned int alturaDeLaCalle, std::string tipo1, std::string tipo2, unsigned int pisos,
+			std::string nombre, std::string barrio, float comuna, unsigned int codigoPostal,
+			std::string codigoPostalArgentino);
+	Garage(const Garage &otroGarage);
+	Garage();
 };
 
 #endif /* SRC_GARAGE_H_ */
