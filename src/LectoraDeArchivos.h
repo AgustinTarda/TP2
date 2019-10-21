@@ -13,6 +13,8 @@
 #include "Metrobus.h"
 #include "ferrocarril.h"
 #include "colectivos.h"
+#include "subte.h"
+#include "garage.h"
 
 class LectoraDeArchivos {
 public:
@@ -21,8 +23,6 @@ public:
 			Lista<EstacionMetrobus> listaDeEstacionesDeMetrobus);
 
 	EstacionMetrobus leerEstacionDeMetrobus(std::ifstream &entrada);
-
-
 
 	Lista<EstacionFerrocarril> leerEstacionesDeFerrocarril(
 				std::string archivosDeEstacionesDeFerrocarril,
@@ -36,6 +36,18 @@ public:
 					Lista<EstacionColectivo> listaDeEstacionesDeColectivo);
 
 	EstacionColectivo leerEstacionDeColectivo(std::ifstream &entrada);
+
+	Lista<Garage> leerGarages(
+			std::string archivosDeGarage,
+			Lista<Garage> listaDeGarages);
+
+	Garage leerGarage(std::ifstream &entrada);
+
+	Lista<EstacionSubte> leerEstacionesDeSubte(
+			std::string archivosDeEstacionesDeSubte,
+			Lista<EstacionSubte> listaDeEstacionesSubte);
+
+	EstacionSubte leerEstacionDeSubte(std::ifstream &entrada);
 
 };
 
