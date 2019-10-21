@@ -5,7 +5,6 @@
  *      Author: agustin
  */
 
-#include <string>
 #include "Metrobus.h"
 
 EstacionMetrobus::EstacionMetrobus(double longitud, double latitud,

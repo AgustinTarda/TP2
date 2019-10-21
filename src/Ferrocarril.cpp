@@ -6,13 +6,11 @@
  */
 
 #include "ferrocarril.h"
-#include <string>
 
 EstacionFerrocarril::EstacionFerrocarril(double longitud, double latitud,
 		unsigned int id, std::string nombre, std::string linea,
-		std::string linea2, std::string ramal,
-		std::string barrio, std::string comuna,
-		std::string localidad, std::string partido) {
+		std::string linea2, std::string ramal, std::string barrio,
+		std::string comuna, std::string localidad, std::string partido) {
 
 	this->longitud = longitud;
 	this->latitud = latitud;
@@ -27,7 +25,8 @@ EstacionFerrocarril::EstacionFerrocarril(double longitud, double latitud,
 	this->partido = partido;
 }
 
-EstacionFerrocarril::EstacionFerrocarril(const EstacionFerrocarril &otraEstacion) {
+EstacionFerrocarril::EstacionFerrocarril(
+		const EstacionFerrocarril &otraEstacion) {
 
 	this->longitud = otraEstacion.longitud;
 	this->latitud = otraEstacion.latitud;
