@@ -18,7 +18,7 @@ private:
 	double latitud;
 	double longitud;
 	unsigned int idDireccion;
-	unsigned int idRuta;
+	unsigned int numeroLinea;
 	unsigned int idAgencia;
 	std::string rutaNombreCorto;
 	std::string rutaNombreLargo;
@@ -28,7 +28,7 @@ private:
 public:
 	EstacionColectivo(unsigned int id, unsigned int codigo, std::string nombre,
 			double latitud, double longitud, unsigned int idDireccion,
-			unsigned int idRuta, unsigned int idAgencia,
+			unsigned int numeroLinea, unsigned int idAgencia,
 			std::string rutaNombreCorto, std::string rutaNombreLargo,
 			std::string rutaDesc, unsigned int tipoRuta);
 	EstacionColectivo(const EstacionColectivo &otraEstacion);

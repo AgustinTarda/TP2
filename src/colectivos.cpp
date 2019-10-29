@@ -9,7 +9,7 @@
 
 EstacionColectivo::EstacionColectivo(unsigned int id, unsigned int codigo,
 		std::string nombre, double latitud, double longitud,
-		unsigned int idDireccion, unsigned int idRuta, unsigned int idAgencia,
+		unsigned int idDireccion, unsigned int numeroLinea, unsigned int idAgencia,
 		std::string rutaNombreCorto, std::string rutaNombreLargo,
 		std::string rutaDesc, unsigned int tipoRuta) {
 
@@ -18,7 +18,7 @@ EstacionColectivo::EstacionColectivo(unsigned int id, unsigned int codigo,
 	this->nombre = nombre;
 	this->latitud = latitud;
 	this->longitud = longitud;
-	this->idRuta = idRuta;
+	this->numeroLinea = numeroLinea;
 	this->idAgencia = idAgencia;
 	this->idDireccion = idDireccion;
 	this->rutaNombreCorto = rutaNombreCorto;
@@ -34,7 +34,7 @@ EstacionColectivo::EstacionColectivo(const EstacionColectivo &otraEstacion) {
 	this->nombre = otraEstacion.nombre;
 	this->latitud = otraEstacion.latitud;
 	this->longitud = otraEstacion.longitud;
-	this->idRuta = otraEstacion.idRuta;
+	this->numeroLinea = otraEstacion.numeroLinea;
 	this->idAgencia = otraEstacion.idAgencia;
 	this->idDireccion = otraEstacion.idDireccion;
 	this->rutaNombreCorto = otraEstacion.rutaNombreCorto;

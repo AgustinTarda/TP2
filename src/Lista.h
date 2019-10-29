@@ -11,6 +11,9 @@
 #include "Nodo.h"
 #include "Metrobus.h"
 #include "ferrocarril.h"
+#include "subte.h"
+#include "garage.h"
+#include "colectivos.h"
 
 /*
  * Una Lista es una colección dinámica de elementos dispuestos en una secuencia.
@@ -21,6 +24,7 @@
  * Tiene un cursor que permite recorrer todos los elementos secuencialmente.
  *
  */
+
 template<class T> class Lista {
 
 private:
@@ -297,5 +301,7 @@ template<class T> Nodo<T>* Lista<T>::obtenerNodo(unsigned int posicion) {
 
 	return actual;
 }
+
+
 
 #endif /* SRC_LISTA_H_ */

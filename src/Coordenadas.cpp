@@ -7,46 +7,48 @@
 
 #include "Coordenadas.h"
 
-Coordenadas::Coordenadas(double latitudSalida, double longitudSalida,
-						double latitudDestino, double longitudDestino) {
+Coordenadas::Coordenadas(double latitud, double longitud) {
 
-	this->latitudSalida = latitudSalida;
-	this->longitudSalida = longitudSalida;
-	this->latitudDestino = latitudDestino;
-	this->longitudDestino = longitudDestino;
+	this->latitud = latitud;
+	this->longitud = longitud;
 }
 
 Coordenadas::Coordenadas(const Coordenadas &otrasCoordenadas) {
 
-	this->latitudSalida = otrasCoordenadas.latitudSalida;
-	this->longitudSalida = otrasCoordenadas.longitudSalida;
-	this->latitudDestino = otrasCoordenadas.latitudDestino;
-	this->longitudDestino = otrasCoordenadas.longitudDestino;
+	this->latitud = otrasCoordenadas.latitud;
+	this->longitud = otrasCoordenadas.longitud;
 }
 
 
 Coordenadas::Coordenadas() {
 
-	this->latitudSalida = 0;
-	this->longitudSalida = 0;
-	this->latitudDestino = 0;
-	this->longitudDestino = 0;
+	this->latitud = 0;
+	this->longitud = 0;
 }
 
-double Coordenadas::getLatitudSalida() {
-	return latitudSalida;
+double Coordenadas::getLatitud() {
+	return latitud;
 }
 
-double Coordenadas::getLongitudSalida() {
-	return longitudSalida;
+double Coordenadas::getLongitud() {
+	return longitud;
 }
 
-double Coordenadas::getLatitudDestino() {
-	return latitudDestino;
-}
+unsigned int Coordenadas::calcularDistancia(const Coordenadas coordenadasInicio, const Coordenadas coordenadasFinal){
 
-double Coordenadas::getLongitudDestino() {
-	return longitudDestino;
+	double convertidorGradoARadianes = PI / 180;
+	double latitudInicio = coordenadasInicio.latitud * convertidorGradoARadianes;
+	double longitudInicio = coordenadasInicio.longitud * convertidorGradoARadianes;
+	double latitudFinal = coordenadasFinal.latitud * convertidorGradoARadianes;
+	double longitudFinal = coordenadasFinal.longitud * convertidorGradoARadianes;
+
+	double radioTierra = 6378.137;
+	double diferenciaEntreLongitudes = longitudFinal - longitudInicio;
+	double distanciaEntreCoordenadas = acos(sin(latitudInicio) * sin(latitudFinal)
+			+ cos(latitudInicio) * sin(latitudFinal) * cos(diferenciaEntreLongitudes) * radioTierra);
+
+
+	return distanciaEntreCoordenadas * 1000;
 }
 
 

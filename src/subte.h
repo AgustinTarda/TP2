@@ -19,8 +19,8 @@ private:
 	std::string linea;
 	std::string estacion;
 	std::string numeroDeEstacion;
-	std::string destino;
-	std::string lineasDe;
+	std::string destinoDeBocacalle;
+	std::string lineasDeCombinacion;
 	bool cierraFin;
 	bool escaleraNoMecanica;
 	bool escaleraMecanica;
@@ -40,8 +40,8 @@ private:
 public:
 	EstacionSubte(unsigned int longitud, unsigned int latitud, unsigned int id,
 			std::string linea, std::string estacion,
-			std::string numeroDeEstacion, std::string destino,
-			std::string lineasDe, bool cierraFin, bool escaleraNoMecanica,
+			std::string numeroDeEstacion, std::string destinoDeBocacalle,
+			std::string lineasDeCombinacion, bool cierraFin, bool escaleraNoMecanica,
 			bool escaleraMecanica, bool ascensor, bool rampa,
 			bool salvaescaleras, std::string calle, unsigned int altura,
 			std::string calle2, std::string barrio, std::string comuna,
