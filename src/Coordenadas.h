@@ -27,7 +27,7 @@ public:
 
 	double getLatitud();
 	double getLongitud();
-	unsigned int calcularDistancia(const Coordenadas coordenadasInicio, const Coordenadas coordenadasFinal);
+	unsigned int calcularDistancia(const Coordenadas coordenadasFinal);
 
 };
 

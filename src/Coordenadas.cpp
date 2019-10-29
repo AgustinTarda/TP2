@@ -34,11 +34,11 @@ double Coordenadas::getLongitud() {
 	return longitud;
 }
 
-unsigned int Coordenadas::calcularDistancia(const Coordenadas coordenadasInicio, const Coordenadas coordenadasFinal){
+unsigned int Coordenadas::calcularDistancia(const Coordenadas coordenadasFinal){
 
 	double convertidorGradoARadianes = PI / 180;
-	double latitudInicio = coordenadasInicio.latitud * convertidorGradoARadianes;
-	double longitudInicio = coordenadasInicio.longitud * convertidorGradoARadianes;
+	double latitudInicio = this->latitud * convertidorGradoARadianes;
+	double longitudInicio = this->longitud * convertidorGradoARadianes;
 	double latitudFinal = coordenadasFinal.latitud * convertidorGradoARadianes;
 	double longitudFinal = coordenadasFinal.longitud * convertidorGradoARadianes;
 
