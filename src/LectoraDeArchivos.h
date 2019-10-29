@@ -18,37 +18,29 @@
 
 class LectoraDeArchivos {
 public:
-	Lista<EstacionMetrobus> leerEstacionesDeMetrobus(
-			std::string archivosDeEstacionesDeMetrobus,
-			Lista<EstacionMetrobus> listaDeEstacionesDeMetrobus);
-
-	EstacionMetrobus leerEstacionDeMetrobus(std::ifstream &entrada);
+	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
+			Lista<EstacionMetrobus> &listaDeEstacionesDeMetrobus);
 
 	Lista<EstacionFerrocarril> leerEstacionesDeFerrocarril(
-				std::string archivosDeEstacionesDeFerrocarril,
-				Lista<EstacionFerrocarril> listaDeEstacionesDeFerrocarril);
+			std::string archivosDeEstacionesDeFerrocarril,
+			Lista<EstacionFerrocarril> &listaDeEstacionesDeFerrocarril);
 
-	EstacionFerrocarril leerEstacionDeFerrocarril(std::ifstream &entrada);
+	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
+			Lista<EstacionColectivo> &listaDeEstacionesDeColectivo);
 
-
-	Lista<EstacionColectivo> leerEstacionesDeColectivo(
-					std::string archivosDeEstacionesDeColectivo,
-					Lista<EstacionColectivo> listaDeEstacionesDeColectivo);
-
-	EstacionColectivo leerEstacionDeColectivo(std::ifstream &entrada);
-
-	Lista<Garage> leerGarages(
-			std::string archivosDeGarage,
-			Lista<Garage> listaDeGarages);
-
-	Garage leerGarage(std::ifstream &entrada);
+	Lista<Garage> leerGarages(std::string archivosDeGarage,
+			Lista<Garage> &listaDeGarages);
 
 	Lista<EstacionSubte> leerEstacionesDeSubte(
 			std::string archivosDeEstacionesDeSubte,
-			Lista<EstacionSubte> listaDeEstacionesSubte);
+			Lista<EstacionSubte> &listaDeEstacionesSubte);
 
+private:
+	EstacionMetrobus leerEstacionDeMetrobus(std::ifstream &entrada);
+	EstacionColectivo leerEstacionDeColectivo(std::ifstream &entrada);
+	EstacionFerrocarril leerEstacionDeFerrocarril(std::ifstream &entrada);
 	EstacionSubte leerEstacionDeSubte(std::ifstream &entrada);
-
+	Garage leerGarage(std::ifstream &entrada);
 };
 
 #endif /* LECTORADEARCHIVOS_H_ */

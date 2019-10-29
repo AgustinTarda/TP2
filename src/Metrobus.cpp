@@ -49,3 +49,7 @@ EstacionMetrobus::EstacionMetrobus() {
 
 }
 
+std::string EstacionMetrobus::obtenerNombre() {
+	return this->nombre;
+}
+
