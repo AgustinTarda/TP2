@@ -45,15 +45,15 @@ void BuscadorDeViaje::buscarParadasCercanas(Lista<Parada> paradasCercanasInicio,
 	while (paradas->avanzarCursor()) {
 		Parada paradaActual = paradas->obtenerCursor();
 
-		/*if (coordenadaInicial.calcularDistancia(paradaActual.coordenadas)< 300) {
+		if (coordenadaInicial.calcularDistancia(paradaActual.obtenerCoordenadas())< 300) {
 			//HACER UN OBTENER COORDENADAS
 			paradasCercanasInicio.agregar(paradaActual);
 
-		} else if (coordenadaFinal.calcularDistancia(paradaActual.coordenadas)
+		} else if (coordenadaFinal.calcularDistancia(paradaActual.obtenerCoordenadas())
 				< 300) {
 			paradasCercanasDestino.agregar(paradaActual);
 
-		}*/
+		}
 	}
 }
 
@@ -68,10 +68,10 @@ void BuscadorDeViaje::buscarViajesPosibles(Lista<Parada> paradasCercanasInicio,
 		while (paradasCercanasDestino.avanzarCursor()) {
 			Parada paradaCercanaADestino =
 					paradasCercanasDestino.obtenerCursor();
-			/*if (paradaCercanaAInicio.linea == paradaCercanaADestino.linea) {
+			if (paradaCercanaAInicio.obtenerLinea() == paradaCercanaADestino.obtenerLinea()) {
 				viajesPosibles.agregar(paradaCercanaAInicio);
 				viajesPosibles.agregar(paradaCercanaADestino);
-			}*/
+			}
 		}
 	}
 }
