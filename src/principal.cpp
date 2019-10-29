@@ -5,8 +5,9 @@
  *      Author: agustin
  */
 
+#include "AlgoMaps.h"
 int main() {
-
+	AlgoMaps algoMaps;
 	return 1;
 }
 

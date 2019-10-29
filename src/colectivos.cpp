@@ -48,3 +48,6 @@ EstacionColectivo::EstacionColectivo() {
 
 }
 
+std::string EstacionColectivo::obtenerNombre() {
+	return this->nombre;
+}

@@ -33,6 +33,7 @@ public:
 			std::string rutaDesc, unsigned int tipoRuta);
 	EstacionColectivo(const EstacionColectivo &otraEstacion);
 	EstacionColectivo();
+	std::string obtenerNombre();
 
 };
 
