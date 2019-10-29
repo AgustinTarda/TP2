@@ -5,7 +5,7 @@
  *      Author: rochi
  */
 
-#include "Paradas.h"
+#include "Parada.h"
 using namespace std;
 
 Parada:: Parada(Coordenadas coordenada, string linea, string tipoDeTransporte, string direccionDeParada){

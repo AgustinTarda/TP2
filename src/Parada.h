@@ -5,8 +5,8 @@
  *      Author: rochi
  */
 
-#ifndef SRC_PARADAS_H_
-#define SRC_PARADAS_H_
+#ifndef SRC_PARADA_H_
+#define SRC_PARADA_H_
 
 #include "Coordenadas.h"
 #include <string>
@@ -27,4 +27,4 @@ public:
 
 
 
-#endif /* SRC_PARADAS_H_ */
+#endif /* SRC_PARADA_H_ */

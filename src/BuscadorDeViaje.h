@@ -11,7 +11,7 @@
 #include <string>
 #include "Coordenadas.h"
 #include "Lista.h"
-#include "Paradas.h"
+#include "Parada.h"
 
 class BuscadorDeViaje{
 
