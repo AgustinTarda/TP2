@@ -34,6 +34,7 @@ public:
 			std::string nombreSentido, std::string observacion);
 	EstacionMetrobus(const EstacionMetrobus &otraEstacion);
 	EstacionMetrobus();
+	std::string obtenerNombre();
 };
 
 #endif /* SRC_METROBUS_H_ */
