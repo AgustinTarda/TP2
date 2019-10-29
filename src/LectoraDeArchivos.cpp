@@ -158,7 +158,7 @@ EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
 	std::string latitud;
 	std::string longitud;
 	std::string idDireccion;
-	std::string idRuta;
+	std::string numeroLinea;
 	std::string idAgencia;
 	std::string rutaNombreCorto;
 	std::string rutaNombreLargo;
@@ -171,7 +171,7 @@ EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
 	std::getline(entrada, latitud, ',');
 	std::getline(entrada, longitud, ',');
 	std::getline(entrada, idDireccion, ',');
-	std::getline(entrada, idRuta, ',');
+	std::getline(entrada, numeroLinea, ',');
 	std::getline(entrada, idAgencia, ',');
 	std::getline(entrada, rutaNombreCorto, ',');
 	std::getline(entrada, rutaNombreLargo, ',');
@@ -179,7 +179,7 @@ EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
 	std::getline(entrada, tipoRuta, ',');
 
 	EstacionColectivo estacionColectivo( stoul(id), stoul(codigo), nombre,
-			stod(latitud), stod(longitud), stoul(idDireccion), stoul(idRuta), stoul(idAgencia),
+			stod(latitud), stod(longitud), stoul(idDireccion), stoul(numeroLinea), stoul(idAgencia),
 					rutaNombreCorto, rutaNombreLargo, rutaDesc, stoul(tipoRuta) );
 	return estacionColectivo;
 
@@ -282,10 +282,10 @@ EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 	std::string longitud;
 	std::string latitud;
 	std::string id;
-	std::string linea;
+	std::string numeroLinea;
 	std::string estacion;
 	std::string numeroDeEstacion;
-	std::string destino;
+	std::string destinoDeBocacalle;
 	std::string lineasDe;
 	std::string cierraFin;
 	std::string escaleraMecanica;
@@ -306,10 +306,10 @@ EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 	std::getline(entrada, longitud, ',');
 	std::getline(entrada, latitud, ',');
 	std::getline(entrada, id, ',');
-	std::getline(entrada, linea, ',');
+	std::getline(entrada, numeroLinea, ',');
 	std::getline(entrada, estacion, ',');
 	std::getline(entrada, numeroDeEstacion, ',');
-	std::getline(entrada, destino, ',');
+	std::getline(entrada, destinoDeBocacalle, ',');
 	std::getline(entrada, lineasDe, ',');
 	std::getline(entrada, cierraFin, ',');
 	std::getline(entrada, escaleraMecanica, ',');
@@ -327,8 +327,8 @@ EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 	std::getline(entrada, dominioSalida, ',');
 	std::getline(entrada, dominioOrigen, ',');
 
-	EstacionSubte estacionDeSubte(stoul(longitud), stoul(latitud), stoul(id), linea, estacion,
-				  numeroDeEstacion, destino, lineasDe, cierraFin, escaleraNoMecanica, ascensor,
+	EstacionSubte estacionDeSubte(stoul(longitud), stoul(latitud), stoul(id), numeroLinea, estacion,
+				  numeroDeEstacion, destinoDeBocacalle, lineasDe, cierraFin, escaleraNoMecanica, ascensor,
 				  rampa, salvaEscaleras, calle, stoul(altura), calle2, barrio, comuna, observacion,
 				  objeto, dominioSalida, dominioOrigen);
 

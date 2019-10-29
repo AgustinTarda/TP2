@@ -9,7 +9,7 @@
 
 EstacionSubte::EstacionSubte(unsigned int longitud, unsigned int latitud,
 		unsigned int id, std::string linea, std::string estacion,
-		std::string numeroDeEstacion, std::string destino, std::string lineasDe,
+		std::string numeroDeEstacion, std::string destinoDeBocacalle, std::string lineasDeCombinacion,
 		bool cierraFin, bool escaleraNoMecanica, bool escaleraMecanica,
 		bool ascensor, bool rampa, bool salvaescaleras, std::string calle,
 		unsigned int altura, std::string calle2, std::string barrio,
@@ -22,8 +22,8 @@ EstacionSubte::EstacionSubte(unsigned int longitud, unsigned int latitud,
 	this->linea = linea;
 	this->estacion = estacion;
 	this->numeroDeEstacion = numeroDeEstacion;
-	this->destino = destino;
-	this->lineasDe = lineasDe;
+	this->destinoDeBocacalle = destinoDeBocacalle;
+	this->lineasDeCombinacion = lineasDeCombinacion;
 	this->cierraFin = cierraFin;
 	this->escaleraNoMecanica = escaleraNoMecanica;
 	this->escaleraMecanica = escaleraMecanica;
@@ -48,8 +48,8 @@ EstacionSubte::EstacionSubte(const EstacionSubte &otraEstacion) {
 	this->linea = otraEstacion.linea;
 	this->estacion = otraEstacion.estacion;
 	this->numeroDeEstacion = otraEstacion.numeroDeEstacion;
-	this->destino = otraEstacion.destino;
-	this->lineasDe = otraEstacion.lineasDe;
+	this->destinoDeBocacalle = otraEstacion.destinoDeBocacalle;
+	this->lineasDeCombinacion = otraEstacion.lineasDeCombinacion;
 	this->cierraFin = otraEstacion.cierraFin;
 	this->escaleraNoMecanica = otraEstacion.escaleraNoMecanica;
 	this->escaleraMecanica = otraEstacion.escaleraMecanica;
