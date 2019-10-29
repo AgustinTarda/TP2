@@ -11,20 +11,29 @@
 #include "Coordenadas.h"
 #include <string>
 
-class Parada{
+class Parada {
+public:
+	enum TipoDeTransporte {
+		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
+	};
 
 private:
 	Coordenadas coordenadas;
 	std::string linea;
-	std::string tipoDeTransporte;
-	std::string direccionDeParada;
-
+	TipoDeTransporte tipoDeTransporte;
+	std::string direccion;
 
 public:
-	Parada(Coordenadas coordenadas, std::string linea, std::string tipoDeTransporte, std::string direccionDeParada);
+
+	Parada(Coordenadas coordenadas, std::string linea,
+			TipoDeTransporte tipoDeTransporte, std::string direccion);
+	Parada(const Parada &otraParada);
 	Parada();
+	Coordenadas obtenerCoordenadas();
+	std::string obtenerLinea();
+	TipoDeTransporte obtenerTipoDeTransporte();
+	std::string obtenerDireccion();
+
 };
-
-
 
 #endif /* SRC_PARADA_H_ */
