@@ -14,14 +14,14 @@
 class Parada{
 
 private:
-	Coordenadas coordenada;
+	Coordenadas coordenadas;
 	std::string linea;
 	std::string tipoDeTransporte;
 	std::string direccionDeParada;
 
 
 public:
-	Parada(Coordenadas coordenada, std::string linea, std::string tipoDeTransporte, std::string direccionDeParada);
+	Parada(Coordenadas coordenadas, std::string linea, std::string tipoDeTransporte, std::string direccionDeParada);
 	Parada();
 };
 

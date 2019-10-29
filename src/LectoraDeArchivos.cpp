@@ -236,12 +236,9 @@ Garage LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 	std::getline(entrada, barrio, ',');
 	std::getline(entrada, comuna, ',');
 	std::getline(entrada, codigoPostal, ',');
-329
- std::getline(entrada, observacion, ',');
-330
- std::getline(entrada, objeto, ',');
-331
- std::getline(entrada, dominioSalida, ',');
+	std::getline(entrada, observacion, ',');
+	std::getline(entrada, objeto, ',');
+	std::getline(entrada, dominioSalida, ',');
 	std::getline(entrada, codigoPostalArgentino, ',');
 
 	Garage garage(stod(longitud), stod(latitud), smp, nombreDeLaCalle,
