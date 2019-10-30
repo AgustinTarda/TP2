@@ -10,11 +10,6 @@
 
 #include <string>
 #include "Lista.h"
-#include "Metrobus.h"
-#include "ferrocarril.h"
-#include "colectivos.h"
-#include "subte.h"
-#include "garage.h"
 #include "Coordenadas.h"
 #include "Estacion.h"
 

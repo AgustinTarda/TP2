@@ -38,7 +38,7 @@ BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
 
 void BuscadorDeViaje::buscarCombinaciones(Lista<Estacion> paradasCercanasInicio, Lista<Estacion> paradasCercanasDestino){
 
-	Lista<Parada> combinacionParadas;
+	Lista<Estacion> combinacionParadas;
 	//paradasCercanasInicio-> iniciarCursor();
 	while(paradasCercanasInicio.avanzarCursor()){
 
