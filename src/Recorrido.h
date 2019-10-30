@@ -9,20 +9,19 @@ class Recorrido {
 
 public:
 	enum TipoDeTransporte {
-			SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
-		};
+		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
+	};
 private:
 
 	std::string linea;
 	Lista<Estacion> estaciones;
 	TipoDeTransporte tipoDeTransporte;
 
-
 public:
 
 	Recorrido();
-	Recorrido(const Recorrido& otroRecorrido);
-
+	Recorrido(const Recorrido &otroRecorrido);
+	Lista<Estacion> obtenerEstaciones();
 
 };
 
