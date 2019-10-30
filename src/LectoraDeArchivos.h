@@ -15,32 +15,32 @@
 #include "colectivos.h"
 #include "subte.h"
 #include "garage.h"
-#include "Parada.h"
 #include "Coordenadas.h"
+#include "Estacion.h"
 
 class LectoraDeArchivos {
 public:
 	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
-			Lista<Parada> &paradas);
+			Lista<Estacion> &estaciones);
 
 	void leerEstacionesDeFerrocarril(
 			std::string archivosDeEstacionesDeFerrocarril,
-			Lista<Parada> &paradas);
+			Lista<Estacion> &estaciones);
 
 	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
-			Lista<Parada> &paradas);
+			Lista<Estacion> &estaciones);
 
-	void leerGarajes(std::string archivosDeGarajes, Lista<Parada> &paradas);
+	void leerGarajes(std::string archivosDeGarajes, Lista<Estacion> &paradas);
 
 	void leerEstacionesDeSubte(std::string archivosDeEstacionesDeSubte,
-			Lista<Parada> &paradas);
+			Lista<Estacion> &estaciones);
 
 private:
-	Parada leerEstacionDeMetrobus(std::ifstream &entrada);
-	Parada leerEstacionDeColectivo(std::ifstream &entrada);
-	Parada leerEstacionDeFerrocarril(std::ifstream &entrada);
-	Parada leerEstacionDeSubte(std::ifstream &entrada);
-	Parada leerGarage(std::ifstream &entrada);
+	Estacion leerEstacionDeMetrobus(std::ifstream &entrada);
+	Estacion leerEstacionDeColectivo(std::ifstream &entrada);
+	Estacion leerEstacionDeFerrocarril(std::ifstream &entrada);
+	Estacion leerEstacionDeSubte(std::ifstream &entrada);
+	Estacion leerGarage(std::ifstream &entrada);
 };
 
 #endif /* LECTORADEARCHIVOS_H_ */

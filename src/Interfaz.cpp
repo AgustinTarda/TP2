@@ -7,7 +7,7 @@
 
 #include"Interfaz.h"
 
-void Interfaz::mostrarParada(Parada parada) {
+void Interfaz::mostrarParada(Estacion parada) {
 
 	std::cout << "MetroBus: " << parada.obtenerLinea() << std::endl;
 

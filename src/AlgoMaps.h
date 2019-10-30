@@ -9,15 +9,16 @@
 #define SRC_ALGOMAPS_H_
 
 #include <string>
+
+#include "Estacion.h"
 #include "Lista.h"
 #include "Interfaz.h"
 #include "LectoraDeArchivos.h"
-#include "Parada.h"
 
 class AlgoMaps {
 private:
 	Interfaz interfazDeUsuario;
-	Lista<Parada> paradas;
+	Lista<Estacion> paradas;
 
 public:
 	AlgoMaps();

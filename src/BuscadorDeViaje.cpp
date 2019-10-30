@@ -8,11 +8,11 @@
 #include "BuscadorDeViaje.h"
 
 BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
-		Coordenadas coordenadaFinal, Lista<Parada> * paradas) {
+		Coordenadas coordenadaFinal, Lista<Estacion> * paradas) {
 
-	Lista<Parada> paradasCercanasInicio;
-	Lista<Parada> paradasCercanasDestino;
-	Lista<Parada> viajesPosibles;
+	Lista<Estacion> paradasCercanasInicio;
+	Lista<Estacion> paradasCercanasDestino;
+	Lista<Estacion> viajesPosibles;
 
 	buscarParadasCercanas(paradasCercanasInicio, paradasCercanasDestino,
 			coordenadaInicial, coordenadaFinal, paradas);
@@ -36,7 +36,7 @@ BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
 
 }
 
-void BuscadorDeViaje::buscarCombinaciones(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino){
+void BuscadorDeViaje::buscarCombinaciones(Lista<Estacion> paradasCercanasInicio, Lista<Estacion> paradasCercanasDestino){
 
 	Lista<Parada> combinacionParadas;
 	//paradasCercanasInicio-> iniciarCursor();
@@ -46,12 +46,12 @@ void BuscadorDeViaje::buscarCombinaciones(Lista<Parada> paradasCercanasInicio, L
 
 }
 
-void BuscadorDeViaje::buscarParadasCercanas(Lista<Parada> paradasCercanasInicio,
-		Lista<Parada> paradasCercanasDestino, Coordenadas coordenadaInicial,
-		Coordenadas coordenadaFinal, Lista<Parada>* paradas) {
+void BuscadorDeViaje::buscarParadasCercanas(Lista<Estacion> paradasCercanasInicio,
+		Lista<Estacion> paradasCercanasDestino, Coordenadas coordenadaInicial,
+		Coordenadas coordenadaFinal, Lista<Estacion>* paradas) {
 	paradas->iniciarCursor();
 	while (paradas->avanzarCursor()) {
-		Parada paradaActual = paradas->obtenerCursor();
+		Estacion paradaActual = paradas->obtenerCursor();
 
 		if (coordenadaInicial.calcularDistancia(paradaActual.obtenerCoordenadas())< 300) {
 			paradasCercanasInicio.agregar(paradaActual);
@@ -65,16 +65,16 @@ void BuscadorDeViaje::buscarParadasCercanas(Lista<Parada> paradasCercanasInicio,
 	}
 }
 
-void BuscadorDeViaje::buscarViajesPosibles(Lista<Parada> paradasCercanasInicio,
-		Lista<Parada> paradasCercanasDestino, Lista<Parada> viajesPosibles) {
+void BuscadorDeViaje::buscarViajesPosibles(Lista<Estacion> paradasCercanasInicio,
+		Lista<Estacion> paradasCercanasDestino, Lista<Estacion> viajesPosibles) {
 	paradasCercanasInicio.iniciarCursor();
 	paradasCercanasDestino.iniciarCursor();
 
 	while (paradasCercanasInicio.avanzarCursor()) {
-		Parada paradaCercanaAInicio = paradasCercanasInicio.obtenerCursor();
+		Estacion paradaCercanaAInicio = paradasCercanasInicio.obtenerCursor();
 
 		while (paradasCercanasDestino.avanzarCursor()) {
-			Parada paradaCercanaADestino =
+			Estacion paradaCercanaADestino =
 					paradasCercanasDestino.obtenerCursor();
 			if (paradaCercanaAInicio.obtenerLinea() == paradaCercanaADestino.obtenerLinea()) {
 				viajesPosibles.agregar(paradaCercanaAInicio);
