@@ -10,11 +10,6 @@
 #define SRC_LISTA_H_
 
 #include "Nodo.h"
-#include "Metrobus.h"
-#include "ferrocarril.h"
-#include "subte.h"
-#include "garage.h"
-#include "colectivos.h"
 
 /*
  * Una Lista es una colección dinámica de elementos dispuestos en una secuencia.
