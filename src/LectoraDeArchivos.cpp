@@ -9,7 +9,8 @@
 #include <fstream>
 
 void LectoraDeArchivos::leerEstacionesDeMetrobus(
-		std::string archivosDeEstacionesDeMetrobus, Lista<Parada> &paradas) {
+		std::string archivosDeEstacionesDeMetrobus,
+		Lista<Estacion> &estaciones) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -21,7 +22,7 @@ void LectoraDeArchivos::leerEstacionesDeMetrobus(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		paradas.agregar(leerEstacionDeMetrobus(entrada));
+		estaciones.agregar(leerEstacionDeMetrobus(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
@@ -29,7 +30,7 @@ void LectoraDeArchivos::leerEstacionesDeMetrobus(
 
 }
 
-Parada LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -58,15 +59,16 @@ Parada LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 	std::getline(entrada, observacion);
 
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Parada paradaDeMetrobus(coordenadasDeLaParada, metrobus, Parada::METROBUS,
-			calle1);
+	Estacion paradaDeMetrobus(coordenadasDeLaParada, metrobus,
+			Estacion::METROBUS, calle1);
 
 	return paradaDeMetrobus;
 
 }
 
 void LectoraDeArchivos::leerEstacionesDeFerrocarril(
-		std::string archivosDeEstacionesDeFerrocarril, Lista<Parada> &paradas) {
+		std::string archivosDeEstacionesDeFerrocarril,
+		Lista<Estacion> &estaciones) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -78,7 +80,7 @@ void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		paradas.agregar(leerEstacionDeFerrocarril(entrada));
+		estaciones.agregar(leerEstacionDeFerrocarril(entrada));
 
 	}
 
@@ -87,7 +89,7 @@ void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 
 }
 
-Parada LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -113,14 +115,15 @@ Parada LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
 	std::getline(entrada, localidad, ',');
 	std::getline(entrada, partido);
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Parada estacionFerrocarril(coordenadasDeLaParada, linea,
-			Parada::FERROCARRIL, nombre);
+	Estacion estacionFerrocarril(coordenadasDeLaParada, linea,
+			Estacion::FERROCARRIL, nombre);
 	return estacionFerrocarril;
 
 }
 
 void LectoraDeArchivos::leerEstacionesDeColectivo(
-		std::string archivosDeEstacionesDeColectivo, Lista<Parada> &paradas) {
+		std::string archivosDeEstacionesDeColectivo,
+		Lista<Estacion> &estaciones) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -132,7 +135,7 @@ void LectoraDeArchivos::leerEstacionesDeColectivo(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		paradas.agregar(leerEstacionDeColectivo(entrada));
+		estaciones.agregar(leerEstacionDeColectivo(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
@@ -140,7 +143,7 @@ void LectoraDeArchivos::leerEstacionesDeColectivo(
 
 }
 
-Parada LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 
 	std::string id;
 	std::string codigo;
@@ -168,15 +171,15 @@ Parada LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 	std::getline(entrada, rutaDesc, ',');
 	std::getline(entrada, tipoRuta);
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Parada estacionColectivo(coordenadasDeLaParada, numeroLinea,
-			Parada::COLECTIVO, nombre);
+	Estacion estacionColectivo(coordenadasDeLaParada, numeroLinea,
+			Estacion::COLECTIVO, nombre);
 
 	return estacionColectivo;
 
 }
 
 void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
-		Lista<Parada> &paradas) {
+		Lista<Estacion> &estaciones) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -188,7 +191,7 @@ void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		paradas.agregar(leerGarage(entrada));
+		estaciones.agregar(leerGarage(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
@@ -196,7 +199,7 @@ void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
 
 }
 
-Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -233,7 +236,7 @@ Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 
 	std::getline(entrada, codigoPostalArgentino);
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Parada garage(coordenadasDeLaParada, "Estacionamiento", Parada::GARAGE,
+	Estacion garage(coordenadasDeLaParada, "Estacionamiento", Estacion::GARAGE,
 			nombreDeLaCalle);
 
 	return garage;
@@ -241,7 +244,7 @@ Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 }
 
 void LectoraDeArchivos::leerEstacionesDeSubte(
-		std::string archivosDeEstacionesDeSubte, Lista<Parada> &paradas) {
+		std::string archivosDeEstacionesDeSubte, Lista<Estacion> &estaciones) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -253,7 +256,7 @@ void LectoraDeArchivos::leerEstacionesDeSubte(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		paradas.agregar(leerEstacionDeSubte(entrada));
+		estaciones.agregar(leerEstacionDeSubte(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
@@ -261,7 +264,7 @@ void LectoraDeArchivos::leerEstacionesDeSubte(
 
 }
 
-Parada LectoraDeArchivos::leerEstacionDeSubte(std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeSubte(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -312,7 +315,8 @@ Parada LectoraDeArchivos::leerEstacionDeSubte(std::ifstream &entrada) {
 	std::getline(entrada, dominioOrigen);
 
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Parada estacionDeSubte(coordenadasDeLaParada, linea, Parada::SUBTE, calle);
+	Estacion estacionDeSubte(coordenadasDeLaParada, linea, Estacion::SUBTE,
+			calle);
 
 	return estacionDeSubte;
 }

@@ -5,10 +5,10 @@
  *      Author: rochi
  */
 
-#include "Parada.h"
+#include "Estacion.h"
 using namespace std;
 
-Parada::Parada(Coordenadas coordenadas, string linea,
+Estacion::Estacion(Coordenadas coordenadas, string linea,
 		TipoDeTransporte tipoDeTransporte, string direccionDeParada) {
 	this->coordenadas = coordenadas;
 	this->linea = linea;
@@ -16,25 +16,25 @@ Parada::Parada(Coordenadas coordenadas, string linea,
 	this->direccion = direccionDeParada;
 
 }
-Parada::Parada(const Parada &otraParada) {
+Estacion::Estacion(const Estacion &otraParada) {
 	this->coordenadas = otraParada.coordenadas;
 	this->linea = otraParada.linea;
 	this->tipoDeTransporte = otraParada.tipoDeTransporte;
 	this->direccion = otraParada.direccion;
 
 }
-Parada::Parada() {
+Estacion::Estacion() {
 
 }
-Coordenadas Parada::obtenerCoordenadas() {
+Coordenadas Estacion::obtenerCoordenadas() {
 	return this->coordenadas;
 }
-std::string Parada::obtenerLinea() {
+std::string Estacion::obtenerLinea() {
 	return this->linea;
 }
-Parada::TipoDeTransporte Parada::obtenerTipoDeTransporte() {
+Estacion::TipoDeTransporte Estacion::obtenerTipoDeTransporte() {
 	return this->tipoDeTransporte;
 }
-std::string Parada::obtenerDireccion() {
+std::string Estacion::obtenerDireccion() {
 	return this->direccion;
 }
