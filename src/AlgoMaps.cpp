@@ -15,17 +15,9 @@ AlgoMaps::AlgoMaps() {
 	std::string archivoColectivos = "datos/paradas-de-colectivo.csv";
 	std::string archivoSubte = "datos/bocas-de-subte.csv";
 	std::string archivoGarajes = "datos/garajes-comerciales.csv";
-	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus, paradas);
-	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril, paradas);
-	lectora.leerEstacionesDeColectivo(archivoColectivos, paradas);
-	lectora.leerEstacionesDeSubte(archivoSubte, paradas);
-	lectora.leerGarajes(archivoGarajes, paradas);
-
-	paradas.iniciarCursor();
-	while (paradas.avanzarCursor()) {
-		interfazDeUsuario.mostrarParada(paradas.obtenerCursor());
-	}
-
-	std::cout<<paradas.contarElementos();
-
+	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus, this->administradorDeRecorridos);
+	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril, this->administradorDeRecorridos);
+	lectora.leerEstacionesDeColectivo(archivoColectivos, this->administradorDeRecorridos);
+	lectora.leerEstacionesDeSubte(archivoSubte, this->administradorDeRecorridos);
+	lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 }
