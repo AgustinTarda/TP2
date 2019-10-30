@@ -7,48 +7,91 @@
 
 #include "BuscadorDeViaje.h"
 
-BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
-		Coordenadas coordenadaFinal, Lista<Estacion> * paradas) {
+BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal, Lista<Parada> * paradas) {
+
 
 	Lista<Estacion> paradasCercanasInicio;
 	Lista<Estacion> paradasCercanasDestino;
 	Lista<Estacion> viajesPosibles;
 
-	buscarParadasCercanas(paradasCercanasInicio, paradasCercanasDestino,
-			coordenadaInicial, coordenadaFinal, paradas);
+	buscarParadasCercanas(paradasCercanasInicio, paradasCercanasDestino, coordenadaInicial, coordenadaFinal, paradas);
 
 	if ((!paradasCercanasInicio.estaVacia()) && (!paradasCercanasDestino.estaVacia())) {
-		buscarViajesPosibles(paradasCercanasInicio, paradasCercanasDestino,
+
+		buscarViajesDirectosPosibles(paradasCercanasInicio, paradasCercanasDestino,
 				viajesPosibles);
 
 		if (!viajesPosibles.estaVacia()) {
 			//Mostramos este viaje
 		}
 
-		buscarCombinaciones(paradasCercanasInicio, paradasCercanasDestino);
+		buscarCombinacionesPosibles(paradasCercanasInicio, paradasCercanasDestino);
 
 	} else {
 
 		//Si no hay paradas cerca del destino y/o final, mostramos el camino caminando
-//Lista de linea con su transporte, y una lista de Paradas, con calles y coordenadas
 
 	}
 
 }
 
-void BuscadorDeViaje::buscarCombinaciones(Lista<Estacion> paradasCercanasInicio, Lista<Estacion> paradasCercanasDestino){
 
-	Lista<Estacion> combinacionParadas;
-	//paradasCercanasInicio-> iniciarCursor();
-	while(paradasCercanasInicio.avanzarCursor()){
+void BuscadorDeViaje::buscarCombinacionesPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino){
 
+	/*
+	Lista<Recorridos> recorridos;
+	Lista<Parada> combinacionParadas;
+	Parada paradaActualDeRecorridoInicial;
+	Parada paradaActualDeRecorridoFinal;
+
+
+	paradasCercanasInicio.iniciarCursor();
+	while (paradasCercanasInicio.avanzarCursor()) {
+
+		Parada paradaCercanaAInicio = paradasCercanasInicio.obtenerCursor();
+
+		recorridos.iniciarCursor();
+		bool lineaDeInicioEncontrada = false;
+		while (recorridos.avanzarCursor() && !lineaDeInicioEncontrada) {
+
+			Recorridos recorridoInicialActual = recorridos.obtenerCursor();
+			if (recorridoInicialActual.obtenerLinea()== paradaCercanaAInicio.obtenerLinea()) {
+				lineaDeInicioEncontrada = true;
+
+				recorridoInicialActual.paradas.iniciarCursor();
+				while (recorridoInicialActual.paradas.avanzarCursor()) {
+					paradaActualDeRecorridoInicial = recorridoInicialActual.paradas.obtenerCursor();
+
+					paradasCercanasDestino.iniciarCursor();
+					while (paradasCercanasDestino.avanzarCursor()) {
+						Parada paradaCercanaADestino = paradasCercanasDestino.obtenerCursor();
+
+						recorridos.iniciarCursor();
+						bool lineaDeDestinoEncontrada = false;
+						while (recorridos.avanzarCursor() && !lineaDeDestinoEncontrada) {
+							Recorridos recorridoFinalActual = recorridos.obtenerCursor();
+							if (recorridoFinalActual.obtenerLinea() == paradaCercanaADestino.obtenerLinea()) {
+
+								lineaDeDestinoEncontrada = true;
+								recorridoFinalActual.paradas.iniciarCursor();
+								while (recorridoActual.paradas.avanzarCursor()) {
+									paradaActualDeRecorridoFinal = recorridoActual.paradas.obtenerCursor();
+									if (paradaActualDeRecorridoInicial.coordenadas.calcularDistancia(paradaActualDeRecorridoFinal.obtenerCoordenadas()) < 300) {
+										//ES UNA COMBINACION, GUARDAMOS LA PARADA INICIAL, LAS 2 PARADAS DE TRANSBORDO Y LA FINAL?
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
-
+	*/
 }
 
-void BuscadorDeViaje::buscarParadasCercanas(Lista<Estacion> paradasCercanasInicio,
-		Lista<Estacion> paradasCercanasDestino, Coordenadas coordenadaInicial,
-		Coordenadas coordenadaFinal, Lista<Estacion>* paradas) {
+
+void BuscadorDeViaje::buscarParadasCercanas(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Coordenadas coordenadaInicial, Coordenadas coordenadaFinal, Lista<Parada>* paradas) {
 	paradas->iniciarCursor();
 	while (paradas->avanzarCursor()) {
 		Estacion paradaActual = paradas->obtenerCursor();
@@ -65,8 +108,9 @@ void BuscadorDeViaje::buscarParadasCercanas(Lista<Estacion> paradasCercanasInici
 	}
 }
 
-void BuscadorDeViaje::buscarViajesPosibles(Lista<Estacion> paradasCercanasInicio,
-		Lista<Estacion> paradasCercanasDestino, Lista<Estacion> viajesPosibles) {
+void BuscadorDeViaje::buscarViajesDirectosPosibles(Lista<Parada> paradasCercanasInicio,
+		Lista<Parada> paradasCercanasDestino, Lista<Parada> viajesPosibles) {
+
 	paradasCercanasInicio.iniciarCursor();
 	paradasCercanasDestino.iniciarCursor();
 
@@ -74,8 +118,9 @@ void BuscadorDeViaje::buscarViajesPosibles(Lista<Estacion> paradasCercanasInicio
 		Estacion paradaCercanaAInicio = paradasCercanasInicio.obtenerCursor();
 
 		while (paradasCercanasDestino.avanzarCursor()) {
-			Estacion paradaCercanaADestino =
-					paradasCercanasDestino.obtenerCursor();
+
+			Parada paradaCercanaADestino = paradasCercanasDestino.obtenerCursor();
+
 			if (paradaCercanaAInicio.obtenerLinea() == paradaCercanaADestino.obtenerLinea()) {
 				viajesPosibles.agregar(paradaCercanaAInicio);
 				viajesPosibles.agregar(paradaCercanaADestino);
