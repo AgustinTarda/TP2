@@ -1,4 +1,3 @@
-
 /*
  * lista.h
  *
@@ -297,7 +296,5 @@ template<class T> Nodo<T>* Lista<T>::obtenerNodo(unsigned int posicion) {
 
 	return actual;
 }
-
-
 
 #endif /* SRC_LISTA_H_ */

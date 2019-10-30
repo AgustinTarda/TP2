@@ -11,6 +11,7 @@
 #include <string>
 
 #include "Estacion.h"
+#include "AdministradorDeRecorridos.h"
 #include "Lista.h"
 #include "Interfaz.h"
 #include "LectoraDeArchivos.h"
@@ -18,7 +19,7 @@
 class AlgoMaps {
 private:
 	Interfaz interfazDeUsuario;
-	Lista<Estacion> paradas;
+	AdministradorDeRecorridos administradorDeRecorridos;
 
 public:
 	AlgoMaps();

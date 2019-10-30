@@ -1,10 +1,3 @@
-/*
- * lectoraDeArchivos.h
- *
- *  Created on: 17 oct. 2019
- *      Author: agustin
- */
-
 #ifndef LECTORADEARCHIVOS_H_
 #define LECTORADEARCHIVOS_H_
 
@@ -12,23 +5,25 @@
 #include "Lista.h"
 #include "Coordenadas.h"
 #include "Estacion.h"
+#include "AdministradorDeRecorridos.h"
 
 class LectoraDeArchivos {
 public:
 	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
-			Lista<Estacion> &estaciones);
+			AdministradorDeRecorridos administradorDeRecorridos);
 
 	void leerEstacionesDeFerrocarril(
 			std::string archivosDeEstacionesDeFerrocarril,
-			Lista<Estacion> &estaciones);
+			AdministradorDeRecorridos administradorDeRecorridos);
 
 	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
-			Lista<Estacion> &estaciones);
+			AdministradorDeRecorridos administradorDeRecorridos);
 
-	void leerGarajes(std::string archivosDeGarajes, Lista<Estacion> &paradas);
+	void leerGarajes(std::string archivosDeGarajes,
+			AdministradorDeRecorridos administradorDeRecorridos);
 
 	void leerEstacionesDeSubte(std::string archivosDeEstacionesDeSubte,
-			Lista<Estacion> &estaciones);
+			AdministradorDeRecorridos administradorDeRecorridos);
 
 private:
 	Estacion leerEstacionDeMetrobus(std::ifstream &entrada);
