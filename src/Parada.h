@@ -26,7 +26,7 @@ private:
 public:
 
 	Parada(Coordenadas coordenadas, std::string linea,
-			TipoDeTransporte tipoDeTransporte, std::string direccionDeParada);
+			TipoDeTransporte tipoDeTransporte, std::string direccion);
 	Parada(const Parada &otraParada);
 	Parada();
 	Coordenadas obtenerCoordenadas();

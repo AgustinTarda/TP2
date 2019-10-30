@@ -209,6 +209,9 @@ Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 	std::string nombre;
 	std::string barrio;
 	std::string comuna;
+	std::string observacion;
+	std::string objeto;
+	std::string dominioSalida;
 	std::string codigoPostal;
 	std::string observacion;
 	std::string objeto;
@@ -230,6 +233,7 @@ Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 	std::getline(entrada, observacion, ',');
 	std::getline(entrada, objeto, ',');
 	std::getline(entrada, dominioSalida, ',');
+
 	std::getline(entrada, codigoPostalArgentino);
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
 	Parada garage(coordenadasDeLaParada, "Estacionamiento", Parada::GARAGE,
