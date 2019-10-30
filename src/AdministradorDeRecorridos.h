@@ -10,8 +10,9 @@ private:
 	Lista<Recorrido> recorridos;
 
 public:
-	Recorrido obtenerRecorridoAlQuePertenece(Parada parada);
 	void agregarEstacion(Estacion estacion);
+	Recorrido obtenerRecorridoAlQuePertenece(Estacion estacion);
+	void crearRecorridoPara(Estacion estacion);
 
 };
 

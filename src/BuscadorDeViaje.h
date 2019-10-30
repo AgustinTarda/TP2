@@ -14,6 +14,9 @@
 #include "Lista.h"
 
 class BuscadorDeViaje {
+private:
+public:
+	BuscadorDeViaje();
 
 	BuscadorDeViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			Lista<Estacion> *estaciones);
