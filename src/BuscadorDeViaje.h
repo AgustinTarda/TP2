@@ -13,19 +13,23 @@
 #include "Estacion.h"
 #include "Lista.h"
 
-class BuscadorDeViaje{
+class BuscadorDeViaje {
 
-	BuscadorDeViaje(Coordenadas coordenadaInicial,
+	BuscadorDeViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+			Lista<Estacion> *estaciones);
 
-			Coordenadas coordenadaFinal, Lista<Parada> * Paradas);
-	void buscarCombinacionesPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino);
-	void buscarParadasCercanas(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Coordenadas coordenadaInicial, Coordenadas coordenadaFinal, Lista<Parada>* paradas);
-	void buscarViajesDirectosPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Lista<Parada> viajesPosibles);
+	void buscarCombinacionesPosibles(Lista<Estacion> estacionesCercanasInicio,
+			Lista<Estacion> estacionesCercanasDestino);
 
+	void buscarEstacionesCercanas(Lista<Estacion> estacionesCercanasInicio,
+			Lista<Estacion> estacionesCercanasDestino,
+			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+			Lista<Estacion> *estaciones);
+
+	void buscarViajesDirectosPosibles(Lista<Estacion> estacionesCercanasInicio,
+			Lista<Estacion> estacionesCercanasDestino,
+			Lista<Estacion> viajesPosibles);
 
 };
-
-
-
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */
