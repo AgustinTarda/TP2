@@ -9,15 +9,12 @@
 #define SRC_INTERFAZ_H_
 
 #include<iostream>
-#include"Metrobus.h"
-#include"colectivos.h"
-
+#include"Parada.h"
 
 class Interfaz {
 private:
 public:
-	void mostrarEstacionDeMetrobus(EstacionMetrobus estacionDeMetrobus);
-	void mostrarEstacionDeColectivo(EstacionColectivo estacionDeColectivo);
+	void mostrarParada(Parada parada);
 };
 
 #endif /* SRC_INTERFAZ_H_ */

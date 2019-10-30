@@ -11,22 +11,21 @@ AlgoMaps::AlgoMaps() {
 
 	LectoraDeArchivos lectora;
 	std::string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
-	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus, estacionesDeMetrobus);
+	std::string archivoDeFerrocarril = "datos/estaciones-de-ferrocarril.csv";
+	std::string archivoColectivos = "datos/paradas-de-colectivo.csv";
+	std::string archivoSubte = "datos/bocas-de-subte.csv";
+	std::string archivoGarajes = "datos/garajes-comerciales.csv";
+	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus, paradas);
+	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril, paradas);
+	lectora.leerEstacionesDeColectivo(archivoColectivos, paradas);
+	lectora.leerEstacionesDeSubte(archivoSubte, paradas);
+	lectora.leerGarajes(archivoGarajes, paradas);
 
-	estacionesDeMetrobus.iniciarCursor();
-	while (estacionesDeMetrobus.avanzarCursor()) {
-		EstacionMetrobus estacionDeMetrobus(
-				estacionesDeMetrobus.obtenerCursor());
-		interfazDeUsuario.mostrarEstacionDeMetrobus(estacionDeMetrobus);
+	paradas.iniciarCursor();
+	while (paradas.avanzarCursor()) {
+		interfazDeUsuario.mostrarParada(paradas.obtenerCursor());
 	}
-	std::string archivoDeColectivos = "datos/paradas-de-colectivo.csv";
-	lectora.leerEstacionesDeColectivo(archivoDeColectivos,
-			estacionesDeColectivo);
-	estacionesDeColectivo.iniciarCursor();
-	while (estacionesDeColectivo.avanzarCursor()) {
-		EstacionColectivo estacionDeColectivo(
-				estacionesDeColectivo.obtenerCursor());
-		interfazDeUsuario.mostrarEstacionDeColectivo(estacionDeColectivo);
-	}
+
+	std::cout<<paradas.contarElementos();
 
 }
