@@ -15,32 +15,32 @@
 #include "colectivos.h"
 #include "subte.h"
 #include "garage.h"
+#include "Parada.h"
+#include "Coordenadas.h"
 
 class LectoraDeArchivos {
 public:
 	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
-			Lista<EstacionMetrobus> &listaDeEstacionesDeMetrobus);
+			Lista<Parada> &paradas);
 
-	Lista<EstacionFerrocarril> leerEstacionesDeFerrocarril(
+	void leerEstacionesDeFerrocarril(
 			std::string archivosDeEstacionesDeFerrocarril,
-			Lista<EstacionFerrocarril> &listaDeEstacionesDeFerrocarril);
+			Lista<Parada> &paradas);
 
 	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
-			Lista<EstacionColectivo> &listaDeEstacionesDeColectivo);
+			Lista<Parada> &paradas);
 
-	Lista<Garage> leerGarages(std::string archivosDeGarage,
-			Lista<Garage> &listaDeGarages);
+	void leerGarajes(std::string archivosDeGarajes, Lista<Parada> &paradas);
 
-	Lista<EstacionSubte> leerEstacionesDeSubte(
-			std::string archivosDeEstacionesDeSubte,
-			Lista<EstacionSubte> &listaDeEstacionesSubte);
+	void leerEstacionesDeSubte(std::string archivosDeEstacionesDeSubte,
+			Lista<Parada> &paradas);
 
 private:
-	EstacionMetrobus leerEstacionDeMetrobus(std::ifstream &entrada);
-	EstacionColectivo leerEstacionDeColectivo(std::ifstream &entrada);
-	EstacionFerrocarril leerEstacionDeFerrocarril(std::ifstream &entrada);
-	EstacionSubte leerEstacionDeSubte(std::ifstream &entrada);
-	Garage leerGarage(std::ifstream &entrada);
+	Parada leerEstacionDeMetrobus(std::ifstream &entrada);
+	Parada leerEstacionDeColectivo(std::ifstream &entrada);
+	Parada leerEstacionDeFerrocarril(std::ifstream &entrada);
+	Parada leerEstacionDeSubte(std::ifstream &entrada);
+	Parada leerGarage(std::ifstream &entrada);
 };
 
 #endif /* LECTORADEARCHIVOS_H_ */

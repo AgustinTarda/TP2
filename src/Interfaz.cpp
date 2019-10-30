@@ -7,16 +7,8 @@
 
 #include"Interfaz.h"
 
-void Interfaz::mostrarEstacionDeMetrobus(EstacionMetrobus estacionDeMetrobus) {
+void Interfaz::mostrarParada(Parada parada) {
 
-	std::cout << "MetroBus: " << estacionDeMetrobus.obtenerNombre()
-			<< std::endl;
-
-}
-void Interfaz::mostrarEstacionDeColectivo(
-		EstacionColectivo estacionDeColectivo) {
-
-	std::cout << "Colectivo: " << estacionDeColectivo.obtenerNombre()
-			<< std::endl;
+	std::cout << "MetroBus: " << parada.obtenerLinea() << std::endl;
 
 }
