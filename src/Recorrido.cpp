@@ -9,3 +9,7 @@ Recorrido::Recorrido(const Recorrido &otroRecorrido) {
 	this->estaciones = otroRecorrido.estaciones;
 	this->tipoDeTransporte = otroRecorrido.tipoDeTransporte;
 }
+
+Lista<Estacion> Recorrido::obtenerEstaciones() {
+
+}

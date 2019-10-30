@@ -15,11 +15,13 @@
 #include "Lista.h"
 #include "Interfaz.h"
 #include "LectoraDeArchivos.h"
+#include "BuscadorDeViaje.h"
 
 class AlgoMaps {
 private:
 	Interfaz interfazDeUsuario;
 	AdministradorDeRecorridos administradorDeRecorridos;
+	BuscadorDeViaje buscadorDeViajes;
 
 public:
 	AlgoMaps();
