@@ -28,13 +28,21 @@ BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
 		buscarCombinaciones(paradasCercanasInicio, paradasCercanasDestino);
 
 	} else {
+
 		//Si no hay paradas cerca del destino y/o final, mostramos el camino caminando
+//Lista de linea con su transporte, y una lista de Paradas, con calles y coordenadas
 
 	}
 
 }
 
 void BuscadorDeViaje::buscarCombinaciones(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino){
+
+	Lista<Parada> combinacionParadas;
+	//paradasCercanasInicio-> iniciarCursor();
+	while(paradasCercanasInicio.avanzarCursor()){
+
+	}
 
 }
 
@@ -46,11 +54,11 @@ void BuscadorDeViaje::buscarParadasCercanas(Lista<Parada> paradasCercanasInicio,
 		Parada paradaActual = paradas->obtenerCursor();
 
 		if (coordenadaInicial.calcularDistancia(paradaActual.obtenerCoordenadas())< 300) {
-			//HACER UN OBTENER COORDENADAS
 			paradasCercanasInicio.agregar(paradaActual);
 
 		} else if (coordenadaFinal.calcularDistancia(paradaActual.obtenerCoordenadas())
 				< 300) {
+
 			paradasCercanasDestino.agregar(paradaActual);
 
 		}
