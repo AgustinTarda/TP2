@@ -5,13 +5,13 @@
  *      Author: rochi
  */
 
-#ifndef SRC_PARADA_H_
-#define SRC_PARADA_H_
+#ifndef SRC_ESTACION_H_
+#define SRC_ESTACION_H_
 
 #include "Coordenadas.h"
 #include <string>
 
-class Parada {
+class Estacion {
 public:
 	enum TipoDeTransporte {
 		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
@@ -25,10 +25,10 @@ private:
 
 public:
 
-	Parada(Coordenadas coordenadas, std::string linea,
+	Estacion(Coordenadas coordenadas, std::string linea,
 			TipoDeTransporte tipoDeTransporte, std::string direccion);
-	Parada(const Parada &otraParada);
-	Parada();
+	Estacion(const Estacion &otraParada);
+	Estacion();
 	Coordenadas obtenerCoordenadas();
 	std::string obtenerLinea();
 	TipoDeTransporte obtenerTipoDeTransporte();
@@ -36,4 +36,4 @@ public:
 
 };
 
-#endif /* SRC_PARADA_H_ */
+#endif /* SRC_ESTACION_H_ */
