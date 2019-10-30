@@ -7,21 +7,21 @@
 
 class Recorrido {
 
-public:
-	enum TipoDeTransporte {
-		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
-	};
 private:
 
 	std::string linea;
 	Lista<Estacion> estaciones;
-	TipoDeTransporte tipoDeTransporte;
+	Estacion::TipoDeTransporte tipoDeTransporte;
 
 public:
 
 	Recorrido();
 	Recorrido(const Recorrido &otroRecorrido);
+	Recorrido(std::string linea, Lista<Estacion> estaciones,
+			Estacion::TipoDeTransporte tipoDeTransporte);
 	Lista<Estacion> obtenerEstaciones();
+	bool debeContener(Estacion estacion);
+	void agregarEstacion(Estacion estacion);
 
 };
 

@@ -6,6 +6,9 @@
  */
 
 #include "BuscadorDeViaje.h"
+BuscadorDeViaje::BuscadorDeViaje() {
+
+}
 
 BuscadorDeViaje::BuscadorDeViaje(Coordenadas coordenadaInicial,
 		Coordenadas coordenadaFinal, Lista<Estacion> *estaciones) {
