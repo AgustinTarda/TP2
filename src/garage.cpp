@@ -45,7 +45,4 @@ Garage::Garage(const Garage &otroGarage){
 
 }
 
-Garage::Garage(){
-
-}
 

@@ -248,34 +248,31 @@ Garage LectoraDeArchivos::leerGarage(
 
 }
 
-/*
+
 Lista<EstacionSubte> LectoraDeArchivos::leerEstacionesDeSubte(
 		std::string archivosDeEstacionesDeSubte,
 		Lista<EstacionSubte> listaDeEstacionesDeSubte){
 
 
 	/* crea el archivo y abre la ruta especificada */
-/*	std::ifstream entrada;
+	std::ifstream entrada;
 	entrada.open(archivosDeEstacionesDeSubte.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-/*	std::string titulo;
+	std::string titulo;
 	std::getline(entrada, titulo);
 
 	/* lee el resto del archivo */
-/*	while (entrada.peek() != EOF) {
+	while (entrada.peek() != EOF) {
 		listaDeEstacionesDeSubte.agregar(leerEstacionDeSubte(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
-/*	entrada.close();
+	entrada.close();
 
 	return listaDeEstacionesDeSubte;
 
 }
-
-
-faltan castear los atributos bool del subte
 
 EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 
@@ -328,11 +325,11 @@ EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 	std::getline(entrada, dominioOrigen, ',');
 
 	EstacionSubte estacionDeSubte(stoul(longitud), stoul(latitud), stoul(id), linea, estacion,
-				  numeroDeEstacion, destino, lineasDe, cierraFin, escaleraNoMecanica, ascensor,
-				  rampa, salvaEscaleras, calle, stoul(altura), calle2, barrio, comuna, observacion,
+				  numeroDeEstacion, destino, lineasDe, cierraFin == "True", escaleraNoMecanica == "True", escaleraMecanica == "True", ascensor == "True",
+				  rampa == "True", salvaEscaleras == "True", calle, stoul(altura), calle2, barrio, comuna, observacion,
 				  objeto, dominioSalida, dominioOrigen);
 
 	return estacionDeSubte;
 }
 
-*/
+

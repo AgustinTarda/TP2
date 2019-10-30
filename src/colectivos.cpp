@@ -44,7 +44,3 @@ EstacionColectivo::EstacionColectivo(const EstacionColectivo &otraEstacion) {
 
 }
 
-EstacionColectivo::EstacionColectivo() {
-
-}
-

@@ -45,7 +45,3 @@ EstacionMetrobus::EstacionMetrobus(const EstacionMetrobus &otraEstacion) {
 
 }
 
-EstacionMetrobus::EstacionMetrobus() {
-
-}
-
