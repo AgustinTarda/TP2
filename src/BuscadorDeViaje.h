@@ -17,9 +17,9 @@ class BuscadorDeViaje{
 
 	BuscadorDeViaje(Coordenadas coordenadaInicial,
 			Coordenadas coordenadaFinal, Lista<Parada> * Paradas);
-	void buscarCombinaciones(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino);
+	void buscarCombinacionesPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino);
 	void buscarParadasCercanas(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Coordenadas coordenadaInicial, Coordenadas coordenadaFinal, Lista<Parada>* paradas);
-	void buscarViajesPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Lista<Parada> viajesPosibles);
+	void buscarViajesDirectosPosibles(Lista<Parada> paradasCercanasInicio, Lista<Parada> paradasCercanasDestino, Lista<Parada> viajesPosibles);
 
 };
 

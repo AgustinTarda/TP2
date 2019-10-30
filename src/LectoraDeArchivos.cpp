@@ -213,9 +213,6 @@ Parada LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 	std::string objeto;
 	std::string dominioSalida;
 	std::string codigoPostal;
-	std::string observacion;
-	std::string objeto;
-	std::string dominioSalida;
 	std::string codigoPostalArgentino;
 
 	std::getline(entrada, longitud, ',');
