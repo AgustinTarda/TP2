@@ -15,6 +15,10 @@
 class Interfaz {
 private:
 public:
+	Coordenadas pedirCoordenadasDeInicio();
+	Coordenadas pedirCoordenadasDeDestino();
+	double pedirLongitud();
+	double pedirLatitud();
 	void mostrarParada(Estacion parada);
 };
 
