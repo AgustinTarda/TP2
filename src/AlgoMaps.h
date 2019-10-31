@@ -25,6 +25,7 @@ private:
 
 public:
 	AlgoMaps();
+	void iniciarViaje();
 
 };
 

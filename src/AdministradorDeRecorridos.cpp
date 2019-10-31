@@ -1,5 +1,15 @@
 #include "AdministradorDeRecorridos.h"
 
+
+AdministradorDeRecorridos::AdministradorDeRecorridos(){
+
+}
+
+AdministradorDeRecorridos::AdministradorDeRecorridos(const AdministradorDeRecorridos &otroAdministradorDeRecorridos){
+	this->recorridos = otroAdministradorDeRecorridos.recorridos;
+
+}
+
 void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
 	bool tieneRecorrido = false;
 
@@ -22,6 +32,9 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 		Estacion estacion) {
 
 
+}
+Lista<Recorrido> AdministradorDeRecorridos:: obtenerRecorridos(){
+	return this-> recorridos;
 }
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {

@@ -6,7 +6,7 @@ Recorrido::Recorrido() {
 
 Recorrido::Recorrido(const Recorrido &otroRecorrido) {
 	this->linea = otroRecorrido.linea;
-	this->estaciones = otroRecorrido.estaciones;
+	this-> estaciones = otroRecorrido.estaciones;
 	this->tipoDeTransporte = otroRecorrido.tipoDeTransporte;
 }
 
@@ -18,7 +18,7 @@ Recorrido::Recorrido(std::string linea, Lista<Estacion> estaciones,
 }
 
 Lista<Estacion> Recorrido::obtenerEstaciones() {
-
+	return this->estaciones;
 }
 
 bool Recorrido::debeContener(Estacion estacion) {

@@ -12,27 +12,39 @@
 #include "Coordenadas.h"
 #include "Estacion.h"
 #include "Lista.h"
+#include "AdministradorDeRecorridos.h"
+#include "Recorrido.h"
+#include "Viaje.h"
 
 class BuscadorDeViaje {
 private:
 public:
 	BuscadorDeViaje();
 
-	BuscadorDeViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
-			Lista<Estacion> *estaciones);
+	void buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+			AdministradorDeRecorridos administradorDeRecorridos);
 
-	void buscarCombinacionesPosibles(Lista<Estacion> estacionesCercanasInicio,
-			Lista<Estacion> estacionesCercanasDestino);
+	void buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
+			Coordenadas coordenadaFinal,
+			Lista<Estacion> estacionesCercanasInicio,
+			Lista<Estacion> estacionesCercanasDestino,
+			AdministradorDeRecorridos administradorDeRecorridos,
+			Lista<Viaje> viajesPosibles);
 
 	void buscarEstacionesCercanas(Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
-			Lista<Estacion> *estaciones);
+			AdministradorDeRecorridos administradorDeRecorridos);
+	void buscarEstacionesCercanas(Lista<Estacion>& estacionesCercanasInicio,
+			Lista<Estacion> &estacionesCercanasDestino,
+			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+			Lista<Estacion> estacionesDelRecorrido);
 
-	void buscarViajesDirectosPosibles(Lista<Estacion> estacionesCercanasInicio,
+	void buscarViajesDirectosPosibles(Coordenadas coordenadaInicial,
+			Coordenadas coordenadaFinal,
+			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
-			Lista<Estacion> viajesPosibles);
-
+			Lista<Viaje> viajesPosibles);
 };
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */
