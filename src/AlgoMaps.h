@@ -26,7 +26,7 @@ private:
 public:
 	AlgoMaps();
 	void iniciarViaje();
-
+	int buscarViaje(Coordenadas coordenadasDeInicio, Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos);
 };
 
 #endif /* SRC_ALGOMAPS_H_ */

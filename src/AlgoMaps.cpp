@@ -27,5 +27,10 @@ AlgoMaps::AlgoMaps() {
 }
 
 void AlgoMaps::iniciarViaje() {
+	interfazDeUsuario.mostrarMensajeDeBienvenida();
+	Coordenadas coordenadasDeInicio = interfazDeUsuario.pedirCoordenadasDeInicio();
+	Coordenadas coordenadasDeDestino = interfazDeUsuario.pedirCoordenadasDeDestino();
 
+	int largoLista = buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino, administradorDeRecorridos);
+	interfazDeUsuario.mostrarLargoListaViajes(largoLista);
 }

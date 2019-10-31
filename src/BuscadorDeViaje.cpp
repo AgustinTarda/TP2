@@ -10,7 +10,7 @@ BuscadorDeViaje::BuscadorDeViaje() {
 
 }
 
-void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
+int BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 		Coordenadas coordenadaFinal,
 		AdministradorDeRecorridos administradorDeRecorridos) {
 
@@ -38,6 +38,7 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 		//Si no hay estaciones cerca del destino y/o final, mostramos el camino caminando
 
 	}
+	return viajesPosibles.contarElementos();
 
 }
 
@@ -121,15 +122,15 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 		Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 		AdministradorDeRecorridos administradorDeRecorridos) {
 
-	Lista<Recorrido> recorridos;
+	Lista<Recorrido*> recorridos;
 	recorridos = administradorDeRecorridos.obtenerRecorridos();
 
 	recorridos.iniciarCursor();
 	while (recorridos.avanzarCursor()) {
-		Recorrido recorridoActual = recorridos.obtenerCursor();
+		Recorrido* recorridoActual = recorridos.obtenerCursor();
 
 		Lista<Estacion> estacionesDelRecorrido;
-		estacionesDelRecorrido = recorridoActual.obtenerEstaciones();
+		estacionesDelRecorrido = recorridoActual->obtenerEstaciones();
 		buscarEstacionesCercanas(estacionesCercanasInicio,
 				estacionesCercanasDestino, coordenadaInicial, coordenadaFinal,
 				estacionesDelRecorrido);
