@@ -10,6 +10,7 @@
 
 #include <string>
 #include "Coordenadas.h"
+#include "DibujadorDeMapa.h"
 #include "Estacion.h"
 #include "Lista.h"
 #include "AdministradorDeRecorridos.h"
@@ -18,6 +19,7 @@
 
 class BuscadorDeViaje {
 private:
+	DibujadorDeMapa* dibujador;
 public:
 	BuscadorDeViaje();
 
@@ -45,6 +47,8 @@ public:
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			Lista<Viaje> viajesPosibles);
+
+	~BuscadorDeViaje();
 };
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */
