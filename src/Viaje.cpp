@@ -37,3 +37,9 @@ Viaje::Viaje(const Viaje &otroViaje) {
 	this->estacionBajadaDeCombinacion = otroViaje.estacionBajadaDeCombinacion;
 	this->estacionSubidaDeCombinacion = otroViaje.estacionSubidaDeCombinacion;
 }
+bool Viaje::esDirecto() {
+	return (this->tipoDeViaje == DIRECTO);
+}
+bool Viaje::esConCombinacionSimple() {
+	return (this->tipoDeViaje == COMBINACION_SIMPLE);
+}

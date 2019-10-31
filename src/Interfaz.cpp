@@ -29,7 +29,6 @@ Coordenadas Interfaz::pedirCoordenadasDeDestino() {
 
 double Interfaz::pedirLongitud() {
 	double longitud;
-	bool longitudEsValida = false;
 
 	std::cout << "Ingrese la longitud" << std::endl;
 	std::cin >> longitud;
@@ -81,8 +80,18 @@ void Interfaz::imprimirViajes(Lista<Viaje> viajes) {
 	viajes.iniciarCursor();
 	while (viajes.avanzarCursor()) {
 		Viaje viajeAImprimir = viajes.obtenerCursor();
-		std::cout << "Viaje: ---------------------------- " << std::endl;
+		if (viajeAImprimir.esDirecto()) {
+			imprimirViajeDirecto(viajeAImprimir);
+		} else if (viajeAImprimir.esConCombinacionSimple()) {
+			imprimirViajeConCombinacionSimple(viajeAImprimir);
+		}
 
 	}
+}
+
+void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
+}
+void Interfaz::imprimirViajeConCombinacionSimple(
+		Viaje viajeConCombinacionSimple) {
 }
 

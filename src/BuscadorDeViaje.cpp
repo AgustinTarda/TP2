@@ -10,9 +10,10 @@ BuscadorDeViaje::BuscadorDeViaje() {
 
 }
 
-Lista<Viaje> BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
+void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 		Coordenadas coordenadaFinal,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos,
+		Lista<Viaje> &viajes) {
 
 	Lista<Estacion> estacionesCercanasInicio;
 	Lista<Estacion> estacionesCercanasDestino;
@@ -38,8 +39,6 @@ Lista<Viaje> BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 		//Si no hay estaciones cerca del destino y/o final, mostramos el camino caminando
 
 	}
-	return viajesPosibles;
-
 }
 void BuscadorDeViaje::buscarEstacionesCercanas(
 		Lista<Estacion> &estacionesCercanasInicio,

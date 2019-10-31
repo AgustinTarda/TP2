@@ -25,6 +25,8 @@ public:
 	void imprimirRecorridos(Lista<Recorrido*> *recorridos);
 	void imprimirEstaciones(Lista<Estacion*> *estaciones);
 	void imprimirViajes(Lista<Viaje> viajes);
+	void imprimirViajeDirecto(Viaje viajeDirecto);
+	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
 };
 
 #endif /* SRC_INTERFAZ_H_ */
