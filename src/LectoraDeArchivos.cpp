@@ -1,16 +1,9 @@
-/*
- * lectoraDeArchivos.cpp
- *
- *  Created on: 17 oct. 2019
- *      Author: agustin
- */
-
 #include "LectoraDeArchivos.h"
 #include <fstream>
 
-Lista<EstacionMetrobus> LectoraDeArchivos::leerEstacionesDeMetrobus(
+void LectoraDeArchivos::leerEstacionesDeMetrobus(
 		std::string archivosDeEstacionesDeMetrobus,
-		Lista<EstacionMetrobus> listaDeEstacionesDeMetrobus) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -22,18 +15,16 @@ Lista<EstacionMetrobus> LectoraDeArchivos::leerEstacionesDeMetrobus(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		listaDeEstacionesDeMetrobus.agregar(leerEstacionDeMetrobus(entrada));
+		administradorDeRecorridos.agregarEstacion(
+				leerEstacionDeMetrobus(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
 	entrada.close();
 
-	return listaDeEstacionesDeMetrobus;
-
 }
 
-EstacionMetrobus LectoraDeArchivos::leerEstacionDeMetrobus(
-		std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -61,16 +52,17 @@ EstacionMetrobus LectoraDeArchivos::leerEstacionDeMetrobus(
 	std::getline(entrada, nombreSentido, ',');
 	std::getline(entrada, observacion);
 
-	EstacionMetrobus estacionMetrobus(stod(longitud), stod(latitud), stoul(id),
-			nombre, calle1, calle2, interseccion, lineaSentidoNorte,
-			lineaSentidoSur, metrobus, nombreSentido, observacion);
-	return estacionMetrobus;
+	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
+	Estacion paradaDeMetrobus(coordenadasDeLaParada, metrobus,
+			Estacion::METROBUS, calle1);
+
+	return paradaDeMetrobus;
 
 }
 
-Lista<EstacionFerrocarril> LectoraDeArchivos::leerEstacionesDeFerrocarril(
+void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 		std::string archivosDeEstacionesDeFerrocarril,
-		Lista<EstacionFerrocarril> listaDeEstacionesDeFerrocarril) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -82,18 +74,17 @@ Lista<EstacionFerrocarril> LectoraDeArchivos::leerEstacionesDeFerrocarril(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		listaDeEstacionesDeFerrocarril.agregar(leerEstacionDeFerrocarril(entrada));
+		administradorDeRecorridos.agregarEstacion(
+				leerEstacionDeFerrocarril(entrada));
+
 	}
 
 	/* cierra el archivo, liberando el recurso */
 	entrada.close();
 
-	return listaDeEstacionesDeFerrocarril;
-
 }
 
-EstacionFerrocarril LectoraDeArchivos::leerEstacionDeFerrocarril(
-		std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -117,17 +108,17 @@ EstacionFerrocarril LectoraDeArchivos::leerEstacionDeFerrocarril(
 	std::getline(entrada, barrio, ',');
 	std::getline(entrada, comuna, ',');
 	std::getline(entrada, localidad, ',');
-	std::getline(entrada, partido, ',');
-
-	EstacionFerrocarril estacionFerrocarril(stod(longitud), stod(latitud), stoul(id),
-			nombre, linea, linea2, ramal, barrio, comuna, localidad, partido);
+	std::getline(entrada, partido);
+	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
+	Estacion estacionFerrocarril(coordenadasDeLaParada, linea,
+			Estacion::FERROCARRIL, nombre);
 	return estacionFerrocarril;
 
 }
 
-Lista<EstacionColectivo> LectoraDeArchivos::leerEstacionesDeColectivo(
+void LectoraDeArchivos::leerEstacionesDeColectivo(
 		std::string archivosDeEstacionesDeColectivo,
-		Lista<EstacionColectivo> listaDeEstacionesDeColectivo) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -139,18 +130,16 @@ Lista<EstacionColectivo> LectoraDeArchivos::leerEstacionesDeColectivo(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		listaDeEstacionesDeColectivo.agregar(leerEstacionDeColectivo(entrada));
+		administradorDeRecorridos.agregarEstacion(
+				leerEstacionDeColectivo(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
 	entrada.close();
 
-	return listaDeEstacionesDeColectivo;
-
 }
 
-EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
-		std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 
 	std::string id;
 	std::string codigo;
@@ -158,7 +147,7 @@ EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
 	std::string latitud;
 	std::string longitud;
 	std::string idDireccion;
-	std::string idRuta;
+	std::string numeroLinea;
 	std::string idAgencia;
 	std::string rutaNombreCorto;
 	std::string rutaNombreLargo;
@@ -171,27 +160,26 @@ EstacionColectivo LectoraDeArchivos::leerEstacionDeColectivo(
 	std::getline(entrada, latitud, ',');
 	std::getline(entrada, longitud, ',');
 	std::getline(entrada, idDireccion, ',');
-	std::getline(entrada, idRuta, ',');
+	std::getline(entrada, numeroLinea, ',');
 	std::getline(entrada, idAgencia, ',');
 	std::getline(entrada, rutaNombreCorto, ',');
 	std::getline(entrada, rutaNombreLargo, ',');
 	std::getline(entrada, rutaDesc, ',');
-	std::getline(entrada, tipoRuta, ',');
+	std::getline(entrada, tipoRuta);
+	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
+	Estacion estacionColectivo(coordenadasDeLaParada, numeroLinea,
+			Estacion::COLECTIVO, nombre);
 
-	EstacionColectivo estacionColectivo( stoul(id), stoul(codigo), nombre,
-			stod(latitud), stod(longitud), stoul(idDireccion), stoul(idRuta), stoul(idAgencia),
-					rutaNombreCorto, rutaNombreLargo, rutaDesc, stoul(tipoRuta) );
 	return estacionColectivo;
 
 }
 
-Lista<Garage> LectoraDeArchivos::leerGarages(
-		std::string archivosDeEstacionesDeSubte,
-		Lista<Garage> listaDeGarages) {
+void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
-	entrada.open(archivosDeEstacionesDeSubte.c_str());
+	entrada.open(archivosDeGarajes.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
 	std::string titulo;
@@ -199,18 +187,15 @@ Lista<Garage> LectoraDeArchivos::leerGarages(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		listaDeGarages.agregar(leerGarage(entrada));
+		administradorDeRecorridos.agregarEstacion(leerGarage(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
 	entrada.close();
 
-	return listaDeGarages;
-
 }
 
-Garage LectoraDeArchivos::leerGarage(
-		std::ifstream &entrada) {
+Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 
 	std::string longitud;
 	std::string latitud;
@@ -223,6 +208,9 @@ Garage LectoraDeArchivos::leerGarage(
 	std::string nombre;
 	std::string barrio;
 	std::string comuna;
+	std::string observacion;
+	std::string objeto;
+	std::string dominioSalida;
 	std::string codigoPostal;
 	std::string codigoPostalArgentino;
 
@@ -238,21 +226,27 @@ Garage LectoraDeArchivos::leerGarage(
 	std::getline(entrada, barrio, ',');
 	std::getline(entrada, comuna, ',');
 	std::getline(entrada, codigoPostal, ',');
-	std::getline(entrada, codigoPostalArgentino, ',');
+	std::getline(entrada, observacion, ',');
+	std::getline(entrada, objeto, ',');
+	std::getline(entrada, dominioSalida, ',');
 
-	Garage garage(stod(longitud),stod(latitud), smp, nombreDeLaCalle, stoul(alturaDeLaCalle),
-				  tipo1, tipo2, stoul(pisos), nombre, barrio, stof(comuna), stoul(codigoPostal),
-				  codigoPostalArgentino);
+	std::getline(entrada, codigoPostalArgentino);
+	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
+	Estacion garage(coordenadasDeLaParada, "Estacionamiento", Estacion::GARAGE,
+			nombreDeLaCalle);
 
 	return garage;
 
 }
 
+<<<<<<< HEAD
 
 Lista<EstacionSubte> LectoraDeArchivos::leerEstacionesDeSubte(
+=======
+void LectoraDeArchivos::leerEstacionesDeSubte(
+>>>>>>> refs/remotes/origin/master
 		std::string archivosDeEstacionesDeSubte,
-		Lista<EstacionSubte> listaDeEstacionesDeSubte){
-
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -264,17 +258,28 @@ Lista<EstacionSubte> LectoraDeArchivos::leerEstacionesDeSubte(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
+<<<<<<< HEAD
 		listaDeEstacionesDeSubte.agregar(leerEstacionDeSubte(entrada));
+=======
+		administradorDeRecorridos.agregarEstacion(leerEstacionDeSubte(entrada));
+>>>>>>> refs/remotes/origin/master
 	}
 
 	/* cierra el archivo, liberando el recurso */
 	entrada.close();
+<<<<<<< HEAD
 
 	return listaDeEstacionesDeSubte;
+=======
+>>>>>>> refs/remotes/origin/master
 
 }
 
+<<<<<<< HEAD
 EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
+=======
+Estacion LectoraDeArchivos::leerEstacionDeSubte(std::ifstream &entrada) {
+>>>>>>> refs/remotes/origin/master
 
 	std::string longitud;
 	std::string latitud;
@@ -322,14 +327,23 @@ EstacionSubte leerEstacionDeSubte(std::ifstream &entrada){
 	std::getline(entrada, observacion, ',');
 	std::getline(entrada, objeto, ',');
 	std::getline(entrada, dominioSalida, ',');
-	std::getline(entrada, dominioOrigen, ',');
+	std::getline(entrada, dominioOrigen);
 
+<<<<<<< HEAD
 	EstacionSubte estacionDeSubte(stoul(longitud), stoul(latitud), stoul(id), linea, estacion,
 				  numeroDeEstacion, destino, lineasDe, cierraFin == "True", escaleraNoMecanica == "True", escaleraMecanica == "True", ascensor == "True",
 				  rampa == "True", salvaEscaleras == "True", calle, stoul(altura), calle2, barrio, comuna, observacion,
 				  objeto, dominioSalida, dominioOrigen);
+=======
+	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
+	Estacion estacionDeSubte(coordenadasDeLaParada, linea, Estacion::SUBTE,
+			calle);
+>>>>>>> refs/remotes/origin/master
 
 	return estacionDeSubte;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master

@@ -8,8 +8,8 @@
 #ifndef SRC_NODO_H_
 #define SRC_NODO_H_
 
-#include "Metrobus.h"
-#include "ferrocarril.h"
+
+
 
 #ifndef NULL
 #define NULL 0

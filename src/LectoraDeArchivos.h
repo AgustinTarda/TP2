@@ -1,54 +1,36 @@
-/*
- * lectoraDeArchivos.h
- *
- *  Created on: 17 oct. 2019
- *      Author: agustin
- */
-
 #ifndef LECTORADEARCHIVOS_H_
 #define LECTORADEARCHIVOS_H_
 
 #include <string>
 #include "Lista.h"
-#include "Metrobus.h"
-#include "ferrocarril.h"
-#include "colectivos.h"
-#include "subte.h"
-#include "garage.h"
+#include "Coordenadas.h"
+#include "Estacion.h"
+#include "AdministradorDeRecorridos.h"
 
 class LectoraDeArchivos {
 public:
-	Lista<EstacionMetrobus> leerEstacionesDeMetrobus(
-			std::string archivosDeEstacionesDeMetrobus,
-			Lista<EstacionMetrobus> listaDeEstacionesDeMetrobus);
+	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
-	EstacionMetrobus leerEstacionDeMetrobus(std::ifstream &entrada);
+	void leerEstacionesDeFerrocarril(
+			std::string archivosDeEstacionesDeFerrocarril,
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
-	Lista<EstacionFerrocarril> leerEstacionesDeFerrocarril(
-				std::string archivosDeEstacionesDeFerrocarril,
-				Lista<EstacionFerrocarril> listaDeEstacionesDeFerrocarril);
+	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
-	EstacionFerrocarril leerEstacionDeFerrocarril(std::ifstream &entrada);
+	void leerGarajes(std::string archivosDeGarajes,
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
+	void leerEstacionesDeSubte(std::string archivosDeEstacionesDeSubte,
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
-	Lista<EstacionColectivo> leerEstacionesDeColectivo(
-					std::string archivosDeEstacionesDeColectivo,
-					Lista<EstacionColectivo> listaDeEstacionesDeColectivo);
-
-	EstacionColectivo leerEstacionDeColectivo(std::ifstream &entrada);
-
-	Lista<Garage> leerGarages(
-			std::string archivosDeGarage,
-			Lista<Garage> listaDeGarages);
-
-	Garage leerGarage(std::ifstream &entrada);
-
-	Lista<EstacionSubte> leerEstacionesDeSubte(
-			std::string archivosDeEstacionesDeSubte,
-			Lista<EstacionSubte> listaDeEstacionesSubte);
-
-	EstacionSubte leerEstacionDeSubte(std::ifstream &entrada);
-
+private:
+	Estacion leerEstacionDeMetrobus(std::ifstream &entrada);
+	Estacion leerEstacionDeColectivo(std::ifstream &entrada);
+	Estacion leerEstacionDeFerrocarril(std::ifstream &entrada);
+	Estacion leerEstacionDeSubte(std::ifstream &entrada);
+	Estacion leerGarage(std::ifstream &entrada);
 };
 
 #endif /* LECTORADEARCHIVOS_H_ */
