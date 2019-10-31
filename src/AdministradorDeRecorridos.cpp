@@ -45,11 +45,9 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 }
 
 Lista<Recorrido*> AdministradorDeRecorridos::obtenerRecorridos() {
-	return *this->recorridos;
+	return *(this->recorridos);
 }
-Lista<Recorrido> AdministradorDeRecorridos:: obtenerRecorridos(){
-	return this-> recorridos;
-}
+
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
 	Lista<Estacion> *estacionesDelRecorrido = new Lista<Estacion>;
