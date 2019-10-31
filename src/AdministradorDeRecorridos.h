@@ -15,10 +15,9 @@ public:
 			const AdministradorDeRecorridos &otroAdministradorDeRecorridos);
 	void agregarEstacion(Estacion estacion);
 	Recorrido obtenerRecorridoAlQuePertenece(Estacion estacion);
-	Lista<Recorrido*> obtenerRecorridos();
+	Lista<Recorrido*>* obtenerRecorridos();
 	void crearRecorridoPara(Estacion estacion);
 	~AdministradorDeRecorridos();
-
 
 };
 

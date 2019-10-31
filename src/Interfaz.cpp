@@ -50,3 +50,30 @@ void Interfaz::mostrarParada(Estacion parada) {
 	std::cout << "MetroBus: " << parada.obtenerLinea() << std::endl;
 
 }
+
+void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
+	recorridos->iniciarCursor();
+	while (recorridos->avanzarCursor()) {
+		Recorrido *recorridoAImprimir = recorridos->obtenerCursor();
+		std::cout << "Recorrido: " << recorridoAImprimir->obtenerLinea()
+				<< " --- " << recorridoAImprimir->obtenerTipoDeTransporte()
+				<< " --- "
+				<< recorridoAImprimir->obtenerEstaciones()->contarElementos()
+				<< std::endl;
+		//imprimirEstaciones(recorridoAImprimir->obtenerEstaciones());
+
+	}
+}
+
+void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
+	estaciones->iniciarCursor();
+	while (estaciones->avanzarCursor()) {
+		Estacion *estacionAImprimir = estaciones->obtenerCursor();
+		std::cout << "Estacion: ---------------------------- "
+				<< estacionAImprimir->obtenerDireccion() << " --- "
+				<< estacionAImprimir->obtenerLinea() << " --- "
+				<< estacionAImprimir->obtenerTipoDeTransporte() << std::endl;
+
+	}
+}
+

@@ -167,7 +167,7 @@ Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 	std::getline(entrada, rutaDesc, ',');
 	std::getline(entrada, tipoRuta);
 	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion estacionColectivo(coordenadasDeLaParada, numeroLinea,
+	Estacion estacionColectivo(coordenadasDeLaParada, rutaNombreCorto,
 			Estacion::COLECTIVO, nombre);
 
 	return estacionColectivo;

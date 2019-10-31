@@ -10,16 +10,19 @@ class Recorrido {
 private:
 
 	std::string linea;
-	Lista<Estacion>* estaciones;
+	Lista<Estacion*> *estaciones;
 	Estacion::TipoDeTransporte tipoDeTransporte;
 
 public:
 
 	Recorrido();
 	Recorrido(const Recorrido &otroRecorrido);
-	Recorrido(std::string linea, Lista<Estacion>* estaciones,
+	Recorrido(std::string linea, Estacion::TipoDeTransporte tipoDeTransporte);
+	Recorrido(std::string linea, Lista<Estacion*> *estaciones,
 			Estacion::TipoDeTransporte tipoDeTransporte);
-	Lista<Estacion> obtenerEstaciones();
+	Lista<Estacion*>* obtenerEstaciones();
+	std::string obtenerLinea();
+	Estacion::TipoDeTransporte obtenerTipoDeTransporte();
 	bool debeContener(Estacion estacion);
 	void agregarEstacion(Estacion estacion);
 	~Recorrido();

@@ -6,6 +6,7 @@
  */
 
 #include "AlgoMaps.h"
+
 int main() {
 	AlgoMaps algoMaps;
 

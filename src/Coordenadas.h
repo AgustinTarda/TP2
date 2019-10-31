@@ -8,7 +8,7 @@
 #ifndef COORDENADAS_H_
 #define COORDENADAS_H_
 
-#include <stdio.h>
+
 #include <math.h>
 #define PI 3.14159265358979323846
 
