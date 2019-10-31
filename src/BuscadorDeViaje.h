@@ -21,11 +21,10 @@ class BuscadorDeViaje {
 private:
 public:
 	BuscadorDeViaje();
-  
+
 	void buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			AdministradorDeRecorridos &administradorDeRecorridos,
 			Lista<Viaje> &viajes);
-
 
 	void buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 			Coordenadas coordenadaFinal,

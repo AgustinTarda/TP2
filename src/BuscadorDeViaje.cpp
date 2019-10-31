@@ -10,6 +10,36 @@ BuscadorDeViaje::BuscadorDeViaje() {
 
 }
 
+void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
+		Coordenadas coordenadaFinal,
+		AdministradorDeRecorridos &administradorDeRecorridos,
+		Lista<Viaje> &viajes) {
+
+	Lista<Estacion> estacionesCercanasInicio;
+	Lista<Estacion> estacionesCercanasDestino;
+	Lista<Viaje> viajesPosibles;
+
+	buscarEstacionesCercanas(estacionesCercanasInicio,
+			estacionesCercanasDestino, coordenadaInicial, coordenadaFinal,
+			administradorDeRecorridos);
+
+	if ((!estacionesCercanasInicio.estaVacia())
+			&& (!estacionesCercanasDestino.estaVacia())) {
+
+		buscarViajesDirectosPosibles(coordenadaInicial, coordenadaFinal,
+				estacionesCercanasInicio, estacionesCercanasDestino,
+				viajesPosibles);
+
+		/*buscarCombinacionesPosibles(coordenadaInicial, coordenadaFinal,
+		 estacionesCercanasInicio, estacionesCercanasDestino,
+		 administradorDeRecorridos, viajesPosibles);*/
+
+	} else {
+
+		//Si no hay estaciones cerca del destino y/o final, mostramos el camino caminando
+
+	}
+}
 
 void BuscadorDeViaje::buscarEstacionesCercanas(
 		Lista<Estacion> &estacionesCercanasInicio,
