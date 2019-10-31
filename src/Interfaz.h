@@ -12,6 +12,7 @@
 
 #include "Estacion.h"
 #include "Recorrido.h"
+#include "Viaje.h"
 
 class Interfaz {
 private:
@@ -23,6 +24,7 @@ public:
 	void mostrarParada(Estacion parada);
 	void imprimirRecorridos(Lista<Recorrido*> *recorridos);
 	void imprimirEstaciones(Lista<Estacion*> *estaciones);
+	void imprimirViajes(Lista<Viaje> viajes);
 };
 
 #endif /* SRC_INTERFAZ_H_ */

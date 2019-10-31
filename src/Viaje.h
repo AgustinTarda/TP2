@@ -30,6 +30,7 @@ public:
 	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
 			Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion,
 			Estacion estacionSubidaDeCombinacion);
+	Viaje(const Viaje &otroViaje);
 
 };
 

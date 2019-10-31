@@ -77,3 +77,12 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 	}
 }
 
+void Interfaz::imprimirViajes(Lista<Viaje> viajes) {
+	viajes.iniciarCursor();
+	while (viajes.avanzarCursor()) {
+		Viaje viajeAImprimir = viajes.obtenerCursor();
+		std::cout << "Viaje: ---------------------------- " << std::endl;
+
+	}
+}
+

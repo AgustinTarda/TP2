@@ -22,7 +22,7 @@ private:
 public:
 	BuscadorDeViaje();
 
-	int buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+	Lista<Viaje> buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			AdministradorDeRecorridos &administradorDeRecorridos);
 
 	void buscarCombinacionesPosibles(Coordenadas coordenadaInicial,

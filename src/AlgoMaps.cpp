@@ -47,7 +47,8 @@ void AlgoMaps::iniciarViaje() {
 	std::cout << coordenadasDeInicio.calcularDistancia(coordenadasDeDestino)
 			<< std::endl;
 
-	int numeroDeViajes = buscadorDeViajes.buscarViaje(coordenadasDeInicio,
-			coordenadasDeDestino, administradorDeRecorridos);
-	std::cout << "Numero de viajes: " << numeroDeViajes << std::endl;
+	interfazDeUsuario.imprimirViajes(
+			buscadorDeViajes.buscarViaje(coordenadasDeInicio,
+					coordenadasDeDestino, administradorDeRecorridos));
+
 }

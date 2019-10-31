@@ -6,18 +6,20 @@
  */
 #include "Viaje.h"
 
-
 Viaje::Viaje() {
 
 }
-Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio, Estacion EstacionDestino) {
+Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
+		Estacion EstacionDestino) {
 	this->tipoDeViaje = DIRECTO;
 	this->distanciaTotalACaminar = distanciaTotalACaminar;
 	this->estacionInicio = estacionInicio;
 	this->estacionDestino = EstacionDestino;
 }
 
-Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio, Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion, Estacion estacionSubidaDeCombinacion) {
+Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
+		Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion,
+		Estacion estacionSubidaDeCombinacion) {
 	this->tipoDeViaje = COMBINACION_SIMPLE;
 	this->distanciaTotalACaminar = distanciaTotalACaminar;
 	this->estacionInicio = estacionInicio;
@@ -25,4 +27,13 @@ Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio, Estac
 	this->estacionBajadaDeCombinacion = estacionBajadaDeCombinacion;
 	this->estacionSubidaDeCombinacion = estacionSubidaDeCombinacion;
 
+}
+
+Viaje::Viaje(const Viaje &otroViaje) {
+	this->tipoDeViaje = otroViaje.tipoDeViaje;
+	this->distanciaTotalACaminar = otroViaje.distanciaTotalACaminar;
+	this->estacionInicio = otroViaje.estacionInicio;
+	this->estacionDestino = otroViaje.estacionDestino;
+	this->estacionBajadaDeCombinacion = otroViaje.estacionBajadaDeCombinacion;
+	this->estacionSubidaDeCombinacion = otroViaje.estacionSubidaDeCombinacion;
 }
