@@ -1,7 +1,7 @@
 #include "Recorrido.h"
 
 Recorrido::Recorrido() {
-
+	this->estaciones = new Lista<Estacion>;
 }
 
 Recorrido::Recorrido(const Recorrido &otroRecorrido) {
@@ -10,7 +10,7 @@ Recorrido::Recorrido(const Recorrido &otroRecorrido) {
 	this->tipoDeTransporte = otroRecorrido.tipoDeTransporte;
 }
 
-Recorrido::Recorrido(std::string linea, Lista<Estacion> estaciones,
+Recorrido::Recorrido(std::string linea, Lista<Estacion> *estaciones,
 		Estacion::TipoDeTransporte tipoDeTransporte) {
 	this->linea = linea;
 	this->estaciones = estaciones;
@@ -18,7 +18,7 @@ Recorrido::Recorrido(std::string linea, Lista<Estacion> estaciones,
 }
 
 Lista<Estacion> Recorrido::obtenerEstaciones() {
-
+	return *this->estaciones;
 }
 
 bool Recorrido::debeContener(Estacion estacion) {
@@ -27,6 +27,8 @@ bool Recorrido::debeContener(Estacion estacion) {
 }
 
 void Recorrido::agregarEstacion(Estacion estacion) {
-	this->estaciones.agregar(estacion);
+	this->estaciones->agregar(estacion);
 }
-
+Recorrido::~Recorrido() {
+	delete this->estaciones;
+}

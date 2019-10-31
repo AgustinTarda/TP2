@@ -7,12 +7,15 @@ class AdministradorDeRecorridos {
 
 private:
 
-	Lista<Recorrido> recorridos;
+	Lista<Recorrido*> *recorridos;
 
 public:
+	AdministradorDeRecorridos();
 	void agregarEstacion(Estacion estacion);
 	Recorrido obtenerRecorridoAlQuePertenece(Estacion estacion);
+	Lista<Recorrido*> obtenerRecorridos();
 	void crearRecorridoPara(Estacion estacion);
+	~AdministradorDeRecorridos();
 
 };
 
