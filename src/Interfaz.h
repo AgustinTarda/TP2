@@ -17,6 +17,7 @@
 class Interfaz {
 private:
 public:
+	void mostrarMensajeDeBienvenida();
 	Coordenadas pedirCoordenadasDeInicio();
 	Coordenadas pedirCoordenadasDeDestino();
 	double pedirLongitud();
@@ -27,6 +28,7 @@ public:
 	void imprimirViajes(Lista<Viaje> viajes);
 	void imprimirViajeDirecto(Viaje viajeDirecto);
 	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
+
 };
 
 #endif /* SRC_INTERFAZ_H_ */

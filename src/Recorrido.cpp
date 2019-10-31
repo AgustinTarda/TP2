@@ -26,6 +26,7 @@ std::string Recorrido::obtenerLinea() {
 
 Estacion::TipoDeTransporte Recorrido::obtenerTipoDeTransporte() {
 	return this->tipoDeTransporte;
+
 }
 
 bool Recorrido::debeContener(Estacion estacion) {

@@ -7,6 +7,11 @@
 
 #include"Interfaz.h"
 
+void Interfaz::mostrarMensajeDeBienvenida() {
+	std::cout << "Bienvenidos a AlgoMaps, su buscador de viajes favorito !"
+			<< std::endl << std::endl;
+}
+
 Coordenadas Interfaz::pedirCoordenadasDeInicio() {
 
 	std::cout << "Ingrese las coordenadas de inicio" << std::endl;
@@ -49,6 +54,7 @@ void Interfaz::mostrarParada(Estacion parada) {
 	std::cout << "MetroBus: " << parada.obtenerLinea() << std::endl;
 
 }
+
 
 void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
 	recorridos->iniciarCursor();
@@ -94,4 +100,5 @@ void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 void Interfaz::imprimirViajeConCombinacionSimple(
 		Viaje viajeConCombinacionSimple) {
 }
+
 

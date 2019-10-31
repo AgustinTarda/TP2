@@ -35,6 +35,7 @@ AlgoMaps::AlgoMaps() {
 }
 
 void AlgoMaps::iniciarViaje() {
+	interfazDeUsuario.mostrarMensajeDeBienvenida();
 
 	/*Coordenadas coordenadasDeInicio =
 	 interfazDeUsuario.pedirCoordenadasDeInicio();
@@ -52,5 +53,6 @@ void AlgoMaps::iniciarViaje() {
 			this->administradorDeRecorridos, viajes);
 
 	interfazDeUsuario.imprimirViajes(viajes);
+
 
 }

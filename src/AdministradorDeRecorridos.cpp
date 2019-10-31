@@ -45,7 +45,9 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 
 Lista<Recorrido*>* AdministradorDeRecorridos::obtenerRecorridos() {
 	return this->recorridos;
+
 }
+
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
 	Recorrido *recorridoAAgregar = new Recorrido(estacion.obtenerLinea(),
