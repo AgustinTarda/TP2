@@ -4,11 +4,10 @@ AdministradorDeRecorridos::AdministradorDeRecorridos() {
 	this->recorridos = new Lista<Recorrido*>;
 }
 
-
-AdministradorDeRecorridos::AdministradorDeRecorridos(const AdministradorDeRecorridos &otroAdministradorDeRecorridos){
+AdministradorDeRecorridos::AdministradorDeRecorridos(
+		const AdministradorDeRecorridos &otroAdministradorDeRecorridos) {
 	this->recorridos = otroAdministradorDeRecorridos.recorridos;
 }
-
 
 void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
 	bool tieneRecorrido = false;
@@ -44,19 +43,24 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 	return *recorridoBuscado;
 }
 
-Lista<Recorrido*> AdministradorDeRecorridos::obtenerRecorridos() {
-	return *(this->recorridos);
+Lista<Recorrido*>* AdministradorDeRecorridos::obtenerRecorridos() {
+	return this->recorridos;
+
 }
 
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
-	Lista<Estacion> *estacionesDelRecorrido = new Lista<Estacion>;
-	estacionesDelRecorrido->agregar(estacion);
 	Recorrido *recorridoAAgregar = new Recorrido(estacion.obtenerLinea(),
-			estacionesDelRecorrido, estacion.obtenerTipoDeTransporte());
+			estacion.obtenerTipoDeTransporte());
+	recorridoAAgregar->agregarEstacion(estacion);
 	this->recorridos->agregar(recorridoAAgregar);
 }
 
 AdministradorDeRecorridos::~AdministradorDeRecorridos() {
+	while (!recorridos->estaVacia()) {
+		Recorrido *recorridoAEliminar = recorridos->obtener(1);
+		delete recorridoAEliminar;
+		recorridos->remover(1);
+	}
 	delete this->recorridos;
 }

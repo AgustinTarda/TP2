@@ -1,4 +1,5 @@
 #include "Coordenadas.h"
+using namespace std;
 
 Coordenadas::Coordenadas(double latitud, double longitud) {
 
@@ -11,7 +12,6 @@ Coordenadas::Coordenadas(const Coordenadas &otrasCoordenadas) {
 	this->latitud = otrasCoordenadas.latitud;
 	this->longitud = otrasCoordenadas.longitud;
 }
-
 
 Coordenadas::Coordenadas() {
 
@@ -27,23 +27,25 @@ double Coordenadas::getLongitud() {
 	return longitud;
 }
 
-unsigned int Coordenadas::calcularDistancia(const Coordenadas coordenadasFinal){
+double Coordenadas::calcularDistancia(const Coordenadas coordenadasFinal) {
 
-	double convertidorGradoARadianes = PI / 180;
-	double latitudInicio = this->latitud * convertidorGradoARadianes;
-	double longitudInicio = this->longitud * convertidorGradoARadianes;
-	double latitudFinal = coordenadasFinal.latitud * convertidorGradoARadianes;
-	double longitudFinal = coordenadasFinal.longitud * convertidorGradoARadianes;
+	double distanciaA, distanciaC, distanciTotal;
 
-	double radioTierra = 6378.137;
-	double diferenciaEntreLongitudes = longitudFinal - longitudInicio;
-	double distanciaEntreCoordenadas = acos(sin(latitudInicio) * sin(latitudFinal)
-			+ cos(latitudInicio) * sin(latitudFinal) * cos(diferenciaEntreLongitudes) * radioTierra);
+	double diferencialLatitud = toRad(coordenadasFinal.latitud - this->latitud);
+	double diferencialLongitud = toRad(
+			coordenadasFinal.longitud - this->longitud);
 
+	distanciaA = sin(diferencialLatitud / 2) * sin(diferencialLatitud / 2)
+			+ cos(toRad(this->latitud)) * cos(toRad(coordenadasFinal.latitud))
+					* sin(diferencialLongitud / 2)
+					* sin(diferencialLongitud / 2);
+	distanciaC = 2 * (atan2(sqrt(distanciaA), sqrt(1 - distanciaA)));
 
-	return distanciaEntreCoordenadas * 1000;
+	distanciTotal = 6371000 * distanciaC;
+	return distanciTotal;
+
 }
 
-
-
-
+double Coordenadas::toRad(double degree) {
+	return degree / 180 * pi;
+}

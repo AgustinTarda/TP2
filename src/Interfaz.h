@@ -11,6 +11,8 @@
 #include<iostream>
 
 #include "Estacion.h"
+#include "Recorrido.h"
+#include "Viaje.h"
 
 class Interfaz {
 private:
@@ -21,7 +23,11 @@ public:
 	double pedirLongitud();
 	double pedirLatitud();
 	void mostrarParada(Estacion parada);
-	void mostrarLargoListaViajes(int cantidad);
+	void imprimirRecorridos(Lista<Recorrido*> *recorridos);
+	void imprimirEstaciones(Lista<Estacion*> *estaciones);
+	void imprimirViajes(Lista<Viaje> viajes);
+	void imprimirViajeDirecto(Viaje viajeDirecto);
+	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
 
 };
 

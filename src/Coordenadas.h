@@ -8,9 +8,10 @@
 #ifndef COORDENADAS_H_
 #define COORDENADAS_H_
 
-#include <stdio.h>
-#include <math.h>
-#define PI 3.14159265358979323846
+#include <iostream>
+#include <cmath>
+
+#define pi 3.14159265358979323846
 
 class Coordenadas {
 
@@ -27,10 +28,9 @@ public:
 
 	double getLatitud();
 	double getLongitud();
-	unsigned int calcularDistancia(const Coordenadas coordenadasFinal);
+	double calcularDistancia(const Coordenadas coordenadasFinal);
+	double toRad(double degree);
 
 };
-
-
 
 #endif /* COORDENADAS_H_ */
