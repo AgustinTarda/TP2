@@ -36,7 +36,6 @@ double Interfaz::pedirLongitud() {
 
 	return longitud;
 }
-
 double Interfaz::pedirLatitud() {
 	double latitud;
 
