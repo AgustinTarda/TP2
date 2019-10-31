@@ -10,20 +10,20 @@
 class LectoraDeArchivos {
 public:
 	void leerEstacionesDeMetrobus(std::string archivosDeEstacionesDeMetrobus,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
 	void leerEstacionesDeFerrocarril(
 			std::string archivosDeEstacionesDeFerrocarril,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
 	void leerEstacionesDeColectivo(std::string archivosDeEstacionesDeColectivo,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
 	void leerGarajes(std::string archivosDeGarajes,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
 	void leerEstacionesDeSubte(std::string archivosDeEstacionesDeSubte,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos &administradorDeRecorridos);
 
 private:
 	Estacion leerEstacionDeMetrobus(std::ifstream &entrada);

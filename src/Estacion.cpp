@@ -38,3 +38,4 @@ Estacion::TipoDeTransporte Estacion::obtenerTipoDeTransporte() {
 std::string Estacion::obtenerDireccion() {
 	return this->direccion;
 }
+

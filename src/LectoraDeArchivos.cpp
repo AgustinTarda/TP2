@@ -3,7 +3,7 @@
 
 void LectoraDeArchivos::leerEstacionesDeMetrobus(
 		std::string archivosDeEstacionesDeMetrobus,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -62,7 +62,7 @@ Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 		std::string archivosDeEstacionesDeFerrocarril,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -118,7 +118,7 @@ Estacion LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeColectivo(
 		std::string archivosDeEstacionesDeColectivo,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -175,7 +175,7 @@ Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 }
 
 void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -241,7 +241,7 @@ Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeSubte(
 		std::string archivosDeEstacionesDeSubte,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos &administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
