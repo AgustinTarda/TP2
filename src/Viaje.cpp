@@ -43,3 +43,9 @@ bool Viaje::esDirecto() {
 bool Viaje::esConCombinacionSimple() {
 	return (this->tipoDeViaje == COMBINACION_SIMPLE);
 }
+Estacion Viaje::obtenerEstacionInicial() {
+	return this->estacionInicio;
+}
+Estacion Viaje::obtenerEstacionDestino() {
+	return this->estacionDestino;
+}

@@ -31,7 +31,7 @@ public:
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Viaje> viajesPosibles);
+			Lista<Viaje> &viajesPosibles);
 
 	void buscarEstacionesCercanas(Lista<Estacion> &estacionesCercanasInicio,
 			Lista<Estacion> &estacionesCercanasDestino,

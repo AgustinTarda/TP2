@@ -33,7 +33,7 @@ public:
 	std::string obtenerLinea();
 	TipoDeTransporte obtenerTipoDeTransporte();
 	std::string obtenerDireccion();
-
+	std::string imprimirTipoDeTransporte();
 };
 
 #endif /* SRC_ESTACION_H_ */
