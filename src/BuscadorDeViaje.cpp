@@ -70,10 +70,9 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 		Lista<Estacion*> *estacionesDelRecorrido) {
 	while (estacionesDelRecorrido->avanzarCursor()) {
 		Estacion *estacionActual = estacionesDelRecorrido->obtenerCursor();
-		unsigned int distancia = coordenadaInicial.calcularDistancia(
-				estacionActual->obtenerCoordenadas());
-		std::cout << distancia << std::endl;
-		if (distancia < 300) {
+
+		if (coordenadaInicial.calcularDistancia(
+				estacionActual->obtenerCoordenadas()) < 300) {
 			estacionesCercanasInicio.agregar(*estacionActual);
 
 		}
@@ -167,7 +166,7 @@ void BuscadorDeViaje::buscarViajesDirectosPosibles(
 		Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 		Lista<Estacion> estacionesCercanasInicio,
 		Lista<Estacion> estacionesCercanasDestino,
-		Lista<Viaje> viajesPosibles) {
+		Lista<Viaje> &viajesPosibles) {
 
 	estacionesCercanasInicio.iniciarCursor();
 	estacionesCercanasDestino.iniciarCursor();

@@ -45,7 +45,7 @@ public:
 			Coordenadas coordenadaFinal,
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
-			Lista<Viaje> viajesPosibles);
+			Lista<Viaje> &viajesPosibles);
 };
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */
