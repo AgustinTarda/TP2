@@ -55,7 +55,6 @@ void Interfaz::mostrarParada(Estacion parada) {
 
 }
 
-
 void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
 	recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor()) {
@@ -96,9 +95,17 @@ void Interfaz::imprimirViajes(Lista<Viaje> viajes) {
 }
 
 void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
+	Estacion estacionInicio = viajeDirecto.obtenerEstacionInicial();
+	Estacion estacionDestino = viajeDirecto.obtenerEstacionDestino();
+	std::cout << "Viaje directo: ---------------------------- " << std::endl
+			<< "Camine y subase en la estacion de "
+			<< estacionInicio.imprimirTipoDeTransporte() << " linea: "
+			<< estacionInicio.obtenerLinea() << " ubicada en: "
+			<< estacionInicio.obtenerDireccion()
+			<< " luego bajese en la estacion ubicada en "
+			<< estacionDestino.obtenerDireccion() << std::endl;
 }
 void Interfaz::imprimirViajeConCombinacionSimple(
 		Viaje viajeConCombinacionSimple) {
 }
-
 

@@ -23,7 +23,8 @@ AlgoMaps::AlgoMaps() {
 	lectora.leerEstacionesDeColectivo(archivoColectivos,
 			this->administradorDeRecorridos);
 
-	std::string archivoSubte = "datos/bocas-de-subte.csv";
+	std::string archivoSubte = "datos/bocas-de"
+			"-subte.csv";
 	lectora.leerEstacionesDeSubte(archivoSubte,
 			this->administradorDeRecorridos);
 
