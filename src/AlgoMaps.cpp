@@ -15,9 +15,17 @@ AlgoMaps::AlgoMaps() {
 	std::string archivoColectivos = "datos/paradas-de-colectivo.csv";
 	std::string archivoSubte = "datos/bocas-de-subte.csv";
 	std::string archivoGarajes = "datos/garajes-comerciales.csv";
-	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus, this->administradorDeRecorridos);
-	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril, this->administradorDeRecorridos);
-	lectora.leerEstacionesDeColectivo(archivoColectivos, this->administradorDeRecorridos);
-	lectora.leerEstacionesDeSubte(archivoSubte, this->administradorDeRecorridos);
+	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus,
+			this->administradorDeRecorridos);
+	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril,
+			this->administradorDeRecorridos);
+	lectora.leerEstacionesDeColectivo(archivoColectivos,
+			this->administradorDeRecorridos);
+	lectora.leerEstacionesDeSubte(archivoSubte,
+			this->administradorDeRecorridos);
 	lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
+}
+
+void AlgoMaps::iniciarViaje() {
+
 }

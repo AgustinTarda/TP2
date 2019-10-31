@@ -1,10 +1,3 @@
-/*
- * Coordenadas.cpp
- *
- *  Created on: Oct 21, 2019
- *      Author: lucas
- */
-
 #include "Coordenadas.h"
 
 Coordenadas::Coordenadas(double latitud, double longitud) {

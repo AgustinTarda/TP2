@@ -3,6 +3,13 @@
 AdministradorDeRecorridos::AdministradorDeRecorridos() {
 	this->recorridos = new Lista<Recorrido*>;
 }
+
+
+AdministradorDeRecorridos::AdministradorDeRecorridos(const AdministradorDeRecorridos &otroAdministradorDeRecorridos){
+	this->recorridos = otroAdministradorDeRecorridos.recorridos;
+}
+
+
 void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
 	bool tieneRecorrido = false;
 
@@ -39,6 +46,9 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 
 Lista<Recorrido*> AdministradorDeRecorridos::obtenerRecorridos() {
 	return *this->recorridos;
+}
+Lista<Recorrido> AdministradorDeRecorridos:: obtenerRecorridos(){
+	return this-> recorridos;
 }
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
