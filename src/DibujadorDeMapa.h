@@ -31,12 +31,12 @@ public:
 	 *		 "rojo", "verde" y "azul deben pertenecer al intervalo (0..255)
 	 * post: dibuja una linea de 1 pixel de ancho desde las coordenadas (xInicial, yInicial) hasta (xFinal, yFinal)
 	 * 		 y de color (rojo, verde, azul) segun el codigo RGB de colores */
-	void dibujarLinea(unsigned int xInicial,  unsigned int yInicial, unsigned int xFinal, unsigned int yFinal, short int rojo, short int verde, short int azul);
+	void dibujarLinea(double xInicial,  double yInicial, double xFinal, double yFinal, short int rojo, short int verde, short int azul);
 	/* pre : "xCentro" debe pertenecer al intervalo (1..dibujadorDeMapa->obtenerAncho())
 	 * 		 "yCentro" debe pertenecer al intervalo (1..dibujadorDeMapa->obtenerAltura())
 	 * post: dibuja un punto de radio igual a "radio+1" con centro en (xCentro, yCentro)
-	 * 		 y de color (rojo, verde, azul) segun el codigo RGB de colores */
-	void dibujarPunto(unsigned int xCentro, unsigned int yCentro, unsigned int radio, short int rojo, short int verde, short int azul);
+	 * 		 y de color (rojo, verde, azul) segun el codigo RGB de colores (entre 0 y 255)*/
+	void dibujarPunto(double xCentro, double yCentro, unsigned int radio, short int rojo, short int verde, short int azul);
 	/* post: destruye el Dibujador, guardando el mapa en un archivo BMP y liberando los recursos */
 	~DibujadorDeMapa();
 };

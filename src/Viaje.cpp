@@ -26,3 +26,23 @@ Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio, Estac
 	this->estacionSubidaDeCombinacion = estacionSubidaDeCombinacion;
 
 }
+
+Estacion Viaje::getEstacionInicio(){
+	return this->estacionInicio;
+}
+
+Estacion Viaje::getEstacionDestino(){
+	return this->estacionDestino;
+}
+
+Estacion Viaje::getEstacionSubidaDeCombinacion(){
+	return this->estacionSubidaDeCombinacion;
+}
+
+Estacion Viaje::getEstacionBajadaDeCombinacion(){
+	return this->estacionBajadaDeCombinacion;
+}
+
+bool Viaje::esDirecto(){
+	return (this->tipoDeViaje == DIRECTO);
+}

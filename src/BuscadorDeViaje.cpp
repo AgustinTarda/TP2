@@ -4,10 +4,9 @@
  *  Created on: 29 oct. 2019
  *      Author: rochi
  */
-
 #include "BuscadorDeViaje.h"
 BuscadorDeViaje::BuscadorDeViaje() {
-
+	this->dibujador = new DibujadorDeMapa();
 }
 
 int BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
@@ -190,10 +189,23 @@ void BuscadorDeViaje::buscarViajesDirectosPosibles(
 				Viaje viajeActual(distanciaACaminar, estacionCercanaAInicio,
 						estacionCercanaADestino);
 				;
+				this->dibujador->dibujarPunto(viajeActual.getEstacionInicio().obtenerCoordenadas().getLatitud(),viajeActual.getEstacionInicio().obtenerCoordenadas().getLongitud(), 3, 0, 192, 0);
+				this->dibujador->dibujarPunto(viajeActual.getEstacionDestino().obtenerCoordenadas().getLatitud(),viajeActual.getEstacionDestino().obtenerCoordenadas().getLongitud(), 3, 0, 192, 0);
+				if (!viajeActual.esDirecto()){
+					this->dibujador->dibujarPunto(viajeActual.getEstacionSubidaDeCombinacion().obtenerCoordenadas().getLatitud(), viajeActual.getEstacionSubidaDeCombinacion().obtenerCoordenadas().getLongitud(), 3, 0, 192, 0);
+					this->dibujador->dibujarPunto(viajeActual.getEstacionBajadaDeCombinacion().obtenerCoordenadas().getLatitud(), viajeActual.getEstacionBajadaDeCombinacion().obtenerCoordenadas().getLongitud(), 3, 0, 192, 0);
+					this->dibujador->dibujarLinea(viajeActual.getEstacionInicio().obtenerCoordenadas().getLatitud(),viajeActual.getEstacionInicio().obtenerCoordenadas().getLongitud(), viajeActual.getEstacionBajadaDeCombinacion().obtenerCoordenadas().getLatitud(), viajeActual.getEstacionBajadaDeCombinacion().obtenerCoordenadas().getLongitud(), 0, 192, 0);
+					this->dibujador->dibujarLinea(viajeActual.getEstacionSubidaDeCombinacion().obtenerCoordenadas().getLatitud(),viajeActual.getEstacionSubidaDeCombinacion().obtenerCoordenadas().getLongitud(), viajeActual.getEstacionDestino().obtenerCoordenadas().getLatitud(), viajeActual.getEstacionDestino().obtenerCoordenadas().getLongitud(), 0, 192, 0);
+				}else{
+					this->dibujador->dibujarLinea(viajeActual.getEstacionInicio().obtenerCoordenadas().getLatitud(),viajeActual.getEstacionInicio().obtenerCoordenadas().getLongitud(), viajeActual.getEstacionDestino().obtenerCoordenadas().getLatitud(), viajeActual.getEstacionDestino().obtenerCoordenadas().getLongitud(), 0, 192, 0);
 
+				}
 				viajesPosibles.agregar(viajeActual);
 			}
 		}
 	}
 }
 
+BuscadorDeViaje::~BuscadorDeViaje(){
+	delete this->dibujador;
+}

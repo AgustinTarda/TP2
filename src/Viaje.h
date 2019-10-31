@@ -30,7 +30,11 @@ public:
 	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
 			Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion,
 			Estacion estacionSubidaDeCombinacion);
-
+	Estacion getEstacionInicio();
+	Estacion getEstacionDestino();
+	Estacion getEstacionBajadaDeCombinacion();
+	Estacion getEstacionSubidaDeCombinacion();
+	bool esDirecto();
 };
 
 #endif /* SRC_VIAJE_H_ */

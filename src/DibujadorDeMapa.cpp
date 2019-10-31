@@ -26,11 +26,14 @@ unsigned int DibujadorDeMapa::obtenerAncho(){
 	return this->mapa->TellWidth();
 }
 
-void DibujadorDeMapa::dibujarPunto(unsigned int xCentro, unsigned int yCentro, unsigned int radio, short int rojo, short int verde, short int azul){
+void DibujadorDeMapa::dibujarPunto(double longitudCentro, double latitudCentro, unsigned int radio, short int rojo, short int verde, short int azul){
 	RGBApixel color;
 	color.Red = rojo;
 	color.Green = verde;
 	color.Blue = azul;
+	unsigned int xCentro, yCentro;
+	xCentro = (longitudCentro - int(longitudCentro))*-500;
+	yCentro = (latitudCentro - int(latitudCentro))*-500;
 	this->dibujarPuntoIterativo(xCentro, yCentro, radio, color);
 }
 
@@ -65,11 +68,17 @@ void DibujadorDeMapa::dibujarPuntoIterativo(unsigned int xCentro, unsigned int y
 	}
 }
 
-void DibujadorDeMapa::dibujarLinea(unsigned int xInicial, unsigned int yInicial, unsigned int xFinal, unsigned int yFinal, short int rojo, short int verde, short int azul){
+void DibujadorDeMapa::dibujarLinea(double longitudInicial, double latitudInicial, double longitudFinal, double latitudFinal, short int rojo, short int verde, short int azul){
 	RGBApixel color;
 	color.Red = rojo;
 	color.Green = verde;
 	color.Blue = azul;
+	unsigned int xInicial, yInicial, xFinal, yFinal;
+	xInicial = (longitudInicial - int(longitudInicial))*-500;
+	yInicial = (latitudInicial - int (latitudInicial))*-500;
+	xFinal = (longitudFinal - int(longitudFinal))*-500;
+	yFinal = (latitudFinal - int (latitudFinal))*-500;
+
 	this->dibujarLineaIterativo(xInicial, yInicial, xFinal, yFinal, color);
 }
 
