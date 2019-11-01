@@ -106,7 +106,7 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 						estacionCercanaAInicio);
 		Lista<Estacion> estacionesDelRecorridoInicial;
 		estacionesDelRecorridoInicial =
-				recorridoDeEstacionInicial.obtenerEstaciones();
+				 recorridoDeEstacionInicial.obtenerEstaciones();
 
 		estacionesDelRecorridoInicial.iniciarCursor();
 		while (estacionesDelRecorridoInicial.avanzarCursor()) {
