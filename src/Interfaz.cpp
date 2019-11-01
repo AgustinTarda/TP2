@@ -1,4 +1,4 @@
-/*
+ /*
  * Interfaz.cpp
  *
  *  Created on: 29 oct. 2019
@@ -82,18 +82,22 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 }
 
 void Interfaz::imprimirViajes(Lista<Viaje> viajes) {
+	DibujadorDeMapa mapa;
 	viajes.iniciarCursor();
 	while (viajes.avanzarCursor()) {
 		Viaje viajeAImprimir = viajes.obtenerCursor();
 		if (viajeAImprimir.esDirecto()) {
 			imprimirViajeDirecto(viajeAImprimir);
+
 		} else if (viajeAImprimir.esConCombinacionSimple()) {
 			imprimirViajeConCombinacionSimple(viajeAImprimir);
 		}
 
 	}
 }
+void Interfaz::graficarParadasEnMapa(Recorrido recorrido){
 
+}
 void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 	Estacion estacionInicio = viajeDirecto.obtenerEstacionInicial();
 	Estacion estacionDestino = viajeDirecto.obtenerEstacionDestino();
