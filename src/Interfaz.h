@@ -13,6 +13,7 @@
 #include "Estacion.h"
 #include "Recorrido.h"
 #include "Viaje.h"
+#include "DibujadorDeMapa.h"
 
 class Interfaz {
 private:
@@ -28,6 +29,7 @@ public:
 	void imprimirViajes(Lista<Viaje> viajes);
 	void imprimirViajeDirecto(Viaje viajeDirecto);
 	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
+	void graficarParadasEnMapa(Recorrido recorrido);
 
 };
 
