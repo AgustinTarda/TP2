@@ -101,6 +101,7 @@ void Interfaz::graficarParadasEnMapa(Recorrido recorrido){
 void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 	Estacion estacionInicio = viajeDirecto.obtenerEstacionInicial();
 	Estacion estacionDestino = viajeDirecto.obtenerEstacionDestino();
+
 	std::cout << "Viaje directo: ---------------------------- " << std::endl
 			<< "Camine y subase en la estacion de "
 			<< estacionInicio.imprimirTipoDeTransporte() << " linea: "
