@@ -24,9 +24,14 @@ private:
 	BuscadorDeViaje buscadorDeViajes;
 
 public:
+	/*
+	 * POST: devuelve una instancia de algo maps
+	 */
 	AlgoMaps();
+	/*
+	 * POST: crea y llena una lista de viaje
+	 */
 	void iniciarViaje();
-	int buscarViaje(Coordenadas coordenadasDeInicio, Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos);
 };
 
 #endif /* SRC_ALGOMAPS_H_ */
