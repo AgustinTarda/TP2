@@ -64,7 +64,7 @@ void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
 				<< " --- "
 				<< recorridoAImprimir->obtenerEstaciones()->contarElementos()
 				<< std::endl;
-		//imprimirEstaciones(recorridoAImprimir->obtenerEstaciones());
+		imprimirEstaciones(recorridoAImprimir->obtenerEstaciones());
 
 	}
 }

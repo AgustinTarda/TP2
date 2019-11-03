@@ -8,7 +8,7 @@
 #define SRC_VIAJE_H_
 
 #include "Estacion.h"
-
+//
 class Viaje {
 public:
 	enum TipoDeViaje {

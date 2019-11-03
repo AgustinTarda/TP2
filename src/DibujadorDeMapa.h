@@ -11,7 +11,7 @@
 #include "EasyBMP.h"
 #include <stdlib.h>
 #include <iostream>
-//#include "Coordenadas.h"
+#include "Coordenadas.h"
 
 const double COORDENADA_X0 = -58.558610;
 const double COORDENADA_Y0 = -34.538653;
@@ -22,8 +22,7 @@ const double DISTANCIA_COORDENADAS_Y = -0.073172;
 
 class DibujadorDeMapa {
 private:
-	const int X_POR_DEFECTO = 1024;
-	const int Y_POR_DEFECTO = 1024;
+
 	BMP* mapa;
 	void dibujarPuntoIterativo(unsigned int xCentro, unsigned int yCentro,
 			unsigned int radio, RGBApixel color);
@@ -66,7 +65,7 @@ public:
 	 * post: devuelve una coordenada un punto del bitmap para graficarlo.
 	 */
 
-	//unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixels(Coordenadas coordenada);
+	unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixels(Coordenadas coordenada);
 
 	/* post: destruye el Dibujador, guardando el mapa en un archivo BMP y liberando los recursos */
 	~DibujadorDeMapa();
