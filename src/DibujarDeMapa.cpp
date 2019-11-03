@@ -10,7 +10,6 @@
 DibujadorDeMapa::DibujadorDeMapa(){
 	this->mapa = new BMP();
 	this->mapa->SetBitDepth(1);
-	//this->mapa->SetSize(X_POR_DEFECTO, Y_POR_DEFECTO);
 	this->mapa->ReadFromFile("ciudadDigital.bmp");
 
 }
@@ -97,18 +96,18 @@ void DibujadorDeMapa::dibujarLineaIterativo(unsigned int xInicial,  unsigned int
 	}
 	this->mapa->SetPixel(xInicial, yInicial, color);
 }
-/*
+
 unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixels(Coordenadas coordenada){
 
 	unsigned int pixelX, pixelY;
 
-	pixelX = (unsigned int)(coordenada.obtenerLongitud() - COORDENADA_X0)*DISTANCIA_PIXEL_X/ DISTANCIA_COORDENADAS_X;
-	pixelY = (unsigned int)(coordenada.obtenerLatitud() - COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y;
+	pixelX = (unsigned int)(coordenada.getLongitud() - COORDENADA_X0)*DISTANCIA_PIXEL_X/ DISTANCIA_COORDENADAS_X;
+	pixelY = (unsigned int)(coordenada.getLatitud() - COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y;
 
 	return pixelX, pixelY;
 
 }
-*/
+
 
 DibujadorDeMapa::~DibujadorDeMapa(){
 	this->mapa->WriteToFile("mapa.bmp");
