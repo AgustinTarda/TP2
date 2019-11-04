@@ -104,15 +104,15 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 		recorridoDeEstacionInicial =
 				administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 						estacionCercanaAInicio);
-		Lista<Estacion> estacionesDelRecorridoInicial;
+		Lista<Estacion*>* estacionesDelRecorridoInicial;
 		estacionesDelRecorridoInicial =
 				 recorridoDeEstacionInicial.obtenerEstaciones();
 
-		estacionesDelRecorridoInicial.iniciarCursor();
-		while (estacionesDelRecorridoInicial.avanzarCursor()) {
+		estacionesDelRecorridoInicial->iniciarCursor();
+		while (estacionesDelRecorridoInicial->avanzarCursor()) {
 
-			Estacion estacionActualDeRecorridoInicial =
-					estacionesDelRecorridoInicial.obtenerCursor();
+			Estacion* estacionActualDeRecorridoInicial =
+					estacionesDelRecorridoInicial->obtenerCursor();
 
 			estacionesCercanasDestino.iniciarCursor();
 			while (estacionesCercanasDestino.avanzarCursor()) {
@@ -121,21 +121,21 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 				recorridoDeEstacionFinal =
 						administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 								estacionCercanaADestino);
-				Lista<Estacion> estacionesDelRecorridoFinal;
+				Lista<Estacion*>* estacionesDelRecorridoFinal;
 				estacionesDelRecorridoFinal =
 						recorridoDeEstacionFinal.obtenerEstaciones();
 
-				estacionesDelRecorridoFinal.iniciarCursor();
-				while (estacionesDelRecorridoFinal.avanzarCursor()) {
+				estacionesDelRecorridoFinal->iniciarCursor();
+				while (estacionesDelRecorridoFinal->avanzarCursor()) {
 
-					Estacion estacionActualDeRecorridoFinal =
-							estacionesDelRecorridoFinal.obtenerCursor();
+					Estacion* estacionActualDeRecorridoFinal =
+							estacionesDelRecorridoFinal->obtenerCursor();
 
 					Coordenadas coordenadasEstacionActualInicial =
-							estacionActualDeRecorridoInicial.obtenerCoordenadas();
+							estacionActualDeRecorridoInicial->obtenerCoordenadas();
 					unsigned int distanciaEntreCombinacion =
 							coordenadasEstacionActualInicial.calcularDistancia(
-									estacionActualDeRecorridoFinal.obtenerCoordenadas());
+									estacionActualDeRecorridoFinal->obtenerCoordenadas());
 					if (distanciaEntreCombinacion < 300) {
 
 						unsigned int distanciaACaminar =
