@@ -18,6 +18,7 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 	Lista<Estacion> estacionesCercanasInicio;
 	Lista<Estacion> estacionesCercanasDestino;
 
+
 	buscarEstacionesCercanas(estacionesCercanasInicio,
 			estacionesCercanasDestino, coordenadaInicial, coordenadaFinal,
 			administradorDeRecorridos);
@@ -38,6 +39,9 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 
 	}
 }
+
+
+
 
 void BuscadorDeViaje::buscarEstacionesCercanas(
 		Lista<Estacion> &estacionesCercanasInicio,
@@ -84,11 +88,7 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 
 }
 
-void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
-		Coordenadas coordenadaFinal, Lista<Estacion> estacionesCercanasInicio,
-		Lista<Estacion> estacionesCercanasDestino,
-		AdministradorDeRecorridos &administradorDeRecorridos,
-		Lista<Viaje> &viajesPosibles) {
+
 
 	Recorrido recorridoDeEstacionInicial;
 	Recorrido recorridoDeEstacionFinal;
