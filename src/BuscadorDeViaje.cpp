@@ -86,11 +86,13 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 
 void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 
+
 		Coordenadas coordenadaFinal, Lista<Estacion> estacionesCercanasInicio,
 
 		Lista<Estacion> estacionesCercanasDestino,
 		AdministradorDeRecorridos &administradorDeRecorridos,
 		Lista<Viaje> &viajesPosibles) {
+
 
 	Recorrido recorridoDeEstacionInicial;
 	Recorrido recorridoDeEstacionFinal;

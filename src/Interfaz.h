@@ -8,7 +8,7 @@
 #ifndef SRC_INTERFAZ_H_
 #define SRC_INTERFAZ_H_
 
-#include<iostream>
+#include <iostream>
 
 #include "Estacion.h"
 #include "Recorrido.h"
@@ -70,7 +70,9 @@ public:
 	 */
 	void imprimirViajes(Coordenadas coordenadasDeInicio,Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos, Lista<Viaje> viajes);
 
+
 	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+
 
 	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
 	/*
@@ -85,6 +87,9 @@ public:
 	 */
 	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
 
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
 	/*
 	 * pre: recibe un recorrido.
 	 * post: grafica el recorrido en el mapa.
