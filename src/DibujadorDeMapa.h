@@ -11,7 +11,8 @@
 #include "EasyBMP.h"
 #include <stdlib.h>
 #include <iostream>
-#include "Viaje.h"
+#include "Coordenadas.h"
+
 
 const double COORDENADA_X0 = -58.558610;
 const double COORDENADA_Y0 = -34.538653;
