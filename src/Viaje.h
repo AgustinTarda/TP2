@@ -24,18 +24,61 @@ private:
 	TipoDeViaje tipoDeViaje;
 
 public:
+
+	/*
+	 * post: crea una instancia de viaje vacia.
+	 */
 	Viaje();
+
+	/*
+	 * pre: el viaje es directo.
+	 * post: crea una instancia de viaje con los datos recibidos.
+	 */
 	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
 			Estacion EstacionDestino);
+
+	/*
+	 * pre: el viaje es con combinacion simple.
+	 * post: crea una instancia de viaje con los datos recibidos.
+	 */
 	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
 			Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion,
 			Estacion estacionSubidaDeCombinacion);
+
+	/*
+	 * pre: recibe una instancia de viaje no vacia.
+	 * post: hace una copia del viaje.
+	 */
 	Viaje(const Viaje &otroViaje);
+
+	/*
+	 * post: devuelve la estacion inicial de la instancia.
+	 */
 	Estacion obtenerEstacionInicial();
+
+	/*
+	 * post: devuelve la estacion de destino de la instancia.
+	 */
 	Estacion obtenerEstacionDestino();
+
+	/*
+	 * post: devuelve la estacion de bajada de combinacion de la instancia.
+	 */
 	Estacion obtenerEstacionBajadaDeCombinacion();
+
+	/*
+	 * post: devuelve la estacion de subida de combinacion de la instancia.
+	 */
 	Estacion obtenerEstacionSubidaDeCombinacion();
+
+	/*
+	 * post: devuelve true si el viaje es directo.
+	 */
 	bool esDirecto();
+
+	/*
+	 * post: devuelve true si el viaje es una combinacion simple.
+	 */
 	bool esConCombinacionSimple();
 
 };
