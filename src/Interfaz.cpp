@@ -7,6 +7,7 @@
 
 #include"Interfaz.h"
 
+
 void Interfaz::mostrarMensajeDeBienvenida() {
 	std::cout << "Bienvenidos a AlgoMaps, su buscador de viajes favorito !"
 			<< std::endl << std::endl;

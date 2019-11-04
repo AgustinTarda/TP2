@@ -11,14 +11,10 @@
 #include "AdministradorDeRecorridos.h"
 #include "Interfaz.h"
 #include <string>
-
 #include "Estacion.h"
 #include "Lista.h"
 #include "LectoraDeArchivos.h"
 #include "BuscadorDeViaje.h"
-
-
-
 
 class AlgoMaps {
 private:
