@@ -49,3 +49,11 @@ Estacion Viaje::obtenerEstacionInicial() {
 Estacion Viaje::obtenerEstacionDestino() {
 	return this->estacionDestino;
 }
+
+Estacion Viaje::obtenerEstacionBajadaDeCombinacion() {
+	return this->estacionBajadaDeCombinacion;
+}
+
+Estacion Viaje::obtenerEstacionSubidaDeCombinacion() {
+	return this->estacionSubidaDeCombinacion;
+}

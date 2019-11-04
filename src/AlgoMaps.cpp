@@ -31,8 +31,8 @@ AlgoMaps::AlgoMaps() {
 	//std::string archivoGarajes = "datos/garajes-comerciales.csv";
 	//lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 
-	interfazDeUsuario.imprimirRecorridos(
-			administradorDeRecorridos.obtenerRecorridos());
+	//interfazDeUsuario.imprimirRecorridos(
+		//administradorDeRecorridos.obtenerRecorridos());
 }
 
 void AlgoMaps::iniciarViaje() {
@@ -56,4 +56,85 @@ void AlgoMaps::iniciarViaje() {
 	interfazDeUsuario.imprimirViajes(viajes);
 
 
+}
+
+void AlgoMaps::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje){
+	DibujadorDeMapa mapa;
+
+	Recorrido recorrido = administradorDeRecorridos.obtenerRecorridoAlQuePertenece(viaje.obtenerEstacionInicial());
+
+	Lista<Estacion*> * estaciones = recorrido.obtenerEstaciones();
+
+	estaciones->iniciarCursor();
+
+	while(estaciones->avanzarCursor()){
+		Estacion* estacionLeida(estaciones->obtenerCursor());
+		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
+		mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
+							mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3, 128, 0, 0);
+	}
+	Estacion estacionInicial(viaje.obtenerEstacionInicial());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionInicial.obtenerCoordenadas()),
+					mapa.convertidorDeCoordenadasAPixelsLatitud(estacionInicial.obtenerCoordenadas()), 3, 0, 0, 0);
+	Estacion estacionFinal(viaje.obtenerEstacionDestino());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionFinal.obtenerCoordenadas()),
+					mapa.convertidorDeCoordenadasAPixelsLatitud(estacionFinal.obtenerCoordenadas()), 3, 255, 0, 0);
+
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 3, 128, 0, 128);
+
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
+					mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 3, 0, 0, 128);
+	BMP* mapaActual = mapa.obtenerMapa();
+	mapaActual->WriteToFile("viajeDirecto.bmp");
+}
+
+void AlgoMaps::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje){
+	DibujadorDeMapa mapa;
+
+	Recorrido recorridoPrimeraParte = administradorDeRecorridos.obtenerRecorridoAlQuePertenece(viaje.obtenerEstacionInicial());
+
+	Lista<Estacion*> * estacionesPrimeraParte = recorridoPrimeraParte.obtenerEstaciones();
+
+	estacionesPrimeraParte->iniciarCursor();
+
+	while(estacionesPrimeraParte->avanzarCursor()){
+		Estacion* estacionLeida(estacionesPrimeraParte->obtenerCursor());
+		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
+		mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
+							mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3, 128, 0, 0);
+	}
+	Recorrido recorridoSegundaParte = administradorDeRecorridos.obtenerRecorridoAlQuePertenece(viaje.obtenerEstacionSubidaDeCombinacion());
+
+	Lista<Estacion*> * estacionesSegundaParte = recorridoSegundaParte.obtenerEstaciones();
+
+	estacionesSegundaParte->iniciarCursor();
+
+	while(estacionesSegundaParte->avanzarCursor()){
+		Estacion* estacionLeida(estacionesSegundaParte->obtenerCursor());
+		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
+		mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
+						  mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3, 255, 255, 0);
+	}
+	Estacion estacionInicial(viaje.obtenerEstacionInicial());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionInicial.obtenerCoordenadas()),
+					mapa.convertidorDeCoordenadasAPixelsLatitud(estacionInicial.obtenerCoordenadas()), 3, 0, 0, 0);
+	Estacion estacionFinal(viaje.obtenerEstacionDestino());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionFinal.obtenerCoordenadas()),
+					mapa.convertidorDeCoordenadasAPixelsLatitud(estacionFinal.obtenerCoordenadas()), 3, 255, 0, 0);
+
+	Estacion estacionSubida(viaje.obtenerEstacionSubidaDeCombinacion());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionSubida.obtenerCoordenadas()),
+						mapa.convertidorDeCoordenadasAPixelsLatitud(estacionSubida.obtenerCoordenadas()), 3, 0, 128, 0);
+	Estacion estacionBajada(viaje.obtenerEstacionBajadaDeCombinacion());
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(estacionBajada.obtenerCoordenadas()),
+							mapa.convertidorDeCoordenadasAPixelsLatitud(estacionBajada.obtenerCoordenadas()), 3, 255, 0, 255);
+
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
+						mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 3, 128, 0, 128);
+
+	mapa.dibujarPunto(mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
+							mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 3, 0, 0, 128);
+	BMP* mapaActual = mapa.obtenerMapa();
+	mapaActual->WriteToFile("viajeCombinacion.bmp");
 }

@@ -16,6 +16,7 @@
 #include "Interfaz.h"
 #include "LectoraDeArchivos.h"
 #include "BuscadorDeViaje.h"
+#include "DibujadorDeMapa.h"
 
 class AlgoMaps {
 private:
@@ -32,6 +33,8 @@ public:
 	 * POST: crea y llena una lista de viaje
 	 */
 	void iniciarViaje();
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje);
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje);
 };
 
 #endif /* SRC_ALGOMAPS_H_ */

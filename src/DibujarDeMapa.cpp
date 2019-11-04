@@ -97,17 +97,29 @@ void DibujadorDeMapa::dibujarLineaIterativo(unsigned int xInicial,  unsigned int
 	this->mapa->SetPixel(xInicial, yInicial, color);
 }
 
-unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixels(Coordenadas coordenada){
+unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixelsLongitud(Coordenadas coordenada){
 
-	unsigned int pixelX, pixelY;
+	unsigned int pixelX;
 
 	pixelX = (unsigned int)(coordenada.getLongitud() - COORDENADA_X0)*DISTANCIA_PIXEL_X/ DISTANCIA_COORDENADAS_X;
-	pixelY = (unsigned int)(coordenada.getLatitud() - COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y;
 
-	return pixelX, pixelY;
+	return pixelX;
 
 }
 
+unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixelsLatitud(Coordenadas coordenada){
+
+	unsigned int pixelY;
+
+	pixelY = (unsigned int)(coordenada.getLatitud() - COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y;
+
+	return pixelY;
+
+}
+
+BMP* DibujadorDeMapa::obtenerMapa(){
+		return this->mapa;
+	}
 
 DibujadorDeMapa::~DibujadorDeMapa(){
 	this->mapa->WriteToFile("mapa.bmp");
