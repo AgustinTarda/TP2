@@ -1,9 +1,7 @@
 #ifndef SRC_ADMINISTRADORDERECORRIDOS_H_
 #define SRC_ADMINISTRADORDERECORRIDOS_H_
 
-
 #include "Recorrido.h"
-
 
 class AdministradorDeRecorridos {
 
