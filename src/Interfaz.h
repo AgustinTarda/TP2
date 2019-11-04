@@ -19,6 +19,7 @@
 class Interfaz {
 private:
 public:
+
 	Interfaz();
 	/*
 	 * post: muestra el mensaje de bienvenida.
@@ -69,6 +70,11 @@ public:
 	 */
 	void imprimirViajes(Coordenadas coordenadasDeInicio,Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos, Lista<Viaje> viajes);
 
+
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
 	/*
 	 * pre: recibe un viaje directo.
 	 * post: imprime los datos del viaje directo por pantalla.
@@ -90,6 +96,18 @@ public:
 	 */
 	void graficarParadasEnMapa(Recorrido recorrido);
 
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
+
+	void imprimirViajes(Coordenadas coordenadasDeInicio,
+			Coordenadas coordenadasDeDestino,
+			AdministradorDeRecorridos administradorDeRecorridos,
+			Lista<Viaje> viajes);
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
 };
 
 #endif /* SRC_INTERFAZ_H_ */

@@ -32,11 +32,11 @@ AlgoMaps::AlgoMaps() {
 	//lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 
 	//interfazDeUsuario.imprimirRecorridos(
-		//administradorDeRecorridos.obtenerRecorridos());
+	//administradorDeRecorridos.obtenerRecorridos());
 }
 
 void AlgoMaps::iniciarViaje() {
-	interfazDeUsuario.mostrarMensajeDeBienvenida();
+	interfaz.mostrarMensajeDeBienvenida();
 
 	/*Coordenadas coordenadasDeInicio =
 	 interfazDeUsuario.pedirCoordenadasDeInicio();
@@ -53,8 +53,7 @@ void AlgoMaps::iniciarViaje() {
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
 			this->administradorDeRecorridos, viajes);
 
-	interfazDeUsuario.imprimirViajes(coordenadasDeInicio, coordenadasDeDestino,
+	interfaz.imprimirViajes(coordenadasDeInicio, coordenadasDeDestino,
 			this->administradorDeRecorridos, viajes);
-
 
 }
