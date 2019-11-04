@@ -30,7 +30,7 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 
 		buscarCombinacionesPosibles(coordenadaInicial, coordenadaFinal,
 				estacionesCercanasInicio, estacionesCercanasDestino,
-				administradorDeRecorridos, viajesPosibles);
+				administradorDeRecorridos, viajes);
 
 	} else {
 

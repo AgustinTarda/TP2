@@ -31,7 +31,7 @@ public:
 	/*
 	 * POST: devuelve una lista de todos los recorridos de las lineas
 	 */
-	Lista<Recorrido*> obtenerRecorridos();
+	Lista<Recorrido*>* obtenerRecorridos();
 
 	/*
 	 * PRE: recibe una estacion con una linea asociado

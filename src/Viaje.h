@@ -33,6 +33,8 @@ public:
 	Viaje(const Viaje &otroViaje);
 	Estacion obtenerEstacionInicial();
 	Estacion obtenerEstacionDestino();
+	Estacion obtenerEstacionBajadaDeCombinacion();
+	Estacion obtenerEstacionSubidaDeCombinacion();
 	bool esDirecto();
 	bool esConCombinacionSimple();
 

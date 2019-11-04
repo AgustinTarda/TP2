@@ -11,7 +11,8 @@
 #include "EasyBMP.h"
 #include <stdlib.h>
 #include <iostream>
-#include "Coordenadas.h"
+#include "AlgoMaps.h"
+#include "Viaje.h"
 
 const double COORDENADA_X0 = -58.558610;
 const double COORDENADA_Y0 = -34.538653;
@@ -65,7 +66,11 @@ public:
 	 * post: devuelve una coordenada un punto del bitmap para graficarlo.
 	 */
 
-	unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixels(Coordenadas coordenada);
+	unsigned int convertidorDeCoordenadasAPixelsLongitud(Coordenadas coordenadas);
+
+	unsigned int convertidorDeCoordenadasAPixelsLatitud(Coordenadas coordenadas);
+
+	BMP* obtenerMapa();
 
 	/* post: destruye el Dibujador, guardando el mapa en un archivo BMP y liberando los recursos */
 	~DibujadorDeMapa();
