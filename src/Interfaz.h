@@ -14,9 +14,11 @@
 #include "Recorrido.h"
 #include "Viaje.h"
 #include "DibujadorDeMapa.h"
+#include "AdministradorDeRecorridos.h"
 
 class Interfaz {
 private:
+
 public:
 	/*
 	 * post: muestra el mensaje de bienvenida.
@@ -85,6 +87,18 @@ public:
 	 */
 	void graficarParadasEnMapa(Recorrido recorrido);
 
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
+
+	void imprimirViajes(Coordenadas coordenadasDeInicio,
+			Coordenadas coordenadasDeDestino,
+			AdministradorDeRecorridos administradorDeRecorridos,
+			Lista<Viaje> viajes);
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
 };
 
 #endif /* SRC_INTERFAZ_H_ */
