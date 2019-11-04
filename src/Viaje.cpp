@@ -5,7 +5,7 @@
  *      Author: rochi
  */
 #include "Viaje.h"
-
+//
 Viaje::Viaje() {
 
 }
@@ -48,4 +48,12 @@ Estacion Viaje::obtenerEstacionInicial() {
 }
 Estacion Viaje::obtenerEstacionDestino() {
 	return this->estacionDestino;
+}
+
+Estacion Viaje::obtenerEstacionBajadaDeCombinacion() {
+	return this->estacionBajadaDeCombinacion;
+}
+
+Estacion Viaje::obtenerEstacionSubidaDeCombinacion() {
+	return this->estacionSubidaDeCombinacion;
 }

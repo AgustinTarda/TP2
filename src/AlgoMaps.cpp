@@ -4,7 +4,7 @@
  *  Created on: 29 oct. 2019
  *      Author: agustin
  */
-
+//
 #include "AlgoMaps.h"
 
 AlgoMaps::AlgoMaps() {
@@ -31,8 +31,8 @@ AlgoMaps::AlgoMaps() {
 	//std::string archivoGarajes = "datos/garajes-comerciales.csv";
 	//lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 
-	interfazDeUsuario.imprimirRecorridos(
-			administradorDeRecorridos.obtenerRecorridos());
+	//interfazDeUsuario.imprimirRecorridos(
+		//administradorDeRecorridos.obtenerRecorridos());
 }
 
 void AlgoMaps::iniciarViaje() {
@@ -53,7 +53,8 @@ void AlgoMaps::iniciarViaje() {
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
 			this->administradorDeRecorridos, viajes);
 
-	interfazDeUsuario.imprimirViajes(viajes);
+	interfazDeUsuario.imprimirViajes(coordenadasDeInicio, coordenadasDeDestino,
+			this->administradorDeRecorridos, viajes);
 
 
 }
