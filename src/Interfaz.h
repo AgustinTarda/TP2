@@ -26,9 +26,13 @@ public:
 	void mostrarParada(Estacion parada);
 	void imprimirRecorridos(Lista<Recorrido*> *recorridos);
 	void imprimirEstaciones(Lista<Estacion*> *estaciones);
-	void imprimirViajes(Lista<Viaje> viajes);
+	void imprimirViajes(Coordenadas coordenadasDeInicio,Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos, Lista<Viaje> viajes);
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+
 	void imprimirViajeDirecto(Viaje viajeDirecto);
 	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
+
 	void graficarParadasEnMapa(Recorrido recorrido);
 
 };
