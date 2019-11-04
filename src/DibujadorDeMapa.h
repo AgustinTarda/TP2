@@ -11,7 +11,6 @@
 #include "EasyBMP.h"
 #include <stdlib.h>
 #include <iostream>
-#include "AlgoMaps.h"
 #include "Viaje.h"
 
 const double COORDENADA_X0 = -58.558610;

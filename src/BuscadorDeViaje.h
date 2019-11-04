@@ -61,7 +61,6 @@ public:
 			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			Lista<Estacion*> *estacionesDelRecorrido);
 
-
 	/*
 	 * pre: recibe las coordenadas iniciales y finales, las estaciones cercanas al inicio y al destino,
 	 * y una lista de viajes posibles vacia.
@@ -72,6 +71,7 @@ public:
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			Lista<Viaje> &viajesPosibles);
+
 };
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */
