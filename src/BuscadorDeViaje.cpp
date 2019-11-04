@@ -18,7 +18,6 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 	Lista<Estacion> estacionesCercanasInicio;
 	Lista<Estacion> estacionesCercanasDestino;
 
-
 	buscarEstacionesCercanas(estacionesCercanasInicio,
 			estacionesCercanasDestino, coordenadaInicial, coordenadaFinal,
 			administradorDeRecorridos);
@@ -39,9 +38,6 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 
 	}
 }
-
-
-
 
 void BuscadorDeViaje::buscarEstacionesCercanas(
 		Lista<Estacion> &estacionesCercanasInicio,
@@ -88,11 +84,16 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 
 }
 
-
+void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
+		Coordenadas coordenadaFinal,
+		Lista<Estacion> estacionesCercanasInicio,
+		Lista<Estacion> estacionesCercanasDestino,
+		AdministradorDeRecorridos &administradorDeRecorridos,
+		Lista<Viaje> &viajesPosibles) {
 
 	Recorrido recorridoDeEstacionInicial;
 	Recorrido recorridoDeEstacionFinal;
-	Lista<Recorrido> recorridosFinales;
+	Lista < Recorrido > recorridosFinales;
 	Estacion estacionActualDeRecorridoInicial;
 	Estacion estacionActualDeRecorridoFinal;
 
@@ -106,7 +107,7 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 						estacionCercanaAInicio);
 		Lista<Estacion*>* estacionesDelRecorridoInicial;
 		estacionesDelRecorridoInicial =
-				 recorridoDeEstacionInicial.obtenerEstaciones();
+				recorridoDeEstacionInicial.obtenerEstaciones();
 
 		estacionesDelRecorridoInicial->iniciarCursor();
 		while (estacionesDelRecorridoInicial->avanzarCursor()) {
@@ -147,8 +148,8 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 
 						Viaje viajeActual(distanciaACaminar,
 								estacionCercanaAInicio, estacionCercanaADestino,
-								estacionActualDeRecorridoInicial,
-								estacionActualDeRecorridoInicial);
+								*estacionActualDeRecorridoInicial,
+								*estacionActualDeRecorridoFinal);
 
 						viajesPosibles.agregar(viajeActual);
 					}

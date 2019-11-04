@@ -14,10 +14,15 @@
 #include "Recorrido.h"
 #include "Viaje.h"
 #include "DibujadorDeMapa.h"
+#include "AdministradorDeRecorridos.h"
 
 class Interfaz {
 private:
+
+
 public:
+
+	Interfaz();
 	/*
 	 * post: muestra el mensaje de bienvenida.
 	 */
@@ -65,8 +70,11 @@ public:
 	 * pre: recibe una lista de viajes.
 	 * post: imprime los datos de los viajes por pantalla.
 	 */
-	void imprimirViajes(Lista<Viaje> viajes);
+	void imprimirViajes(Coordenadas coordenadasDeInicio,Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos, Lista<Viaje> viajes);
 
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial, Coordenadas coordenadasFinal, Viaje viaje, AdministradorDeRecorridos administradorDeRecorridos);
 	/*
 	 * pre: recibe un viaje directo.
 	 * post: imprime los datos del viaje directo por pantalla.
