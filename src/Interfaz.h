@@ -18,8 +18,6 @@
 
 class Interfaz {
 private:
-
-
 public:
 
 	Interfaz();
@@ -93,6 +91,18 @@ public:
 	 */
 	void graficarParadasEnMapa(Recorrido recorrido);
 
+	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
+
+	void imprimirViajes(Coordenadas coordenadasDeInicio,
+			Coordenadas coordenadasDeDestino,
+			AdministradorDeRecorridos administradorDeRecorridos,
+			Lista<Viaje> viajes);
+
+	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
+			Coordenadas coordenadasFinal, Viaje viaje,
+			AdministradorDeRecorridos administradorDeRecorridos);
 };
 
 #endif /* SRC_INTERFAZ_H_ */

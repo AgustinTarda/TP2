@@ -13,6 +13,7 @@
 #include <iostream>
 #include "Coordenadas.h"
 
+
 const double COORDENADA_X0 = -58.558610;
 const double COORDENADA_Y0 = -34.538653;
 const double DISTANCIA_PIXEL_X = 182;
