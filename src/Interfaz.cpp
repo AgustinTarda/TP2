@@ -142,30 +142,30 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3,
-				128, 0, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
+				0, 0, 0);
 	}
 	Estacion estacionInicial(viaje.obtenerEstacionInicial());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionInicial.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionInicial.obtenerCoordenadas()), 3, 0, 0, 0);
+					estacionInicial.obtenerCoordenadas()), 5, 255, 0, 255);
 	Estacion estacionFinal(viaje.obtenerEstacionDestino());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionFinal.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionFinal.obtenerCoordenadas()), 3, 255, 0, 0);
+					estacionFinal.obtenerCoordenadas()), 5, 255, 0, 0);
 
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 3,
-			128, 0, 128);
+			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 5,
+			0, 255, 255);
 
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 3, 0,
+			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 5, 0,
 			0, 128);
 	BMP *mapaActual = mapa.obtenerMapa();
 	mapaActual->WriteToFile("viajeDirecto.bmp");
@@ -190,7 +190,7 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3,
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
 				128, 0, 0);
 	}
 	Recorrido *recorridoSegundaParte =
@@ -207,43 +207,43 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3,
-				255, 255, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
+				0, 0, 0);
 	}
 	Estacion estacionInicial(viaje.obtenerEstacionInicial());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionInicial.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionInicial.obtenerCoordenadas()), 3, 0, 0, 0);
+					estacionInicial.obtenerCoordenadas()), 5, 255, 0, 255);
 	Estacion estacionFinal(viaje.obtenerEstacionDestino());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionFinal.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionFinal.obtenerCoordenadas()), 3, 255, 0, 0);
+					estacionFinal.obtenerCoordenadas()),  5, 255, 0, 0);
 
 	Estacion estacionSubida(viaje.obtenerEstacionSubidaDeCombinacion());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionSubida.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionSubida.obtenerCoordenadas()), 3, 0, 128, 0);
+					estacionSubida.obtenerCoordenadas()), 4, 128, 0, 128);
 	Estacion estacionBajada(viaje.obtenerEstacionBajadaDeCombinacion());
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionBajada.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionBajada.obtenerCoordenadas()), 3, 255, 0, 255);
+					estacionBajada.obtenerCoordenadas()), 4, 0, 128, 128);
 
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 3,
-			128, 0, 128);
+			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 5,
+			0, 255, 255);
 
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 3, 0,
+			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 5, 0,
 			0, 128);
 	BMP *mapaActual = mapa.obtenerMapa();
 	mapaActual->WriteToFile("viajeCombinacion.bmp");

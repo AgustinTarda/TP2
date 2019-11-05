@@ -38,13 +38,13 @@ AlgoMaps::AlgoMaps() {
 void AlgoMaps::iniciarViaje() {
 	interfazDeUsuario.mostrarMensajeDeBienvenida();
 
-	Coordenadas coordenadasDeInicio =
-			interfazDeUsuario.pedirCoordenadasDeInicio();
-	Coordenadas coordenadasDeDestino =
-			interfazDeUsuario.pedirCoordenadasDeDestino();
+	//Coordenadas coordenadasDeInicio =
+			//interfazDeUsuario.pedirCoordenadasDeInicio();
+	//Coordenadas coordenadasDeDestino =
+			//interfazDeUsuario.pedirCoordenadasDeDestino();
 
-	//Coordenadas coordenadasDeInicio(-34.6021056176248, -58.3840678491549);
-	//Coordenadas coordenadasDeDestino(-34.5952234173066, -58.4028219030811);
+	Coordenadas coordenadasDeInicio(-34.6021056176248, -58.3840678491549);
+	Coordenadas coordenadasDeDestino(-34.5952234173066, -58.4028219030811);
 
 	std::cout << coordenadasDeInicio.calcularDistancia(coordenadasDeDestino)
 			<< std::endl;
@@ -52,6 +52,8 @@ void AlgoMaps::iniciarViaje() {
 	Lista<Viaje> viajes;
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
 			this->administradorDeRecorridos, viajes);
+
+	interfazDeUsuario.imprimirViajes( coordenadasDeInicio, coordenadasDeDestino, this -> administradorDeRecorridos, viajes);
 
 	interfazDeUsuario.imprimirViajes(viajes);
 

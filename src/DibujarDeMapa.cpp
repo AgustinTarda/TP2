@@ -101,7 +101,7 @@ unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixelsLongitud(Coordenada
 
 	unsigned int pixelX;
 
-	pixelX = (unsigned int)(coordenada.getLongitud() - COORDENADA_X0)*DISTANCIA_PIXEL_X/ DISTANCIA_COORDENADAS_X;
+	pixelX = (int)(((coordenada.getLongitud() + COORDENADA_X0)*DISTANCIA_PIXEL_X)/ DISTANCIA_COORDENADAS_X);
 
 	return pixelX;
 
@@ -111,7 +111,7 @@ unsigned int DibujadorDeMapa::convertidorDeCoordenadasAPixelsLatitud(Coordenadas
 
 	unsigned int pixelY;
 
-	pixelY = (unsigned int)(coordenada.getLatitud() - COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y;
+	pixelY =  int((coordenada.getLatitud() + COORDENADA_Y0)*DISTANCIA_PIXEL_Y/ DISTANCIA_COORDENADAS_Y);
 
 	return pixelY;
 
