@@ -13,8 +13,8 @@
 #include <iostream>
 #include "Viaje.h"
 
-const double COORDENADA_X0 = -58.558610;
-const double COORDENADA_Y0 = -34.538653;
+const double COORDENADA_X0 = 58.558610;
+const double COORDENADA_Y0 = 34.538653;
 const double DISTANCIA_PIXEL_X = 182;
 const double DISTANCIA_PIXEL_Y = 380;
 const double DISTANCIA_COORDENADAS_X = 0.040847;

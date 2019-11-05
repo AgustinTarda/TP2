@@ -20,11 +20,11 @@ Coordenadas::Coordenadas() {
 }
 
 double Coordenadas::getLatitud() {
-	return latitud;
+	return this->latitud;
 }
 
 double Coordenadas::getLongitud() {
-	return longitud;
+	return this->longitud;
 }
 
 double Coordenadas::calcularDistancia(const Coordenadas coordenadasFinal) {
