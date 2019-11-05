@@ -27,9 +27,10 @@ void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
 
 }
 
-Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
+Recorrido* AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 		Estacion estacion) {
 	bool seEncontroElRecorrido = false;
+
 	Recorrido *recorridoBuscado;
 	this->recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor() && !seEncontroElRecorrido) {
@@ -39,15 +40,15 @@ Recorrido AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 			seEncontroElRecorrido = true;
 		}
 	}
+	this->recorridos->iniciarCursor();
 
-	return *recorridoBuscado;
+	return recorridoBuscado;
 }
 
 Lista<Recorrido*>* AdministradorDeRecorridos::obtenerRecorridos() {
 	return this->recorridos;
 
 }
-
 
 void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
 	Recorrido *recorridoAAgregar = new Recorrido(estacion.obtenerLinea(),

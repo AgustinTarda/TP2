@@ -17,8 +17,10 @@
 #include "Recorrido.h"
 #include "Viaje.h"
 
+
 class BuscadorDeViaje {
 private:
+	int distanciaMaximaACaminar = 300;
 public:
 	BuscadorDeViaje();
 

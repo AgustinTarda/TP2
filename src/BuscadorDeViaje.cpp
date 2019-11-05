@@ -28,9 +28,9 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 		buscarViajesDirectosPosibles(coordenadaInicial, coordenadaFinal,
 				estacionesCercanasInicio, estacionesCercanasDestino, viajes);
 
-		buscarCombinacionesPosibles(coordenadaInicial, coordenadaFinal,
-				estacionesCercanasInicio, estacionesCercanasDestino,
-				administradorDeRecorridos, viajes);
+		/*buscarCombinacionesPosibles(coordenadaInicial, coordenadaFinal,
+		 estacionesCercanasInicio, estacionesCercanasDestino,
+		 administradorDeRecorridos, viajes);*/
 
 	} else {
 
@@ -70,12 +70,14 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 		Estacion *estacionActual = estacionesDelRecorrido->obtenerCursor();
 
 		if (coordenadaInicial.calcularDistancia(
-				estacionActual->obtenerCoordenadas()) < 300) {
+				estacionActual->obtenerCoordenadas())
+				< this->distanciaMaximaACaminar) {
 			estacionesCercanasInicio.agregar(*estacionActual);
 
 		}
 		if (coordenadaFinal.calcularDistancia(
-				estacionActual->obtenerCoordenadas()) < 300) {
+				estacionActual->obtenerCoordenadas())
+				< this->distanciaMaximaACaminar) {
 
 			estacionesCercanasDestino.agregar(*estacionActual);
 
@@ -90,8 +92,8 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 		AdministradorDeRecorridos &administradorDeRecorridos,
 		Lista<Viaje> &viajesPosibles) {
 
-	Recorrido recorridoDeEstacionInicial;
-	Recorrido recorridoDeEstacionFinal;
+	Recorrido *recorridoDeEstacionInicial;
+	Recorrido *recorridoDeEstacionFinal;
 	Lista<Recorrido> recorridosFinales;
 	Estacion estacionActualDeRecorridoInicial;
 	Estacion estacionActualDeRecorridoFinal;
@@ -101,21 +103,23 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 
 		Estacion estacionCercanaAInicio =
 				estacionesCercanasInicio.obtenerCursor();
+
 		recorridoDeEstacionInicial =
 				administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 						estacionCercanaAInicio);
+
 		Lista<Estacion*> *estacionesDelRecorridoInicial;
 		estacionesDelRecorridoInicial =
-				recorridoDeEstacionInicial.obtenerEstaciones();
+				recorridoDeEstacionInicial->obtenerEstaciones();
 
 		estacionesDelRecorridoInicial->iniciarCursor();
 		while (estacionesDelRecorridoInicial->avanzarCursor()) {
-
 			Estacion *estacionActualDeRecorridoInicial =
 					estacionesDelRecorridoInicial->obtenerCursor();
 
 			estacionesCercanasDestino.iniciarCursor();
 			while (estacionesCercanasDestino.avanzarCursor()) {
+
 				Estacion estacionCercanaADestino =
 						estacionesCercanasDestino.obtenerCursor();
 				recorridoDeEstacionFinal =
@@ -123,7 +127,7 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 								estacionCercanaADestino);
 				Lista<Estacion*> *estacionesDelRecorridoFinal;
 				estacionesDelRecorridoFinal =
-						recorridoDeEstacionFinal.obtenerEstaciones();
+						recorridoDeEstacionFinal->obtenerEstaciones();
 
 				estacionesDelRecorridoFinal->iniciarCursor();
 				while (estacionesDelRecorridoFinal->avanzarCursor()) {
@@ -133,10 +137,12 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 
 					Coordenadas coordenadasEstacionActualInicial =
 							estacionActualDeRecorridoInicial->obtenerCoordenadas();
-					unsigned int distanciaEntreCombinacion =
+					double distanciaEntreCombinacion =
 							coordenadasEstacionActualInicial.calcularDistancia(
 									estacionActualDeRecorridoFinal->obtenerCoordenadas());
-					if (distanciaEntreCombinacion < 300) {
+
+					if (distanciaEntreCombinacion
+							< this->distanciaMaximaACaminar) {
 
 						unsigned int distanciaACaminar =
 								coordenadaInicial.calcularDistancia(
