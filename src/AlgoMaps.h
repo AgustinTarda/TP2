@@ -21,7 +21,7 @@ private:
 
 	AdministradorDeRecorridos administradorDeRecorridos;
 	BuscadorDeViaje buscadorDeViajes;
-	Interfaz interfaz;
+	Interfaz interfazDeUsuario;
 
 public:
 	/*
@@ -32,10 +32,7 @@ public:
 	 * POST: crea y llena una lista de viaje
 	 */
 	void iniciarViaje();
-	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
-			Coordenadas coordenadasFinal, Viaje viaje);
-	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
-			Coordenadas coordenadasFinal, Viaje viaje);
+
 };
 
 #endif /* SRC_ALGOMAPS_H_ */

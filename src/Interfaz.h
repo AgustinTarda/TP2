@@ -87,15 +87,27 @@ public:
 	 */
 	void graficarParadasEnMapa(Recorrido recorrido);
 
+	/*
+	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas
+	 * post: grafica las paradas del recorrido, la parada de subida, la de bajada y los puntos de origen y destino del usuario
+	 */
 	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 			Coordenadas coordenadasFinal, Viaje viaje,
 			AdministradorDeRecorridos administradorDeRecorridos);
 
+	/*
+	 * pre: recibe la lista de viajes posibles no vacia
+	 * post: llama a la funcion de imprimir dependiendo si es un viaje directo o es combinacion
+	 */
 	void imprimirViajes(Coordenadas coordenadasDeInicio,
 			Coordenadas coordenadasDeDestino,
 			AdministradorDeRecorridos administradorDeRecorridos,
 			Lista<Viaje> viajes);
 
+	/*
+	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas
+	 * post: grafica las paradas del recorrido, la parada de subida, la de bajada, las paradas de combinacion y los puntos de origes y destino del usuario
+	 */
 	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 			Coordenadas coordenadasFinal, Viaje viaje,
 			AdministradorDeRecorridos administradorDeRecorridos);

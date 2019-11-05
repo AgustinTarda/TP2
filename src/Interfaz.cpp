@@ -7,7 +7,6 @@
 
 #include"Interfaz.h"
 
-
 void Interfaz::mostrarMensajeDeBienvenida() {
 	std::cout << "Bienvenidos a AlgoMaps, su buscador de viajes favorito !"
 			<< std::endl << std::endl;
@@ -130,11 +129,11 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 		AdministradorDeRecorridos administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
-	Recorrido recorrido =
+	Recorrido *recorrido =
 			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionInicial());
 
-	Lista<Estacion*> *estaciones = recorrido.obtenerEstaciones();
+	Lista<Estacion*> *estaciones = recorrido->obtenerEstaciones();
 
 	estaciones->iniciarCursor();
 
@@ -177,12 +176,12 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 		AdministradorDeRecorridos administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
-	Recorrido recorridoPrimeraParte =
+	Recorrido *recorridoPrimeraParte =
 			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionInicial());
 
 	Lista<Estacion*> *estacionesPrimeraParte =
-			recorridoPrimeraParte.obtenerEstaciones();
+			recorridoPrimeraParte->obtenerEstaciones();
 
 	estacionesPrimeraParte->iniciarCursor();
 
@@ -194,12 +193,12 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 3,
 				128, 0, 0);
 	}
-	Recorrido recorridoSegundaParte =
+	Recorrido *recorridoSegundaParte =
 			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionSubidaDeCombinacion());
 
 	Lista<Estacion*> *estacionesSegundaParte =
-			recorridoSegundaParte.obtenerEstaciones();
+			recorridoSegundaParte->obtenerEstaciones();
 
 	estacionesSegundaParte->iniciarCursor();
 

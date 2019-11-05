@@ -60,15 +60,21 @@ public:
 			unsigned int radio, short int rojo, short int verde,
 			short int azul);
 
-	/*pre: recibe una coordenada geografica.
+	/*pre: recibe una longitud en coordenada geografica.
 	 *
-	 * post: devuelve una coordenada un punto del bitmap para graficarlo.
+	 * post: devuelve una coordenada, un punto, del bitmap para graficarlo.
 	 */
-
 	unsigned int convertidorDeCoordenadasAPixelsLongitud(Coordenadas coordenadas);
 
+	/*pre: recibe una latitud en coordenada geografica.
+	 *
+	 * post: devuelve una coordenada, un punto, del bitmap para graficarlo.
+	 */
 	unsigned int convertidorDeCoordenadasAPixelsLatitud(Coordenadas coordenadas);
 
+	/*
+	 * post: devuelve el bitmap para poder guardarlo
+	 */
 	BMP* obtenerMapa();
 
 	/* post: destruye el Dibujador, guardando el mapa en un archivo BMP y liberando los recursos */
