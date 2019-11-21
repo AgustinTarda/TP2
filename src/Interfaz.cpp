@@ -84,41 +84,41 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 void Interfaz::imprimirViajes(Coordenadas coordenadasDeInicio,
 		Coordenadas coordenadasDeDestino,
 		AdministradorDeRecorridos administradorDeRecorridos,
-		Lista<Viaje> viajes) {
+		Lista<Viaje*>* viajes) {
 	DibujadorDeMapa mapa;
-	viajes.iniciarCursor();
-	while (viajes.avanzarCursor()) {
-		Viaje viajeAImprimir = viajes.obtenerCursor();
-		if (viajeAImprimir.esDirecto()) {
-			imprimirViajeDirecto(viajeAImprimir);
+	viajes->iniciarCursor();
+	while (viajes->avanzarCursor()) {
+		Viaje* viajeAImprimir = viajes->obtenerCursor();
+		if (viajeAImprimir->esDirecto()) {
+			imprimirViajeDirecto(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
-					coordenadasDeDestino, viajeAImprimir,
-					administradorDeRecorridos);
+			/*this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
+			 coordenadasDeDestino, viajeAImprimir,
+			 administradorDeRecorridos);*/
 
-		} else if (viajeAImprimir.esConCombinacionSimple()) {
-			imprimirViajeConCombinacionSimple(viajeAImprimir);
+		} else if (viajeAImprimir->esConCombinacionSimple()) {
+			imprimirViajeConCombinacionSimple(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
-					coordenadasDeDestino, viajeAImprimir,
-					administradorDeRecorridos);
+			/*this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
+			 coordenadasDeDestino, viajeAImprimir,
+			 administradorDeRecorridos);*/
 
 		}
 
 	}
 }
 
-void Interfaz::imprimirViajes(Lista<Viaje> viajes) {
-	viajes.iniciarCursor();
-	while (viajes.avanzarCursor()) {
-		Viaje viajeAImprimir = viajes.obtenerCursor();
-		if (viajeAImprimir.esDirecto()) {
-			imprimirViajeDirecto(viajeAImprimir);
+void Interfaz::imprimirViajes(Lista<Viaje*>* viajes) {
+	viajes->iniciarCursor();
+	while (viajes->avanzarCursor()) {
+		Viaje* viajeAImprimir = viajes->obtenerCursor();
+		if (viajeAImprimir->esDirecto()) {
+			imprimirViajeDirecto(*viajeAImprimir);
 
-		} else if (viajeAImprimir.esConCombinacionSimple()) {
-			imprimirViajeConCombinacionSimple(viajeAImprimir);
+		} else if (viajeAImprimir->esConCombinacionSimple()) {
+			imprimirViajeConCombinacionSimple(*viajeAImprimir);
 
 		}
 
@@ -142,8 +142,8 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
-				0, 0, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
+				0, 0);
 	}
 	Estacion estacionInicial(viaje.obtenerEstacionInicial());
 	mapa.dibujarPunto(
@@ -207,8 +207,8 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
-				0, 0, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
+				0, 0);
 	}
 	Estacion estacionInicial(viaje.obtenerEstacionInicial());
 	mapa.dibujarPunto(
@@ -221,7 +221,7 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionFinal.obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionFinal.obtenerCoordenadas()),  5, 255, 0, 0);
+					estacionFinal.obtenerCoordenadas()), 5, 255, 0, 0);
 
 	Estacion estacionSubida(viaje.obtenerEstacionSubidaDeCombinacion());
 	mapa.dibujarPunto(
@@ -266,6 +266,29 @@ void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 }
 void Interfaz::imprimirViajeConCombinacionSimple(
 		Viaje viajeConCombinacionSimple) {
+
+	Estacion estacionInicio =
+			viajeConCombinacionSimple.obtenerEstacionInicial();
+	Estacion estacionSubida =
+			viajeConCombinacionSimple.obtenerEstacionSubidaDeCombinacion();
+	Estacion estacionBajada =
+			viajeConCombinacionSimple.obtenerEstacionBajadaDeCombinacion();
+	Estacion estacionDestino =
+			viajeConCombinacionSimple.obtenerEstacionDestino();
+
+	std::cout << "Viaje combinado: ---------------------------- " << std::endl
+			<< "Camine y subase en la estacion de "
+			<< estacionInicio.imprimirTipoDeTransporte() << " linea: "
+			<< estacionInicio.obtenerLinea() << " ubicada en: "
+			<< estacionInicio.obtenerDireccion()
+			<< " luego bajese en la estacion ubicada en "
+			<< estacionBajada.obtenerDireccion()
+			<< ". Camine y subase en la estacion de "
+			<< estacionSubida.imprimirTipoDeTransporte() << " linea: "
+			<< estacionSubida.obtenerLinea() << " ubicada en: "
+			<< estacionSubida.obtenerDireccion()
+			<< " luego bajese en la estacion ubicada en "
+			<< estacionDestino.obtenerDireccion() << std::endl;
 
 }
 

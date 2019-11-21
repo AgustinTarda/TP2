@@ -8,9 +8,9 @@
 #include "AlgoMaps.h"
 
 int main() {
-	AlgoMaps algoMaps;
+	AlgoMaps* algoMaps  = new AlgoMaps;
 
-	algoMaps.iniciarViaje();
+	algoMaps->iniciarViaje();
 
 	return 1;
 }

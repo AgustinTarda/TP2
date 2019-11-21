@@ -3,7 +3,7 @@
 
 void LectoraDeArchivos::leerEstacionesDeMetrobus(
 		std::string archivosDeEstacionesDeMetrobus,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -15,7 +15,7 @@ void LectoraDeArchivos::leerEstacionesDeMetrobus(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		administradorDeRecorridos.agregarEstacion(
+		administradorDeRecorridos->agregarEstacion(
 				leerEstacionDeMetrobus(entrada));
 	}
 
@@ -62,7 +62,7 @@ Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 		std::string archivosDeEstacionesDeFerrocarril,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -74,7 +74,7 @@ void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		administradorDeRecorridos.agregarEstacion(
+		administradorDeRecorridos->agregarEstacion(
 				leerEstacionDeFerrocarril(entrada));
 
 	}
@@ -118,7 +118,7 @@ Estacion LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeColectivo(
 		std::string archivosDeEstacionesDeColectivo,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -130,7 +130,7 @@ void LectoraDeArchivos::leerEstacionesDeColectivo(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		administradorDeRecorridos.agregarEstacion(
+		administradorDeRecorridos->agregarEstacion(
 				leerEstacionDeColectivo(entrada));
 	}
 
@@ -175,7 +175,7 @@ Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
 }
 
 void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -187,7 +187,7 @@ void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		administradorDeRecorridos.agregarEstacion(leerGarage(entrada));
+		administradorDeRecorridos->agregarEstacion(leerGarage(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
@@ -241,7 +241,7 @@ Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeSubte(
 		std::string archivosDeEstacionesDeSubte,
-		AdministradorDeRecorridos &administradorDeRecorridos) {
+		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	std::ifstream entrada;
@@ -253,7 +253,8 @@ void LectoraDeArchivos::leerEstacionesDeSubte(
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
-		administradorDeRecorridos.agregarEstacion(leerEstacionDeSubte(entrada));
+		administradorDeRecorridos->agregarEstacion(
+				leerEstacionDeSubte(entrada));
 	}
 
 	/* cierra el archivo, liberando el recurso */
