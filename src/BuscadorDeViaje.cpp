@@ -71,13 +71,13 @@ void BuscadorDeViaje::buscarEstacionesCercanas(
 
 		if (coordenadaInicial.calcularDistancia(
 				estacionActual->obtenerCoordenadas())
-				< this->distanciaMaximaACaminar) {
+				< this->DISTANCIA_MAXIMA_A_CAMINAR) {
 			estacionesCercanasInicio.agregar(*estacionActual);
 
 		}
 		if (coordenadaFinal.calcularDistancia(
 				estacionActual->obtenerCoordenadas())
-				< this->distanciaMaximaACaminar) {
+				< this->DISTANCIA_MAXIMA_A_CAMINAR) {
 
 			estacionesCercanasDestino.agregar(*estacionActual);
 
@@ -142,7 +142,7 @@ void BuscadorDeViaje::buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 									estacionActualDeRecorridoFinal->obtenerCoordenadas());
 
 					if (distanciaEntreCombinacion
-							< this->distanciaMaximaACaminar) {
+							< this->DISTANCIA_MAXIMA_A_CAMINAR) {
 
 						unsigned int distanciaACaminar =
 								coordenadaInicial.calcularDistancia(

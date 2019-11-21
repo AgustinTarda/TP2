@@ -20,7 +20,7 @@
 
 class BuscadorDeViaje {
 private:
-	int distanciaMaximaACaminar = 300;
+	int DISTANCIA_MAXIMA_A_CAMINAR = 300;
 public:
 	BuscadorDeViaje();
 
