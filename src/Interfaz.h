@@ -67,7 +67,7 @@ public:
 	 * pre: recibe una lista de viajes.
 	 * post: imprime los datos de los viajes por pantalla.
 	 */
-	void imprimirViajes(Lista<Viaje> viajes);
+	void imprimirViajes(Lista<Viaje*>* viajes);
 
 	/*
 	 * pre: recibe un viaje directo.
@@ -102,7 +102,7 @@ public:
 	void imprimirViajes(Coordenadas coordenadasDeInicio,
 			Coordenadas coordenadasDeDestino,
 			AdministradorDeRecorridos administradorDeRecorridos,
-			Lista<Viaje> viajes);
+			Lista<Viaje*>* viajes);
 
 	/*
 	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas

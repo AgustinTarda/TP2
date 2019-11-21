@@ -9,6 +9,8 @@
 
 AlgoMaps::AlgoMaps() {
 
+	this->administradorDeRecorridos = new AdministradorDeRecorridos;
+
 	LectoraDeArchivos lectora;
 
 	std::string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
@@ -46,15 +48,24 @@ void AlgoMaps::iniciarViaje() {
 	Coordenadas coordenadasDeInicio(-34.6021056176248, -58.3840678491549);
 	Coordenadas coordenadasDeDestino(-34.5952234173066, -58.4028219030811);
 
-	std::cout << coordenadasDeInicio.calcularDistancia(coordenadasDeDestino)
-			<< std::endl;
-
-	Lista<Viaje> viajes;
+	Lista<Viaje*>* viajes = new Lista<Viaje*>;
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
-			this->administradorDeRecorridos, viajes);
+			*(this->administradorDeRecorridos), viajes);
 
-	interfazDeUsuario.imprimirViajes( coordenadasDeInicio, coordenadasDeDestino, this -> administradorDeRecorridos, viajes);
+	interfazDeUsuario.imprimirViajes( coordenadasDeInicio, coordenadasDeDestino, *(this -> administradorDeRecorridos), viajes);
 
-	interfazDeUsuario.imprimirViajes(viajes);
+	//interfazDeUsuario.imprimirViajes(viajes);
 
+	while (!viajes->estaVacia()) {
+			Viaje *viajeAEliminar = viajes->obtener(1);
+			delete viajeAEliminar;
+			viajes->remover(1);
+		}
+	delete viajes;
+
+}
+
+AlgoMaps::~AlgoMaps(){
+
+	delete this->administradorDeRecorridos;
 }

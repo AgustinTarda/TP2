@@ -19,7 +19,7 @@
 class AlgoMaps {
 private:
 
-	AdministradorDeRecorridos administradorDeRecorridos;
+	AdministradorDeRecorridos* administradorDeRecorridos;
 	BuscadorDeViaje buscadorDeViajes;
 	Interfaz interfazDeUsuario;
 
@@ -32,6 +32,8 @@ public:
 	 * POST: crea y llena una lista de viaje
 	 */
 	void iniciarViaje();
+
+	~AlgoMaps();
 
 };
 

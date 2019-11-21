@@ -20,7 +20,7 @@
 
 class BuscadorDeViaje {
 private:
-	int DISTANCIA_MAXIMA_A_CAMINAR = 300;
+	int DISTANCIA_MAXIMA_A_CAMINAR = 100;
 public:
 	BuscadorDeViaje();
 
@@ -30,7 +30,7 @@ public:
 	 */
 	void buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Viaje> &viajes);
+			Lista<Viaje*>* viajes);
 
 	/*
 	 * pre: recibe las coordenadas, las estaciones cercanas al inicio y al destino, el administrador de recorridos
@@ -42,7 +42,7 @@ public:
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Viaje> &viajesPosibles);
+			Lista<Viaje*>* viajesPosibles);
 
 	/*
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas y el administrador de recorridos.
@@ -72,7 +72,7 @@ public:
 			Coordenadas coordenadaFinal,
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
-			Lista<Viaje> &viajesPosibles);
+			Lista<Viaje*>* viajesPosibles);
 
 };
 
