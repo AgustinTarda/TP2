@@ -17,7 +17,6 @@
 #include "Recorrido.h"
 #include "Viaje.h"
 
-
 class BuscadorDeViaje {
 private:
 	int DISTANCIA_MAXIMA_A_CAMINAR = 100;
@@ -43,6 +42,15 @@ public:
 			Lista<Estacion> estacionesCercanasDestino,
 			AdministradorDeRecorridos &administradorDeRecorridos,
 			Lista<Viaje*>* viajesPosibles);
+
+	void analizarSiTieneCombinacionConDestino(
+			AdministradorDeRecorridos &administradorDeRecorridos,
+			Lista<Estacion> estacionesCercanasDestino,
+			Viaje posibleViajeConCombinacion, Lista<Viaje*>* viajesPosibles);
+
+	void analizarCombinacionEntreEstaciones(Viaje posibleViajeConCombinacion,
+			Lista<Estacion*>* estacionesDelRecorridoFinal,
+			Lista<Viaje*>* viajesPosibles, bool* combinacionEncontrada);
 
 	/*
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas y el administrador de recorridos.

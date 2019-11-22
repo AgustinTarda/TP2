@@ -57,3 +57,41 @@ Estacion Viaje::obtenerEstacionBajadaDeCombinacion() {
 Estacion Viaje::obtenerEstacionSubidaDeCombinacion() {
 	return this->estacionSubidaDeCombinacion;
 }
+
+void Viaje::agregarCoordenadasInicio(Coordenadas coordenadaInicial) {
+	this->coordenadasIniciales = coordenadaInicial;
+}
+
+void Viaje::agregarCoordenadasDestino(Coordenadas coordenadaFinal) {
+	this->coordenadasDestino = coordenadaFinal;
+}
+
+void Viaje::agregarEstacionCercanaAInicio(Estacion estacionCercanaAInicio) {
+	this->estacionInicio = estacionCercanaAInicio;
+}
+
+void Viaje::agregarEstacionBajadaDeCombinacion(
+		Estacion estacionBajadaDeCombinacion) {
+	this->estacionBajadaDeCombinacion = estacionBajadaDeCombinacion;
+}
+
+void Viaje::agregarEstacionCercanaADestino(Estacion estacionCercanaADestino) {
+	this->estacionDestino = estacionCercanaADestino;
+}
+void Viaje::agregarTipoDeViaje(TipoDeViaje tipoDeViaje) {
+	this->tipoDeViaje = tipoDeViaje;
+}
+
+void Viaje::agregarEstacionSubidaDeCombinacion(
+		Estacion estacionSubidaDeCombinacion) {
+	this->estacionSubidaDeCombinacion = estacionSubidaDeCombinacion;
+}
+double Viaje::calcualrDistaciaTotalACaminar() {
+	return coordenadasIniciales.calcularDistancia(
+			estacionInicio.obtenerCoordenadas())
+			+ coordenadasDestino.calcularDistancia(
+					estacionDestino.obtenerCoordenadas())
+			+ (estacionBajadaDeCombinacion.obtenerCoordenadas()).calcularDistancia(
+					(estacionSubidaDeCombinacion.obtenerCoordenadas()));
+}
+
