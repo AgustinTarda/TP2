@@ -41,31 +41,89 @@ void AlgoMaps::iniciarViaje() {
 	interfazDeUsuario.mostrarMensajeDeBienvenida();
 
 	//Coordenadas coordenadasDeInicio =
-			//interfazDeUsuario.pedirCoordenadasDeInicio();
+	//interfazDeUsuario.pedirCoordenadasDeInicio();
 	//Coordenadas coordenadasDeDestino =
-			//interfazDeUsuario.pedirCoordenadasDeDestino();
+	//interfazDeUsuario.pedirCoordenadasDeDestino();
 
-	Coordenadas coordenadasDeInicio(-34.6021056176248, -58.3840678491549);
-	Coordenadas coordenadasDeDestino(-34.5952234173066, -58.4028219030811);
+	Coordenadas coordenadasDeInicio(-34.635670, -58.453803);
+	Coordenadas coordenadasDeDestino(-34.617654, -58.369460);
 
-	Lista<Viaje*>* viajes = new Lista<Viaje*>;
+	Lista<Viaje*> *viajes = new Lista<Viaje*>;
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
 			*(this->administradorDeRecorridos), viajes);
+	if (!viajes->estaVacia()) {
 
-	interfazDeUsuario.imprimirViajes( coordenadasDeInicio, coordenadasDeDestino, *(this -> administradorDeRecorridos), viajes);
+		Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
+		mejoresViajes = filtrarMejoresViajes(viajes);
+
+		interfazDeUsuario.imprimirViajes(coordenadasDeInicio,
+				coordenadasDeDestino, this->administradorDeRecorridos,
+				mejoresViajes);
+	} else {
+		interfazDeUsuario.noSeEncontroViajesPosibles();
+	}
 
 	//interfazDeUsuario.imprimirViajes(viajes);
 
 	while (!viajes->estaVacia()) {
-			Viaje *viajeAEliminar = viajes->obtener(1);
-			delete viajeAEliminar;
-			viajes->remover(1);
-		}
+		Viaje *viajeAEliminar = viajes->obtener(1);
+		delete viajeAEliminar;
+		viajes->remover(1);
+	}
 	delete viajes;
 
 }
+Lista<Viaje*>* AlgoMaps::filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar) {
 
-AlgoMaps::~AlgoMaps(){
+	Viaje *mejorViajeDirecto = calcularMejorViajeDe(Viaje::DIRECTO,
+			viajesARevisar);
+	Viaje *mejorViajeConCombinacion = calcularMejorViajeDe(
+			Viaje::COMBINACION_SIMPLE, viajesARevisar);
+
+	Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
+
+	if (mejorViajeDirecto != NULL) {
+		mejoresViajes->agregar(mejorViajeDirecto);
+	}
+	if (mejorViajeConCombinacion != NULL) {
+
+		mejoresViajes->agregar(mejorViajeConCombinacion);
+	}
+
+	return mejoresViajes;
+
+}
+
+Viaje* AlgoMaps::calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
+		Lista<Viaje*> *viajes) {
+
+	bool seEncontroPrimerViaje = false;
+	double minimaDistanciaViaje;
+	Viaje *mejorViaje;
+	Viaje *viajeAAnalizar;
+
+	viajes->iniciarCursor();
+	while (viajes->avanzarCursor()) {
+		viajeAAnalizar = viajes->obtenerCursor();
+
+		if (viajeAAnalizar->obtenerTipoDeViaje() == tipoDeViaje
+				&& !seEncontroPrimerViaje) {
+			mejorViaje = viajeAAnalizar;
+			minimaDistanciaViaje = mejorViaje->calcularDistaciaTotalACaminar();
+			seEncontroPrimerViaje = true;
+		} else if (viajeAAnalizar->obtenerTipoDeViaje() == tipoDeViaje
+				&& minimaDistanciaViaje
+						> viajeAAnalizar->calcularDistaciaTotalACaminar()) {
+			mejorViaje = viajeAAnalizar;
+			minimaDistanciaViaje =
+					viajeAAnalizar->calcularDistaciaTotalACaminar();
+		}
+
+	}
+	return mejorViaje;
+}
+
+AlgoMaps::~AlgoMaps() {
 
 	delete this->administradorDeRecorridos;
 }

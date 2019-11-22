@@ -49,12 +49,6 @@ double Interfaz::pedirLatitud() {
 	return latitud;
 }
 
-void Interfaz::mostrarParada(Estacion parada) {
-
-	std::cout << "MetroBus: " << parada.obtenerLinea() << std::endl;
-
-}
-
 void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
 	recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor()) {
@@ -83,37 +77,37 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 
 void Interfaz::imprimirViajes(Coordenadas coordenadasDeInicio,
 		Coordenadas coordenadasDeDestino,
-		AdministradorDeRecorridos administradorDeRecorridos,
-		Lista<Viaje*>* viajes) {
+		AdministradorDeRecorridos *administradorDeRecorridos,
+		Lista<Viaje*> *viajes) {
 	DibujadorDeMapa mapa;
 	viajes->iniciarCursor();
 	while (viajes->avanzarCursor()) {
-		Viaje* viajeAImprimir = viajes->obtenerCursor();
+		Viaje *viajeAImprimir = viajes->obtenerCursor();
 		if (viajeAImprimir->esDirecto()) {
 			imprimirViajeDirecto(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			/*this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
-			 coordenadasDeDestino, viajeAImprimir,
-			 administradorDeRecorridos);*/
+			this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
+					coordenadasDeDestino, *viajeAImprimir,
+					administradorDeRecorridos);
 
 		} else if (viajeAImprimir->esConCombinacionSimple()) {
 			imprimirViajeConCombinacionSimple(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			/*this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
-			 coordenadasDeDestino, viajeAImprimir,
-			 administradorDeRecorridos);*/
+			this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
+					coordenadasDeDestino, *viajeAImprimir,
+					administradorDeRecorridos);
 
 		}
 
 	}
 }
 
-void Interfaz::imprimirViajes(Lista<Viaje*>* viajes) {
+void Interfaz::imprimirViajes(Lista<Viaje*> *viajes) {
 	viajes->iniciarCursor();
 	while (viajes->avanzarCursor()) {
-		Viaje* viajeAImprimir = viajes->obtenerCursor();
+		Viaje *viajeAImprimir = viajes->obtenerCursor();
 		if (viajeAImprimir->esDirecto()) {
 			imprimirViajeDirecto(*viajeAImprimir);
 
@@ -126,11 +120,11 @@ void Interfaz::imprimirViajes(Lista<Viaje*>* viajes) {
 }
 void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 		Coordenadas coordenadasFinal, Viaje viaje,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
 	Recorrido *recorrido =
-			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
+			administradorDeRecorridos->obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionInicial());
 
 	Lista<Estacion*> *estaciones = recorrido->obtenerEstaciones();
@@ -173,37 +167,41 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 
 void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 		Coordenadas coordenadasFinal, Viaje viaje,
-		AdministradorDeRecorridos administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
 	Recorrido *recorridoPrimeraParte =
-			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
+			administradorDeRecorridos->obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionInicial());
 
-	Lista<Estacion*> *estacionesPrimeraParte =
+	Lista<Estacion*> *estacionesPrimerTramo =
 			recorridoPrimeraParte->obtenerEstaciones();
 
-	estacionesPrimeraParte->iniciarCursor();
-
-	while (estacionesPrimeraParte->avanzarCursor()) {
-		Estacion *estacionLeida(estacionesPrimeraParte->obtenerCursor());
+	estacionesPrimerTramo->iniciarCursor();
+	int i = 1;
+	while (estacionesPrimerTramo->avanzarCursor()) {
+		Estacion *estacionLeida(estacionesPrimerTramo->obtenerCursor());
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
+
+		std::cout << i << std::endl;
+		i++;
+
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
-				128, 0, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
+				0, 0);
 	}
 	Recorrido *recorridoSegundaParte =
-			administradorDeRecorridos.obtenerRecorridoAlQuePertenece(
+			administradorDeRecorridos->obtenerRecorridoAlQuePertenece(
 					viaje.obtenerEstacionSubidaDeCombinacion());
 
-	Lista<Estacion*> *estacionesSegundaParte =
+	Lista<Estacion*> *estacionesSegundoTramo =
 			recorridoSegundaParte->obtenerEstaciones();
 
-	estacionesSegundaParte->iniciarCursor();
+	estacionesSegundoTramo->iniciarCursor();
 
-	while (estacionesSegundaParte->avanzarCursor()) {
-		Estacion *estacionLeida(estacionesSegundaParte->obtenerCursor());
+	while (estacionesSegundoTramo->avanzarCursor()) {
+		Estacion *estacionLeida(estacionesSegundoTramo->obtenerCursor());
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
@@ -249,9 +247,6 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 	mapaActual->WriteToFile("viajeCombinacion.bmp");
 }
 
-void Interfaz::graficarParadasEnMapa(Recorrido recorrido) {
-
-}
 void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 	Estacion estacionInicio = viajeDirecto.obtenerEstacionInicial();
 	Estacion estacionDestino = viajeDirecto.obtenerEstacionDestino();
@@ -282,13 +277,19 @@ void Interfaz::imprimirViajeConCombinacionSimple(
 			<< estacionInicio.obtenerLinea() << " ubicada en: "
 			<< estacionInicio.obtenerDireccion()
 			<< " luego bajese en la estacion ubicada en "
-			<< estacionBajada.obtenerDireccion()
-			<< ". Camine y subase en la estacion de "
+			<< estacionBajada.obtenerDireccion() << std::endl
+			<< "Luego camine y subase en la estacion de "
 			<< estacionSubida.imprimirTipoDeTransporte() << " linea: "
 			<< estacionSubida.obtenerLinea() << " ubicada en: "
 			<< estacionSubida.obtenerDireccion()
-			<< " luego bajese en la estacion ubicada en "
-			<< estacionDestino.obtenerDireccion() << std::endl;
+			<< " y por ultimo bajese en la estacion ubicada en "
+			<< estacionDestino.obtenerDireccion()
+			<< " y camine hasta su destino" << std::endl;
 
+}
+void Interfaz::noSeEncontroViajesPosibles() {
+
+	std::cout << "No se encontro ningun viaje. Lo sentimos prube de nuevo"
+			<< std::endl;
 }
 

@@ -31,7 +31,7 @@ Recorrido* AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 		Estacion estacion) {
 	bool seEncontroElRecorrido = false;
 
-	Recorrido *recorridoBuscado;
+	Recorrido* recorridoBuscado = NULL;
 	this->recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor() && !seEncontroElRecorrido) {
 		Recorrido *recorridoAnalizado = recorridos->obtenerCursor();
@@ -40,8 +40,6 @@ Recorrido* AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
 			seEncontroElRecorrido = true;
 		}
 	}
-	this->recorridos->iniciarCursor();
-
 	return recorridoBuscado;
 }
 

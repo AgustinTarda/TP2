@@ -40,6 +40,9 @@ Viaje::Viaje(const Viaje &otroViaje) {
 bool Viaje::esDirecto() {
 	return (this->tipoDeViaje == DIRECTO);
 }
+Viaje::TipoDeViaje Viaje::obtenerTipoDeViaje(){
+	return this->tipoDeViaje;
+}
 bool Viaje::esConCombinacionSimple() {
 	return (this->tipoDeViaje == COMBINACION_SIMPLE);
 }
@@ -86,7 +89,7 @@ void Viaje::agregarEstacionSubidaDeCombinacion(
 		Estacion estacionSubidaDeCombinacion) {
 	this->estacionSubidaDeCombinacion = estacionSubidaDeCombinacion;
 }
-double Viaje::calcualrDistaciaTotalACaminar() {
+double Viaje::calcularDistaciaTotalACaminar() {
 	return coordenadasIniciales.calcularDistancia(
 			estacionInicio.obtenerCoordenadas())
 			+ coordenadasDestino.calcularDistancia(

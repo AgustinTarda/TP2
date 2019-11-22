@@ -33,6 +33,11 @@ public:
 	 */
 	void iniciarViaje();
 
+	Lista<Viaje*>* filtrarMejoresViajes(Lista<Viaje*>* viajesARevisar);
+
+	Viaje* calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
+			Lista<Viaje*> *viajes);
+
 	~AlgoMaps();
 
 };
