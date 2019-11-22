@@ -22,6 +22,8 @@ private:
 	Estacion estacionBajadaDeCombinacion;
 	Estacion estacionSubidaDeCombinacion;
 	TipoDeViaje tipoDeViaje;
+	Coordenadas coordenadasIniciales;
+	Coordenadas coordenadasDestino;
 
 public:
 
@@ -81,6 +83,21 @@ public:
 	 */
 	bool esConCombinacionSimple();
 
+	void agregarCoordenadasInicio(Coordenadas coordenadaInicial);
+
+	void agregarCoordenadasDestino(Coordenadas coordenadaFinal);
+
+	void agregarEstacionCercanaAInicio(Estacion estacionCercanaAInicio);
+
+	void agregarEstacionBajadaDeCombinacion(Estacion estacionBajadaDeCombinacion);
+
+	void agregarEstacionCercanaADestino(Estacion estacionCercanaADestino);
+
+	void agregarTipoDeViaje(TipoDeViaje tipoDeViaje);
+
+	void agregarEstacionSubidaDeCombinacion(Estacion estacionSubidaDeCombinacion);
+
+	double calcualrDistaciaTotalACaminar();
 };
 
 #endif /* SRC_VIAJE_H_ */
