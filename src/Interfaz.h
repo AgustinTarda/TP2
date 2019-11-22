@@ -46,12 +46,6 @@ public:
 	double pedirLatitud();
 
 	/*
-	 * pre: recibe una parada como parametro.
-	 * post: muesta la parada recibida.
-	 */
-	void mostrarParada(Estacion parada);
-
-	/*
 	 * pre: recibe una lista de recorridos.
 	 * post: imprime los datos de los recorridos por pantalla.
 	 */
@@ -67,7 +61,7 @@ public:
 	 * pre: recibe una lista de viajes.
 	 * post: imprime los datos de los viajes por pantalla.
 	 */
-	void imprimirViajes(Lista<Viaje*>* viajes);
+	void imprimirViajes(Lista<Viaje*> *viajes);
 
 	/*
 	 * pre: recibe un viaje directo.
@@ -82,18 +76,12 @@ public:
 	void imprimirViajeConCombinacionSimple(Viaje viajeConCombinacionSimple);
 
 	/*
-	 * pre: recibe un recorrido.
-	 * post: grafica el recorrido en el mapa.
-	 */
-	void graficarParadasEnMapa(Recorrido recorrido);
-
-	/*
 	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas
 	 * post: grafica las paradas del recorrido, la parada de subida, la de bajada y los puntos de origen y destino del usuario
 	 */
 	void imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 			Coordenadas coordenadasFinal, Viaje viaje,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos *administradorDeRecorridos);
 
 	/*
 	 * pre: recibe la lista de viajes posibles no vacia
@@ -101,8 +89,8 @@ public:
 	 */
 	void imprimirViajes(Coordenadas coordenadasDeInicio,
 			Coordenadas coordenadasDeDestino,
-			AdministradorDeRecorridos administradorDeRecorridos,
-			Lista<Viaje*>* viajes);
+			AdministradorDeRecorridos *administradorDeRecorridos,
+			Lista<Viaje*> *viajes);
 
 	/*
 	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas
@@ -110,7 +98,9 @@ public:
 	 */
 	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 			Coordenadas coordenadasFinal, Viaje viaje,
-			AdministradorDeRecorridos administradorDeRecorridos);
+			AdministradorDeRecorridos *administradorDeRecorridos);
+
+	void noSeEncontroViajesPosibles();
 };
 
 #endif /* SRC_INTERFAZ_H_ */

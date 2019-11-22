@@ -78,6 +78,8 @@ public:
 	 */
 	bool esDirecto();
 
+	TipoDeViaje obtenerTipoDeViaje();
+
 	/*
 	 * post: devuelve true si el viaje es una combinacion simple.
 	 */
@@ -97,7 +99,7 @@ public:
 
 	void agregarEstacionSubidaDeCombinacion(Estacion estacionSubidaDeCombinacion);
 
-	double calcualrDistaciaTotalACaminar();
+	double calcularDistaciaTotalACaminar();
 };
 
 #endif /* SRC_VIAJE_H_ */
