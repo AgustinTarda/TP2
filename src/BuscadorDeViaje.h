@@ -29,7 +29,7 @@ public:
 	 */
 	void buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Viaje*>* viajes);
+			Lista<Viaje*> *viajes);
 
 	/*
 	 * pre: recibe las coordenadas, las estaciones cercanas al inicio y al destino, el administrador de recorridos
@@ -41,16 +41,22 @@ public:
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Viaje*>* viajesPosibles);
-
+			Lista<Viaje*> *viajesPosibles);
+	/*
+	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con los
+	 *  recorridos de las estaciones estacionesCercanasDestino
+	 */
 	void analizarSiTieneCombinacionConDestino(
 			AdministradorDeRecorridos &administradorDeRecorridos,
 			Lista<Estacion> estacionesCercanasDestino,
-			Viaje posibleViajeConCombinacion, Lista<Viaje*>* viajesPosibles);
-
+			Viaje posibleViajeConCombinacion, Lista<Viaje*> *viajesPosibles);
+	/*
+	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con
+	 *  estacionesDelRecorridoFinal, de tener una combinacion guarda el viaje en viajesPosibles
+	 */
 	void analizarCombinacionEntreEstaciones(Viaje posibleViajeConCombinacion,
-			Lista<Estacion*>* estacionesDelRecorridoFinal,
-			Lista<Viaje*>* viajesPosibles, bool* combinacionEncontrada);
+			Lista<Estacion*> *estacionesDelRecorridoFinal,
+			Lista<Viaje*> *viajesPosibles, bool *combinacionEncontrada);
 
 	/*
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas y el administrador de recorridos.
@@ -80,7 +86,7 @@ public:
 			Coordenadas coordenadaFinal,
 			Lista<Estacion> estacionesCercanasInicio,
 			Lista<Estacion> estacionesCercanasDestino,
-			Lista<Viaje*>* viajesPosibles);
+			Lista<Viaje*> *viajesPosibles);
 
 };
 

@@ -95,9 +95,9 @@ void Interfaz::imprimirViajes(Coordenadas coordenadasDeInicio,
 			imprimirViajeConCombinacionSimple(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
+			/*this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
 					coordenadasDeDestino, *viajeAImprimir,
-					administradorDeRecorridos);
+					administradorDeRecorridos);*/
 
 		}
 
@@ -178,14 +178,9 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 			recorridoPrimeraParte->obtenerEstaciones();
 
 	estacionesPrimerTramo->iniciarCursor();
-	int i = 1;
 	while (estacionesPrimerTramo->avanzarCursor()) {
 		Estacion *estacionLeida(estacionesPrimerTramo->obtenerCursor());
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
-
-		std::cout << i << std::endl;
-		i++;
-
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
 				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,

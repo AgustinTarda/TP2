@@ -19,25 +19,34 @@
 class AlgoMaps {
 private:
 
-	AdministradorDeRecorridos* administradorDeRecorridos;
+	AdministradorDeRecorridos *administradorDeRecorridos;
 	BuscadorDeViaje buscadorDeViajes;
 	Interfaz interfazDeUsuario;
 
 public:
 	/*
-	 * POST: devuelve una instancia de algo maps
+	 * pos: devuelve una instancia de algo maps
 	 */
 	AlgoMaps();
 	/*
-	 * POST: crea y llena una lista de viaje
+	 * pos: crea y llena una lista de viaje
 	 */
 	void iniciarViaje();
 
-	Lista<Viaje*>* filtrarMejoresViajes(Lista<Viaje*>* viajesARevisar);
+	/*
+	 * pos: filtra el viaje directo y el viaje combinado que tengan menor distancia a pie
+	 */
+	Lista<Viaje*>* filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar);
 
+	/*
+	 * pos: devuelve el viaje que pertenezca a viajes y sea de tipo de viaje tipoDeViaje que
+	 * tenga menor distancia a pie
+	 */
 	Viaje* calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
 			Lista<Viaje*> *viajes);
-
+	/*
+	 * pos: elimina la instancia de algo maps
+	 */
 	~AlgoMaps();
 
 };

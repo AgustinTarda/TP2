@@ -32,10 +32,6 @@ void BuscadorDeViaje::buscarViaje(Coordenadas coordenadaInicial,
 				estacionesCercanasInicio, estacionesCercanasDestino,
 				administradorDeRecorridos, viajes);
 
-	} else {
-
-		//Si no hay estaciones cerca del destino y/o final, mostramos el camino caminando
-
 	}
 }
 

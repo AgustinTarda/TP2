@@ -99,7 +99,9 @@ public:
 	void imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 			Coordenadas coordenadasFinal, Viaje viaje,
 			AdministradorDeRecorridos *administradorDeRecorridos);
-
+	/*
+	 * post: imprime un mensaje indicando que no hat viajes posibles
+	 */
 	void noSeEncontroViajesPosibles();
 };
 
