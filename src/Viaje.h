@@ -85,20 +85,49 @@ public:
 	 */
 	bool esConCombinacionSimple();
 
+	/*
+	 * post: agrega coordenadas de inicio al viaje
+	 */
 	void agregarCoordenadasInicio(Coordenadas coordenadaInicial);
+
+	/*
+	 * post: agrega coordenadas de destino al viaje
+	 */
 
 	void agregarCoordenadasDestino(Coordenadas coordenadaFinal);
 
+	/*
+	 * post: agrega la primera estacion de subida al viaje
+	 */
+
 	void agregarEstacionCercanaAInicio(Estacion estacionCercanaAInicio);
+	/*
+	 * post: agrega la  estacion de bajada del primer trayecto al viaje
+	 */
 
-	void agregarEstacionBajadaDeCombinacion(Estacion estacionBajadaDeCombinacion);
+	void agregarEstacionBajadaDeCombinacion(
+			Estacion estacionBajadaDeCombinacion);
 
+	/*
+	 * post: agrega la  estacion de bajada en destino al viaje
+	 */
 	void agregarEstacionCercanaADestino(Estacion estacionCercanaADestino);
 
+	/*
+	 * post: le agrega un tipo de viaje(combinado o directo) al viaje
+	 */
 	void agregarTipoDeViaje(TipoDeViaje tipoDeViaje);
 
-	void agregarEstacionSubidaDeCombinacion(Estacion estacionSubidaDeCombinacion);
+	/*
+	 * post: agrega la  estacion de subida del segundo trayecto al viaje
+	 */
 
+	void agregarEstacionSubidaDeCombinacion(
+			Estacion estacionSubidaDeCombinacion);
+
+	/*
+	 * post: devuelve la distancia total que hay que caminar en el viaje
+	 */
 	double calcularDistaciaTotalACaminar();
 };
 

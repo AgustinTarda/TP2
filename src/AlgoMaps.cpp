@@ -40,13 +40,14 @@ AlgoMaps::AlgoMaps() {
 void AlgoMaps::iniciarViaje() {
 	interfazDeUsuario.mostrarMensajeDeBienvenida();
 
-	//Coordenadas coordenadasDeInicio =
-	//interfazDeUsuario.pedirCoordenadasDeInicio();
-	//Coordenadas coordenadasDeDestino =
-	//interfazDeUsuario.pedirCoordenadasDeDestino();
+	Coordenadas coordenadasDeInicio =
+	interfazDeUsuario.pedirCoordenadasDeInicio();
+	Coordenadas coordenadasDeDestino =
+	interfazDeUsuario.pedirCoordenadasDeDestino();
 
-	Coordenadas coordenadasDeInicio(-34.635670, -58.453803);
-	Coordenadas coordenadasDeDestino(-34.617654, -58.369460);
+	//Coordenadas de prueba
+	/*Coordenadas coordenadasDeInicio(-34.635670, -58.453803);
+	Coordenadas coordenadasDeDestino(-34.617654, -58.369460);*/
 
 	Lista<Viaje*> *viajes = new Lista<Viaje*>;
 	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
@@ -62,8 +63,6 @@ void AlgoMaps::iniciarViaje() {
 	} else {
 		interfazDeUsuario.noSeEncontroViajesPosibles();
 	}
-
-	//interfazDeUsuario.imprimirViajes(viajes);
 
 	while (!viajes->estaVacia()) {
 		Viaje *viajeAEliminar = viajes->obtener(1);
