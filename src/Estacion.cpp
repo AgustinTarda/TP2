@@ -4,7 +4,7 @@
  *  Created on: 29 oct. 2019
  *      Author: rochi
  */
-
+//
 #include "Estacion.h"
 using namespace std;
 
@@ -37,5 +37,22 @@ Estacion::TipoDeTransporte Estacion::obtenerTipoDeTransporte() {
 }
 std::string Estacion::obtenerDireccion() {
 	return this->direccion;
+}
+std::string Estacion::imprimirTipoDeTransporte(){
+
+	std::string tipoDeTransporte;
+
+	if(this->tipoDeTransporte == SUBTE){
+		tipoDeTransporte = "Subte";
+	}else if(this->tipoDeTransporte == COLECTIVO){
+		tipoDeTransporte = "Colectivo";
+	}else if(this->tipoDeTransporte == METROBUS){
+		tipoDeTransporte = "Metrobus";
+	} else if(this->tipoDeTransporte == FERROCARRIL){
+		tipoDeTransporte = "Ferrocarril";
+	}else if(this->tipoDeTransporte == GARAGE){
+		tipoDeTransporte = "Garage";
+	}
+	return tipoDeTransporte;
 }
 

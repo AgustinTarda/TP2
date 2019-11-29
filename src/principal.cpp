@@ -6,11 +6,11 @@
  */
 
 #include "AlgoMaps.h"
-int main() {
-	AlgoMaps algoMaps;
 
-	algoMaps.iniciarViaje();
+int main() {
+	AlgoMaps* algoMaps  = new AlgoMaps;
+
+	algoMaps->iniciarViaje();
 
 	return 1;
 }
-

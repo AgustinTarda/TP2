@@ -8,25 +8,47 @@
 #ifndef SRC_ALGOMAPS_H_
 #define SRC_ALGOMAPS_H_
 
-#include <string>
-
-#include "Estacion.h"
 #include "AdministradorDeRecorridos.h"
-#include "Lista.h"
 #include "Interfaz.h"
+#include <string>
+#include "Estacion.h"
+#include "Lista.h"
 #include "LectoraDeArchivos.h"
 #include "BuscadorDeViaje.h"
 
 class AlgoMaps {
 private:
-	Interfaz interfazDeUsuario;
-	AdministradorDeRecorridos administradorDeRecorridos;
+
+	AdministradorDeRecorridos *administradorDeRecorridos;
 	BuscadorDeViaje buscadorDeViajes;
+	Interfaz interfazDeUsuario;
 
 public:
+	/*
+	 * pos: devuelve una instancia de algo maps
+	 */
 	AlgoMaps();
+	/*
+	 * pos: crea y llena una lista de viaje
+	 */
 	void iniciarViaje();
-	int buscarViaje(Coordenadas coordenadasDeInicio, Coordenadas coordenadasDeDestino, AdministradorDeRecorridos administradorDeRecorridos);
+
+	/*
+	 * pos: filtra el viaje directo y el viaje combinado que tengan menor distancia a pie
+	 */
+	Lista<Viaje*>* filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar);
+
+	/*
+	 * pos: devuelve el viaje que pertenezca a viajes y sea de tipo de viaje tipoDeViaje que
+	 * tenga menor distancia a pie
+	 */
+	Viaje* calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
+			Lista<Viaje*> *viajes);
+	/*
+	 * pos: elimina la instancia de algo maps
+	 */
+	~AlgoMaps();
+
 };
 
 #endif /* SRC_ALGOMAPS_H_ */
