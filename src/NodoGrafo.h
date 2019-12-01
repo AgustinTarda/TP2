@@ -9,46 +9,21 @@
 #define NODOGRAFO_H_
 
 #include "Lista.h"
+#include "Arista.h"
+#include "Estacion.h"
+
+class Arista;
 
 class NodoGrafo {
 private:
-	T dato;
-	Lista<NodoGrafo*>* nodosAdyacentes;
+	Estacion* dato;
+	Lista<Arista*>* aristasSalientes;
 
 public:
-	NodoGrafo(T elemento){
-		this->dato = elemento;
-		this->nodosAdyacentes = new Lista<NodoGrafo*>;
-	}
-
-	NodoGrafo(T elemento, Lista<NodoGrafo*>* adyacencias){
-		this->dato = elemento;
-		this->nodosAdyacentes = new Lista<NodoGrafo*>(adyacencias);
-	}
-
-	void agregarAdyacencia(NodoGrafo* nodoAdyacente){
-		this->nodosAdyacentes->agregar(nodoAdyacente);
-	}
-
-	T obtenerDato(){
-		return dato;
-	}
-
-	bool esAdyacenteA(T candidato){
-		bool encontrado = false;
-		this->nodosAdyacentes->iniciarCursor();
-
-		while(this->nodosAdyacentes->avanzarCursor() && !encontrado){
-			encontrado = (this->nodosAdyacentes->obtenerCursor() == candidato);
-		}
-
-		return encontrado;
-	}
-
-	~NodoGrafo(){
-		delete this->nodosAdyacentes;
-	}
-
+	NodoGrafo(Estacion* elemento, Lista<Arista*>* aristas = NULL);
+	void agregarAdyacencia(Arista* aristaAgregada);
+	Estacion* obtenerDato();
+	~NodoGrafo();
 };
 
 #endif /* NODOGRAFO_H_ */
