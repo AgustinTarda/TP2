@@ -10,23 +10,23 @@
 
 #include "Lista.h"
 
-template<class T> class NodoGrafo {
+class NodoGrafo {
 private:
 	T dato;
-	Lista<NodoGrafo<T>*>* nodosAdyacentes;
+	Lista<NodoGrafo*>* nodosAdyacentes;
 
 public:
 	NodoGrafo(T elemento){
 		this->dato = elemento;
-		this->nodosAdyacentes = new Lista<NodoGrafo<T>*>;
+		this->nodosAdyacentes = new Lista<NodoGrafo*>;
 	}
 
-	NodoGrafo(T elemento, Lista<NodoGrafo<T>*>* adyacencias){
+	NodoGrafo(T elemento, Lista<NodoGrafo*>* adyacencias){
 		this->dato = elemento;
-		this->nodosAdyacentes = new Lista<NodoGrafo<T>*>(adyacencias);
+		this->nodosAdyacentes = new Lista<NodoGrafo*>(adyacencias);
 	}
 
-	void agregarAdyacencia(NodoGrafo<T>* nodoAdyacente){
+	void agregarAdyacencia(NodoGrafo* nodoAdyacente){
 		this->nodosAdyacentes->agregar(nodoAdyacente);
 	}
 
