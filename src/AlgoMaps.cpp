@@ -6,6 +6,7 @@
  */
 //
 #include "AlgoMaps.h"
+using namespace std;
 
 AlgoMaps::AlgoMaps() {
 
@@ -13,24 +14,24 @@ AlgoMaps::AlgoMaps() {
 
 	LectoraDeArchivos lectora;
 
-	std::string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
+	string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
 	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus,
 			this->administradorDeRecorridos);
 
-	std::string archivoDeFerrocarril = "datos/estaciones-de-ferrocarril.csv";
+	string archivoDeFerrocarril = "datos/estaciones-de-ferrocarril.csv";
 	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril,
 			this->administradorDeRecorridos);
 
-	std::string archivoColectivos = "datos/paradas-de-colectivo.csv";
+	string archivoColectivos = "datos/paradas-de-colectivo.csv";
 	lectora.leerEstacionesDeColectivo(archivoColectivos,
 			this->administradorDeRecorridos);
 
-	std::string archivoSubte = "datos/bocas-de"
+	string archivoSubte = "datos/bocas-de"
 			"-subte.csv";
 	lectora.leerEstacionesDeSubte(archivoSubte,
 			this->administradorDeRecorridos);
 
-	//std::string archivoGarajes = "datos/garajes-comerciales.csv";
+	//string archivoGarajes = "datos/garajes-comerciales.csv";
 	//lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 
 	//interfazDeUsuario.imprimirRecorridos(

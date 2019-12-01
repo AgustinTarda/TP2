@@ -19,7 +19,7 @@
 
 class BuscadorDeViaje {
 private:
-	int DISTANCIA_MAXIMA_A_CAMINAR = 600;
+	const int DISTANCIA_MAXIMA_A_CAMINAR = 600;
 public:
 	BuscadorDeViaje();
 
@@ -38,8 +38,8 @@ public:
 	 */
 	void buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
 			Coordenadas coordenadaFinal,
-			Lista<Estacion> estacionesCercanasInicio,
-			Lista<Estacion> estacionesCercanasDestino,
+			Lista<Estacion*>* estacionesCercanasInicio,
+			Lista<Estacion*>* estacionesCercanasDestino,
 			AdministradorDeRecorridos &administradorDeRecorridos,
 			Lista<Viaje*> *viajesPosibles);
 	/*
@@ -48,7 +48,7 @@ public:
 	 */
 	void analizarSiTieneCombinacionConDestino(
 			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Estacion> estacionesCercanasDestino,
+			Lista<Estacion*>* estacionesCercanasDestino,
 			Viaje posibleViajeConCombinacion, Lista<Viaje*> *viajesPosibles);
 	/*
 	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con
@@ -62,8 +62,8 @@ public:
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas y el administrador de recorridos.
 	 * post: busca estaciones cercanas chequeando cada recorrido del administrador de recorridos.
 	 */
-	void buscarEstacionesCercanas(Lista<Estacion> &estacionesCercanasInicio,
-			Lista<Estacion> &estacionesCercanasDestino,
+	void buscarEstacionesCercanas(Lista<Estacion*>* &estacionesCercanasInicio,
+			Lista<Estacion*>* &estacionesCercanasDestino,
 			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			AdministradorDeRecorridos &administradorDeRecorridos);
 
@@ -72,8 +72,8 @@ public:
 	 * y una lista con todas las estaciones del recorrido.
 	 * post: busca estaciones cercanas y las agrega a estaciones del recorrido.
 	 */
-	void buscarEstacionesCercanas(Lista<Estacion> &estacionesCercanasInicio,
-			Lista<Estacion> &estacionesCercanasDestino,
+	void buscarEstacionesCercanas(Lista<Estacion*>* estacionesCercanasInicio,
+			Lista<Estacion*>* estacionesCercanasDestino,
 			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
 			Lista<Estacion*> *estacionesDelRecorrido);
 
@@ -84,8 +84,8 @@ public:
 	 */
 	void buscarViajesDirectosPosibles(Coordenadas coordenadaInicial,
 			Coordenadas coordenadaFinal,
-			Lista<Estacion> estacionesCercanasInicio,
-			Lista<Estacion> estacionesCercanasDestino,
+			Lista<Estacion*>* estacionesCercanasInicio,
+			Lista<Estacion*>* estacionesCercanasDestino,
 			Lista<Viaje*> *viajesPosibles);
 
 };

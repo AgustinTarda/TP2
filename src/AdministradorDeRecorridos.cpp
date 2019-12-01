@@ -9,7 +9,7 @@ AdministradorDeRecorridos::AdministradorDeRecorridos(
 	this->recorridos = otroAdministradorDeRecorridos.recorridos;
 }
 
-void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
+void AdministradorDeRecorridos::agregarEstacion(Estacion* estacion) {
 	bool tieneRecorrido = false;
 
 	recorridos->iniciarCursor();
@@ -28,7 +28,7 @@ void AdministradorDeRecorridos::agregarEstacion(Estacion estacion) {
 }
 
 Recorrido* AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
-		Estacion estacion) {
+		Estacion* estacion) {
 	bool seEncontroElRecorrido = false;
 
 	Recorrido* recorridoBuscado = NULL;
@@ -48,9 +48,9 @@ Lista<Recorrido*>* AdministradorDeRecorridos::obtenerRecorridos() {
 
 }
 
-void AdministradorDeRecorridos::crearRecorridoPara(Estacion estacion) {
-	Recorrido *recorridoAAgregar = new Recorrido(estacion.obtenerLinea(),
-			estacion.obtenerTipoDeTransporte());
+void AdministradorDeRecorridos::crearRecorridoPara(Estacion* estacion) {
+	Recorrido *recorridoAAgregar = new Recorrido(estacion->obtenerLinea(),
+			estacion->obtenerTipoDeTransporte());
 	recorridoAAgregar->agregarEstacion(estacion);
 	this->recorridos->agregar(recorridoAAgregar);
 }

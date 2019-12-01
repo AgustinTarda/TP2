@@ -46,27 +46,27 @@ private:
 	/*
 	 * post: lee una linea del archivo de estaciones de metrobus.
 	 */
-	Estacion leerEstacionDeMetrobus(std::ifstream &entrada);
+	Estacion* leerEstacionDeMetrobus(std::ifstream &entrada);
 
 	/*
 	 * post: lee una linea del archivo de estaciones de colectivo.
 	 */
-	Estacion leerEstacionDeColectivo(std::ifstream &entrada);
+	Estacion* leerEstacionDeColectivo(std::ifstream &entrada);
 
 	/*
 	 * post: lee una linea del archivo de estaciones de ferrocarril.
 	 */
-	Estacion leerEstacionDeFerrocarril(std::ifstream &entrada);
+	Estacion* leerEstacionDeFerrocarril(std::ifstream &entrada);
 
 	/*
 	 * post: lee una linea del archivo de estaciones de subte.
 	 */
-	Estacion leerEstacionDeSubte(std::ifstream &entrada);
+	Estacion* leerEstacionDeSubte(std::ifstream &entrada);
 
 	/*
 	 * post: lee una linea del archivo de garages.
 	 */
-	Estacion leerGarage(std::ifstream &entrada);
+	Estacion* leerGarage(std::ifstream &entrada);
 };
 
 #endif /* LECTORADEARCHIVOS_H_ */

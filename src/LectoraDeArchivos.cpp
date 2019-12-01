@@ -1,17 +1,18 @@
 #include "LectoraDeArchivos.h"
 #include <fstream>
+using namespace std;
 
 void LectoraDeArchivos::leerEstacionesDeMetrobus(
-		std::string archivosDeEstacionesDeMetrobus,
+		string archivosDeEstacionesDeMetrobus,
 		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
-	std::ifstream entrada;
+	ifstream entrada;
 	entrada.open(archivosDeEstacionesDeMetrobus.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-	std::string titulo;
-	std::getline(entrada, titulo);
+	string titulo;
+	getline(entrada, titulo);
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
@@ -24,36 +25,36 @@ void LectoraDeArchivos::leerEstacionesDeMetrobus(
 
 }
 
-Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
+Estacion* LectoraDeArchivos::leerEstacionDeMetrobus(ifstream &entrada) {
 
-	std::string longitud;
-	std::string latitud;
-	std::string id;
-	std::string nombre;
-	std::string calle1;
-	std::string calle2;
-	std::string interseccion;
-	std::string lineaSentidoNorte;
-	std::string lineaSentidoSur;
-	std::string metrobus;
-	std::string nombreSentido;
-	std::string observacion;
+	string longitud;
+	string latitud;
+	string id;
+	string nombre;
+	string calle1;
+	string calle2;
+	string interseccion;
+	string lineaSentidoNorte;
+	string lineaSentidoSur;
+	string metrobus;
+	string nombreSentido;
+	string observacion;
 
-	std::getline(entrada, longitud, ',');
-	std::getline(entrada, latitud, ',');
-	std::getline(entrada, id, ',');
-	std::getline(entrada, nombre, ',');
-	std::getline(entrada, calle1, ',');
-	std::getline(entrada, calle2, ',');
-	std::getline(entrada, interseccion, ',');
-	std::getline(entrada, lineaSentidoNorte, ',');
-	std::getline(entrada, lineaSentidoSur, ',');
-	std::getline(entrada, metrobus, ',');
-	std::getline(entrada, nombreSentido, ',');
-	std::getline(entrada, observacion);
+	getline(entrada, longitud, ',');
+	getline(entrada, latitud, ',');
+	getline(entrada, id, ',');
+	getline(entrada, nombre, ',');
+	getline(entrada, calle1, ',');
+	getline(entrada, calle2, ',');
+	getline(entrada, interseccion, ',');
+	getline(entrada, lineaSentidoNorte, ',');
+	getline(entrada, lineaSentidoSur, ',');
+	getline(entrada, metrobus, ',');
+	getline(entrada, nombreSentido, ',');
+	getline(entrada, observacion);
 
-	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion paradaDeMetrobus(coordenadasDeLaParada, metrobus,
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
+	Estacion* paradaDeMetrobus = new Estacion(coordenadasDeLaParada, metrobus,
 			Estacion::METROBUS, calle1);
 
 	return paradaDeMetrobus;
@@ -61,16 +62,16 @@ Estacion LectoraDeArchivos::leerEstacionDeMetrobus(std::ifstream &entrada) {
 }
 
 void LectoraDeArchivos::leerEstacionesDeFerrocarril(
-		std::string archivosDeEstacionesDeFerrocarril,
+		string archivosDeEstacionesDeFerrocarril,
 		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
-	std::ifstream entrada;
+	ifstream entrada;
 	entrada.open(archivosDeEstacionesDeFerrocarril.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-	std::string titulo;
-	std::getline(entrada, titulo);
+	string titulo;
+	getline(entrada, titulo);
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
@@ -84,49 +85,49 @@ void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 
 }
 
-Estacion LectoraDeArchivos::leerEstacionDeFerrocarril(std::ifstream &entrada) {
+Estacion* LectoraDeArchivos::leerEstacionDeFerrocarril(ifstream &entrada) {
 
-	std::string longitud;
-	std::string latitud;
-	std::string id;
-	std::string nombre;
-	std::string linea;
-	std::string linea2;
-	std::string ramal;
-	std::string barrio;
-	std::string comuna;
-	std::string localidad;
-	std::string partido;
+	string longitud;
+	string latitud;
+	string id;
+	string nombre;
+	string linea;
+	string linea2;
+	string ramal;
+	string barrio;
+	string comuna;
+	string localidad;
+	string partido;
 
-	std::getline(entrada, longitud, ',');
-	std::getline(entrada, latitud, ',');
-	std::getline(entrada, id, ',');
-	std::getline(entrada, nombre, ',');
-	std::getline(entrada, linea, ',');
-	std::getline(entrada, linea2, ',');
-	std::getline(entrada, ramal, ',');
-	std::getline(entrada, barrio, ',');
-	std::getline(entrada, comuna, ',');
-	std::getline(entrada, localidad, ',');
-	std::getline(entrada, partido);
-	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion estacionFerrocarril(coordenadasDeLaParada, linea,
+	getline(entrada, longitud, ',');
+	getline(entrada, latitud, ',');
+	getline(entrada, id, ',');
+	getline(entrada, nombre, ',');
+	getline(entrada, linea, ',');
+	getline(entrada, linea2, ',');
+	getline(entrada, ramal, ',');
+	getline(entrada, barrio, ',');
+	getline(entrada, comuna, ',');
+	getline(entrada, localidad, ',');
+	getline(entrada, partido);
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
+	Estacion* estacionFerrocarril = new Estacion(coordenadasDeLaParada, linea,
 			Estacion::FERROCARRIL, nombre);
 	return estacionFerrocarril;
 
 }
 
 void LectoraDeArchivos::leerEstacionesDeColectivo(
-		std::string archivosDeEstacionesDeColectivo,
+		string archivosDeEstacionesDeColectivo,
 		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
-	std::ifstream entrada;
+	ifstream entrada;
 	entrada.open(archivosDeEstacionesDeColectivo.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-	std::string titulo;
-	std::getline(entrada, titulo);
+	string titulo;
+	getline(entrada, titulo);
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
@@ -139,51 +140,51 @@ void LectoraDeArchivos::leerEstacionesDeColectivo(
 
 }
 
-Estacion LectoraDeArchivos::leerEstacionDeColectivo(std::ifstream &entrada) {
+Estacion* LectoraDeArchivos::leerEstacionDeColectivo(ifstream &entrada) {
 
-	std::string id;
-	std::string codigo;
-	std::string nombre;
-	std::string latitud;
-	std::string longitud;
-	std::string idDireccion;
-	std::string numeroLinea;
-	std::string idAgencia;
-	std::string rutaNombreCorto;
-	std::string rutaNombreLargo;
-	std::string rutaDesc;
-	std::string tipoRuta;
+	string id;
+	string codigo;
+	string nombre;
+	string latitud;
+	string longitud;
+	string idDireccion;
+	string numeroLinea;
+	string idAgencia;
+	string rutaNombreCorto;
+	string rutaNombreLargo;
+	string rutaDesc;
+	string tipoRuta;
 
-	std::getline(entrada, id, ',');
-	std::getline(entrada, codigo, ',');
-	std::getline(entrada, nombre, ',');
-	std::getline(entrada, latitud, ',');
-	std::getline(entrada, longitud, ',');
-	std::getline(entrada, idDireccion, ',');
-	std::getline(entrada, numeroLinea, ',');
-	std::getline(entrada, idAgencia, ',');
-	std::getline(entrada, rutaNombreCorto, ',');
-	std::getline(entrada, rutaNombreLargo, ',');
-	std::getline(entrada, rutaDesc, ',');
-	std::getline(entrada, tipoRuta);
-	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion estacionColectivo(coordenadasDeLaParada, rutaNombreCorto,
+	getline(entrada, id, ',');
+	getline(entrada, codigo, ',');
+	getline(entrada, nombre, ',');
+	getline(entrada, latitud, ',');
+	getline(entrada, longitud, ',');
+	getline(entrada, idDireccion, ',');
+	getline(entrada, numeroLinea, ',');
+	getline(entrada, idAgencia, ',');
+	getline(entrada, rutaNombreCorto, ',');
+	getline(entrada, rutaNombreLargo, ',');
+	getline(entrada, rutaDesc, ',');
+	getline(entrada, tipoRuta);
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
+	Estacion* estacionColectivo = new Estacion(coordenadasDeLaParada, rutaNombreCorto,
 			Estacion::COLECTIVO, nombre);
 
 	return estacionColectivo;
 
 }
 
-void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
+void LectoraDeArchivos::leerGarajes(string archivosDeGarajes,
 		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
-	std::ifstream entrada;
+	ifstream entrada;
 	entrada.open(archivosDeGarajes.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-	std::string titulo;
-	std::getline(entrada, titulo);
+	string titulo;
+	getline(entrada, titulo);
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
@@ -195,44 +196,44 @@ void LectoraDeArchivos::leerGarajes(std::string archivosDeGarajes,
 
 }
 
-Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
+Estacion* LectoraDeArchivos::leerGarage(ifstream &entrada) {
 
-	std::string longitud;
-	std::string latitud;
-	std::string smp;
-	std::string nombreDeLaCalle;
-	std::string alturaDeLaCalle;
-	std::string tipo1;
-	std::string tipo2;
-	std::string pisos;
-	std::string nombre;
-	std::string barrio;
-	std::string comuna;
-	std::string observacion;
-	std::string objeto;
-	std::string dominioSalida;
-	std::string codigoPostal;
-	std::string codigoPostalArgentino;
+	string longitud;
+	string latitud;
+	string smp;
+	string nombreDeLaCalle;
+	string alturaDeLaCalle;
+	string tipo1;
+	string tipo2;
+	string pisos;
+	string nombre;
+	string barrio;
+	string comuna;
+	string observacion;
+	string objeto;
+	string dominioSalida;
+	string codigoPostal;
+	string codigoPostalArgentino;
 
-	std::getline(entrada, longitud, ',');
-	std::getline(entrada, latitud, ',');
-	std::getline(entrada, smp, ',');
-	std::getline(entrada, nombreDeLaCalle, ',');
-	std::getline(entrada, alturaDeLaCalle, ',');
-	std::getline(entrada, tipo1, ',');
-	std::getline(entrada, tipo2, ',');
-	std::getline(entrada, pisos, ',');
-	std::getline(entrada, nombre, ',');
-	std::getline(entrada, barrio, ',');
-	std::getline(entrada, comuna, ',');
-	std::getline(entrada, codigoPostal, ',');
-	std::getline(entrada, observacion, ',');
-	std::getline(entrada, objeto, ',');
-	std::getline(entrada, dominioSalida, ',');
+	getline(entrada, longitud, ',');
+	getline(entrada, latitud, ',');
+	getline(entrada, smp, ',');
+	getline(entrada, nombreDeLaCalle, ',');
+	getline(entrada, alturaDeLaCalle, ',');
+	getline(entrada, tipo1, ',');
+	getline(entrada, tipo2, ',');
+	getline(entrada, pisos, ',');
+	getline(entrada, nombre, ',');
+	getline(entrada, barrio, ',');
+	getline(entrada, comuna, ',');
+	getline(entrada, codigoPostal, ',');
+	getline(entrada, observacion, ',');
+	getline(entrada, objeto, ',');
+	getline(entrada, dominioSalida, ',');
 
-	std::getline(entrada, codigoPostalArgentino);
-	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion garage(coordenadasDeLaParada, "Estacionamiento", Estacion::GARAGE,
+	getline(entrada, codigoPostalArgentino);
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
+	Estacion* garage = new Estacion(coordenadasDeLaParada, "Estacionamiento", Estacion::GARAGE,
 			nombreDeLaCalle);
 
 	return garage;
@@ -240,16 +241,16 @@ Estacion LectoraDeArchivos::leerGarage(std::ifstream &entrada) {
 }
 
 void LectoraDeArchivos::leerEstacionesDeSubte(
-		std::string archivosDeEstacionesDeSubte,
+		string archivosDeEstacionesDeSubte,
 		AdministradorDeRecorridos* administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
-	std::ifstream entrada;
+	ifstream entrada;
 	entrada.open(archivosDeEstacionesDeSubte.c_str());
 
 	/* lee la primera línea completa porque esta el formato de los campos */
-	std::string titulo;
-	std::getline(entrada, titulo);
+	string titulo;
+	getline(entrada, titulo);
 
 	/* lee el resto del archivo */
 	while (entrada.peek() != EOF) {
@@ -262,58 +263,58 @@ void LectoraDeArchivos::leerEstacionesDeSubte(
 
 }
 
-Estacion LectoraDeArchivos::leerEstacionDeSubte(std::ifstream &entrada) {
+Estacion* LectoraDeArchivos::leerEstacionDeSubte(ifstream &entrada) {
 
-	std::string longitud;
-	std::string latitud;
-	std::string id;
-	std::string linea;
-	std::string estacion;
-	std::string numeroDeEstacion;
-	std::string destino;
-	std::string lineasDe;
-	std::string cierraFin;
-	std::string escaleraMecanica;
-	std::string escaleraNoMecanica;
-	std::string ascensor;
-	std::string rampa;
-	std::string salvaEscaleras;
-	std::string calle;
-	std::string altura;
-	std::string calle2;
-	std::string barrio;
-	std::string comuna;
-	std::string observacion;
-	std::string objeto;
-	std::string dominioSalida;
-	std::string dominioOrigen;
+	string longitud;
+	string latitud;
+	string id;
+	string linea;
+	string estacion;
+	string numeroDeEstacion;
+	string destino;
+	string lineasDe;
+	string cierraFin;
+	string escaleraMecanica;
+	string escaleraNoMecanica;
+	string ascensor;
+	string rampa;
+	string salvaEscaleras;
+	string calle;
+	string altura;
+	string calle2;
+	string barrio;
+	string comuna;
+	string observacion;
+	string objeto;
+	string dominioSalida;
+	string dominioOrigen;
 
-	std::getline(entrada, longitud, ',');
-	std::getline(entrada, latitud, ',');
-	std::getline(entrada, id, ',');
-	std::getline(entrada, linea, ',');
-	std::getline(entrada, estacion, ',');
-	std::getline(entrada, numeroDeEstacion, ',');
-	std::getline(entrada, destino, ',');
-	std::getline(entrada, lineasDe, ',');
-	std::getline(entrada, cierraFin, ',');
-	std::getline(entrada, escaleraMecanica, ',');
-	std::getline(entrada, escaleraNoMecanica, ',');
-	std::getline(entrada, ascensor, ',');
-	std::getline(entrada, rampa, ',');
-	std::getline(entrada, salvaEscaleras, ',');
-	std::getline(entrada, calle, ',');
-	std::getline(entrada, altura, ',');
-	std::getline(entrada, calle2, ',');
-	std::getline(entrada, barrio, ',');
-	std::getline(entrada, comuna, ',');
-	std::getline(entrada, observacion, ',');
-	std::getline(entrada, objeto, ',');
-	std::getline(entrada, dominioSalida, ',');
-	std::getline(entrada, dominioOrigen);
+	getline(entrada, longitud, ',');
+	getline(entrada, latitud, ',');
+	getline(entrada, id, ',');
+	getline(entrada, linea, ',');
+	getline(entrada, estacion, ',');
+	getline(entrada, numeroDeEstacion, ',');
+	getline(entrada, destino, ',');
+	getline(entrada, lineasDe, ',');
+	getline(entrada, cierraFin, ',');
+	getline(entrada, escaleraMecanica, ',');
+	getline(entrada, escaleraNoMecanica, ',');
+	getline(entrada, ascensor, ',');
+	getline(entrada, rampa, ',');
+	getline(entrada, salvaEscaleras, ',');
+	getline(entrada, calle, ',');
+	getline(entrada, altura, ',');
+	getline(entrada, calle2, ',');
+	getline(entrada, barrio, ',');
+	getline(entrada, comuna, ',');
+	getline(entrada, observacion, ',');
+	getline(entrada, objeto, ',');
+	getline(entrada, dominioSalida, ',');
+	getline(entrada, dominioOrigen);
 
-	Coordenadas coordenadasDeLaParada(stod(latitud), stod(longitud));
-	Estacion estacionDeSubte(coordenadasDeLaParada, linea, Estacion::SUBTE,
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
+	Estacion* estacionDeSubte = new Estacion(coordenadasDeLaParada, linea, Estacion::SUBTE,
 			calle);
 
 	return estacionDeSubte;
