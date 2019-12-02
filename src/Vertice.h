@@ -20,9 +20,11 @@ private:
 	Lista<Arista*>* aristasSalientes;
 
 public:
-	Vertice(Estacion* elemento, Lista<Arista*>* aristas);
+	//Vertice(Estacion* elemento, Lista<Arista*>* aristas);
+	Vertice(Estacion* estacion);
 	void agregarAdyacencia(Arista* aristaAgregada);
 	Estacion* obtenerDato();
+	void agregarDato(Estacion* estacion);
 	~Vertice();
 };
 
