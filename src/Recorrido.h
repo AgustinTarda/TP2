@@ -16,11 +16,6 @@ private:
 public:
 
 	/*
-	 * post: crea la instancia de recorrido con una lista de estaciones vacia.
-	 */
-	Recorrido();
-
-	/*
 	 * pre: recibe una instancia de recorrido no vacia.
 	 * post: hace una copia del recorrido.
 	 */
@@ -57,13 +52,13 @@ public:
 	/*
 	 * post: devuelve true si la estacion recibida está en la lista de estaciones.
 	 */
-	bool debeContener(Estacion* estacion);
+	bool debeContener(Estacion *estacion);
 
 	/*
 	 * pre: recibe una estacion.
 	 * post: se agrega la estacion recibida a la lista de estaciones.
 	 */
-	void agregarEstacion(Estacion* estacion);
+	void agregarEstacion(Estacion *estacion);
 
 	/*
 	 * post: destruye la instancia de recorrido.

@@ -9,29 +9,29 @@ AdministradorDeRecorridos::AdministradorDeRecorridos(
 	this->recorridos = otroAdministradorDeRecorridos.recorridos;
 }
 
-void AdministradorDeRecorridos::agregarEstacion(Estacion* estacion) {
+void AdministradorDeRecorridos::agregarEstacion(Estacion *estacionAAgregar) {
 	bool tieneRecorrido = false;
 
 	recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor() && !tieneRecorrido) {
 		Recorrido *recorridoAnalizado = recorridos->obtenerCursor();
-		if (recorridoAnalizado->debeContener(estacion)) {
-			recorridoAnalizado->agregarEstacion(estacion);
+		if (recorridoAnalizado->debeContener(estacionAAgregar)) {
+			recorridoAnalizado->agregarEstacion(estacionAAgregar);
 			tieneRecorrido = true;
 		}
 	}
 
 	if (!tieneRecorrido) {
-		crearRecorridoPara(estacion);
+		crearRecorridoPara(estacionAAgregar);
 	}
 
 }
 
 Recorrido* AdministradorDeRecorridos::obtenerRecorridoAlQuePertenece(
-		Estacion* estacion) {
+		Estacion *estacion) {
 	bool seEncontroElRecorrido = false;
 
-	Recorrido* recorridoBuscado = NULL;
+	Recorrido *recorridoBuscado = NULL;
 	this->recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor() && !seEncontroElRecorrido) {
 		Recorrido *recorridoAnalizado = recorridos->obtenerCursor();
@@ -48,7 +48,7 @@ Lista<Recorrido*>* AdministradorDeRecorridos::obtenerRecorridos() {
 
 }
 
-void AdministradorDeRecorridos::crearRecorridoPara(Estacion* estacion) {
+void AdministradorDeRecorridos::crearRecorridoPara(Estacion *estacion) {
 	Recorrido *recorridoAAgregar = new Recorrido(estacion->obtenerLinea(),
 			estacion->obtenerTipoDeTransporte());
 	recorridoAAgregar->agregarEstacion(estacion);

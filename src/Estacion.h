@@ -38,11 +38,6 @@ public:
 	Estacion(const Estacion &otraParada);
 
 	/*
-	 * post: crea una instancia de estacion vacia.
-	 */
-	Estacion();
-
-	/*
 	 * post: devuelve las coordenadas de la instancia.
 	 */
 	Coordenadas obtenerCoordenadas();
@@ -66,6 +61,10 @@ public:
 	 * post: imprime por pantalla el tipo de transporte de la instancia.
 	 */
 	std::string imprimirTipoDeTransporte();
+	/*
+	 * post: Se elimina la estacion.
+	 */
+	~Estacion();
 };
 
 #endif /* SRC_ESTACION_H_ */

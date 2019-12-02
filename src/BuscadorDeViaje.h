@@ -17,9 +17,11 @@
 #include "Recorrido.h"
 #include "Viaje.h"
 
+static const int DISTANCIA_MAXIMA_A_CAMINAR = 600;
+
 class BuscadorDeViaje {
 private:
-	const int DISTANCIA_MAXIMA_A_CAMINAR = 600;
+
 public:
 	BuscadorDeViaje();
 
@@ -27,8 +29,9 @@ public:
 	 * pre: recibe las coordenadas, el administrador de recorridos y una lista de viajes vacia.
 	 * post: busca un viaje directo y un viaje con combinacion simple y los agrega a la lista viajes.
 	 */
-	void buscarViaje(Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
-			AdministradorDeRecorridos &administradorDeRecorridos,
+	void buscarViaje(Coordenadas *coordenadaInicial,
+			Coordenadas *coordenadaFinal,
+			AdministradorDeRecorridos *administradorDeRecorridos,
 			Lista<Viaje*> *viajes);
 
 	/*
@@ -36,25 +39,25 @@ public:
 	 *  y una lista de viajes vacia.
 	 *  post: busca si hay combinaciones posibles entre las coordenadas dadas, y si hay las agrega a la lista de viajes.
 	 */
-	void buscarCombinacionesPosibles(Coordenadas coordenadaInicial,
-			Coordenadas coordenadaFinal,
-			Lista<Estacion*>* estacionesCercanasInicio,
-			Lista<Estacion*>* estacionesCercanasDestino,
-			AdministradorDeRecorridos &administradorDeRecorridos,
+	void buscarCombinacionesPosibles(Coordenadas *coordenadaInicial,
+			Coordenadas *coordenadaFinal,
+			Lista<Estacion*> *estacionesCercanasInicio,
+			Lista<Estacion*> *estacionesCercanasDestino,
+			AdministradorDeRecorridos *administradorDeRecorridos,
 			Lista<Viaje*> *viajesPosibles);
 	/*
 	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con los
 	 *  recorridos de las estaciones estacionesCercanasDestino
 	 */
 	void analizarSiTieneCombinacionConDestino(
-			AdministradorDeRecorridos &administradorDeRecorridos,
-			Lista<Estacion*>* estacionesCercanasDestino,
-			Viaje posibleViajeConCombinacion, Lista<Viaje*> *viajesPosibles);
+			AdministradorDeRecorridos *administradorDeRecorridos,
+			Lista<Estacion*> *estacionesCercanasDestino,
+			Viaje &posibleViajeConCombinacion, Lista<Viaje*> *viajesPosibles);
 	/*
 	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con
 	 *  estacionesDelRecorridoFinal, de tener una combinacion guarda el viaje en viajesPosibles
 	 */
-	void analizarCombinacionEntreEstaciones(Viaje posibleViajeConCombinacion,
+	void analizarCombinacionEntreEstaciones(Viaje &posibleViajeConCombinacion,
 			Lista<Estacion*> *estacionesDelRecorridoFinal,
 			Lista<Viaje*> *viajesPosibles, bool *combinacionEncontrada);
 
@@ -62,19 +65,19 @@ public:
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas y el administrador de recorridos.
 	 * post: busca estaciones cercanas chequeando cada recorrido del administrador de recorridos.
 	 */
-	void buscarEstacionesCercanas(Lista<Estacion*>* &estacionesCercanasInicio,
-			Lista<Estacion*>* &estacionesCercanasDestino,
-			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
-			AdministradorDeRecorridos &administradorDeRecorridos);
+	void buscarEstacionesCercanas(Lista<Estacion*> *estacionesCercanasInicio,
+			Lista<Estacion*> *estacionesCercanasDestino,
+			Coordenadas *coordenadaInicial, Coordenadas *coordenadaFinal,
+			AdministradorDeRecorridos *administradorDeRecorridos);
 
 	/*
 	 * pre: recibe las estaciones cercanas al inicio y al destino, las coordenadas inicial y final,
 	 * y una lista con todas las estaciones del recorrido.
 	 * post: busca estaciones cercanas y las agrega a estaciones del recorrido.
 	 */
-	void buscarEstacionesCercanas(Lista<Estacion*>* estacionesCercanasInicio,
-			Lista<Estacion*>* estacionesCercanasDestino,
-			Coordenadas coordenadaInicial, Coordenadas coordenadaFinal,
+	void buscarEstacionesCercanas(Lista<Estacion*> *estacionesCercanasInicio,
+			Lista<Estacion*> *estacionesCercanasDestino,
+			Coordenadas *coordenadaInicial, Coordenadas *coordenadaFinal,
 			Lista<Estacion*> *estacionesDelRecorrido);
 
 	/*
@@ -82,10 +85,10 @@ public:
 	 * y una lista de viajes posibles vacia.
 	 * post: busca si hay viajes directos entre las dos coordenadas, y si hay las agrega a la lista de viajes posibles.
 	 */
-	void buscarViajesDirectosPosibles(Coordenadas coordenadaInicial,
-			Coordenadas coordenadaFinal,
-			Lista<Estacion*>* estacionesCercanasInicio,
-			Lista<Estacion*>* estacionesCercanasDestino,
+	void buscarViajesDirectosPosibles(Coordenadas *coordenadaInicial,
+			Coordenadas *coordenadaFinal,
+			Lista<Estacion*> *estacionesCercanasInicio,
+			Lista<Estacion*> *estacionesCercanasDestino,
 			Lista<Viaje*> *viajesPosibles);
 
 };

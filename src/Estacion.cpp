@@ -23,9 +23,7 @@ Estacion::Estacion(const Estacion &otraParada) {
 	this->direccion = otraParada.direccion;
 
 }
-Estacion::Estacion() {
 
-}
 Coordenadas Estacion::obtenerCoordenadas() {
 	return this->coordenadas;
 }
@@ -54,5 +52,9 @@ string Estacion::imprimirTipoDeTransporte() {
 		tipoDeTransporte = "Garage";
 	}
 	return tipoDeTransporte;
+}
+
+Estacion::~Estacion() {
+
 }
 

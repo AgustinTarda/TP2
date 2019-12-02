@@ -9,8 +9,8 @@
 using namespace std;
 
 void Interfaz::mostrarMensajeDeBienvenida() {
-	cout << "Bienvenidos a AlgoMaps, su buscador de viajes favorito !"
-			<< endl << endl;
+	cout << "Bienvenidos a AlgoMaps, su buscador de viajes favorito !" << endl
+			<< endl;
 }
 
 Coordenadas Interfaz::pedirCoordenadasDeInicio() {
@@ -54,9 +54,8 @@ void Interfaz::imprimirRecorridos(Lista<Recorrido*> *recorridos) {
 	recorridos->iniciarCursor();
 	while (recorridos->avanzarCursor()) {
 		Recorrido *recorridoAImprimir = recorridos->obtenerCursor();
-		cout << "Recorrido: " << recorridoAImprimir->obtenerLinea()
-				<< " --- " << recorridoAImprimir->obtenerTipoDeTransporte()
-				<< " --- "
+		cout << "Recorrido: " << recorridoAImprimir->obtenerLinea() << " --- "
+				<< recorridoAImprimir->obtenerTipoDeTransporte() << " --- "
 				<< recorridoAImprimir->obtenerEstaciones()->contarElementos()
 				<< endl;
 		imprimirEstaciones(recorridoAImprimir->obtenerEstaciones());
@@ -76,8 +75,8 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 	}
 }
 
-void Interfaz::imprimirViajes(Coordenadas coordenadasDeInicio,
-		Coordenadas coordenadasDeDestino,
+void Interfaz::imprimirViajes(Coordenadas *coordenadasDeInicio,
+		Coordenadas *coordenadasDeDestino,
 		AdministradorDeRecorridos *administradorDeRecorridos,
 		Lista<Viaje*> *viajes) {
 	DibujadorDeMapa mapa;
@@ -96,9 +95,9 @@ void Interfaz::imprimirViajes(Coordenadas coordenadasDeInicio,
 			imprimirViajeConCombinacionSimple(*viajeAImprimir);
 
 			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			/*this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
+			this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
 					coordenadasDeDestino, *viajeAImprimir,
-					administradorDeRecorridos);*/
+					administradorDeRecorridos);
 
 		}
 
@@ -119,8 +118,8 @@ void Interfaz::imprimirViajes(Lista<Viaje*> *viajes) {
 
 	}
 }
-void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
-		Coordenadas coordenadasFinal, Viaje viaje,
+void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas *coordenadasInicial,
+		Coordenadas *coordenadasFinal, Viaje viaje,
 		AdministradorDeRecorridos *administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
@@ -133,41 +132,43 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas coordenadasInicial,
 	estaciones->iniciarCursor();
 
 	while (estaciones->avanzarCursor()) {
-		Estacion *estacionLeida(estaciones->obtenerCursor());
+		Estacion *estacionLeida = estaciones->obtenerCursor();
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
 				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
 				0, 0);
 	}
-	Estacion* estacionInicial(viaje.obtenerEstacionInicial());
+	Estacion *estacionFinal= viaje.obtenerEstacionDestino();
+		mapa.dibujarPunto(
+				mapa.convertidorDeCoordenadasAPixelsLongitud(
+						estacionFinal->obtenerCoordenadas()),
+				mapa.convertidorDeCoordenadasAPixelsLatitud(
+						estacionFinal->obtenerCoordenadas()), 5, 0, 255, 0);
+
+
+	Estacion *estacionInicial = viaje.obtenerEstacionInicial();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionInicial->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
 					estacionInicial->obtenerCoordenadas()), 5, 255, 0, 255);
-	Estacion* estacionFinal(viaje.obtenerEstacionDestino());
-	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(
-					estacionFinal->obtenerCoordenadas()),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionFinal->obtenerCoordenadas()), 5, 255, 0, 0);
 
 	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 5,
+			mapa.convertidorDeCoordenadasAPixelsLongitud(*coordenadasInicial),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(*coordenadasInicial), 5,
 			0, 255, 255);
 
 	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 5, 0,
-			0, 128);
+			mapa.convertidorDeCoordenadasAPixelsLongitud(*coordenadasFinal),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(*coordenadasFinal), 5,
+			0, 0, 128);
 	BMP *mapaActual = mapa.obtenerMapa();
 	mapaActual->WriteToFile("viajeDirecto.bmp");
 }
 
-void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
-		Coordenadas coordenadasFinal, Viaje viaje,
+void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas *coordenadasInicial,
+		Coordenadas *coordenadasFinal, Viaje viaje,
 		AdministradorDeRecorridos *administradorDeRecorridos) {
 	DibujadorDeMapa mapa;
 
@@ -180,7 +181,7 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 
 	estacionesPrimerTramo->iniciarCursor();
 	while (estacionesPrimerTramo->avanzarCursor()) {
-		Estacion *estacionLeida(estacionesPrimerTramo->obtenerCursor());
+		Estacion *estacionLeida=estacionesPrimerTramo->obtenerCursor();
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
@@ -197,34 +198,35 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 	estacionesSegundoTramo->iniciarCursor();
 
 	while (estacionesSegundoTramo->avanzarCursor()) {
-		Estacion *estacionLeida(estacionesSegundoTramo->obtenerCursor());
+		Estacion *estacionLeida=estacionesSegundoTramo->obtenerCursor();
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 128,
 				0, 0);
 	}
-	Estacion* estacionInicial(viaje.obtenerEstacionInicial());
+
+	Estacion *estacionFinal=viaje.obtenerEstacionDestino();
+	mapa.dibujarPunto(
+			mapa.convertidorDeCoordenadasAPixelsLongitud(
+					estacionFinal->obtenerCoordenadas()),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(
+					estacionFinal->obtenerCoordenadas()), 5, 0, 255, 0);
+	Estacion *estacionInicial= viaje.obtenerEstacionInicial();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionInicial->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
 					estacionInicial->obtenerCoordenadas()), 5, 255, 0, 255);
-	Estacion* estacionFinal(viaje.obtenerEstacionDestino());
-	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(
-					estacionFinal->obtenerCoordenadas()),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionFinal->obtenerCoordenadas()), 5, 255, 0, 0);
 
 
-	Estacion* estacionSubida(viaje.obtenerEstacionSubidaDeCombinacion());
+	Estacion *estacionSubida=viaje.obtenerEstacionSubidaDeCombinacion();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionSubida->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
-					estacionSubida->obtenerCoordenadas()), 4, 128, 0, 128);
-	Estacion* estacionBajada(viaje.obtenerEstacionBajadaDeCombinacion());
+					estacionSubida->obtenerCoordenadas()), 4, 0, 0, 255);
+	Estacion *estacionBajada=viaje.obtenerEstacionBajadaDeCombinacion();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionBajada->obtenerCoordenadas()),
@@ -232,21 +234,21 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas coordenadasInicial,
 					estacionBajada->obtenerCoordenadas()), 4, 0, 128, 128);
 
 	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasInicial),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasInicial), 5,
+			mapa.convertidorDeCoordenadasAPixelsLongitud(*coordenadasInicial),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(*coordenadasInicial), 5,
 			0, 255, 255);
 
 	mapa.dibujarPunto(
-			mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadasFinal),
-			mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadasFinal), 5, 0,
-			0, 128);
+			mapa.convertidorDeCoordenadasAPixelsLongitud(*coordenadasFinal),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(*coordenadasFinal), 5,
+			0, 0, 128);
 	BMP *mapaActual = mapa.obtenerMapa();
 	mapaActual->WriteToFile("viajeCombinacion.bmp");
 }
 
 void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
-	Estacion* estacionInicio = viajeDirecto.obtenerEstacionInicial();
-	Estacion* estacionDestino = viajeDirecto.obtenerEstacionDestino();
+	Estacion *estacionInicio = viajeDirecto.obtenerEstacionInicial();
+	Estacion *estacionDestino = viajeDirecto.obtenerEstacionDestino();
 
 	cout << "Viaje directo: ---------------------------- " << endl
 			<< "Camine y subase en la estacion de "
@@ -259,13 +261,13 @@ void Interfaz::imprimirViajeDirecto(Viaje viajeDirecto) {
 void Interfaz::imprimirViajeConCombinacionSimple(
 		Viaje viajeConCombinacionSimple) {
 
-	Estacion* estacionInicio =
+	Estacion *estacionInicio =
 			viajeConCombinacionSimple.obtenerEstacionInicial();
-	Estacion* estacionSubida =
+	Estacion *estacionSubida =
 			viajeConCombinacionSimple.obtenerEstacionSubidaDeCombinacion();
-	Estacion* estacionBajada =
+	Estacion *estacionBajada =
 			viajeConCombinacionSimple.obtenerEstacionBajadaDeCombinacion();
-	Estacion* estacionDestino =
+	Estacion *estacionDestino =
 			viajeConCombinacionSimple.obtenerEstacionDestino();
 
 	cout << "Viaje combinado: ---------------------------- " << endl
@@ -286,7 +288,6 @@ void Interfaz::imprimirViajeConCombinacionSimple(
 }
 void Interfaz::noSeEncontroViajesPosibles() {
 
-	cout << "No se encontro ningun viaje. Lo sentimos prube de nuevo"
-			<< endl;
+	cout << "No se encontro ningun viaje. Lo sentimos prube de nuevo" << endl;
 }
 

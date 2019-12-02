@@ -1,10 +1,6 @@
 #include "Recorrido.h"
 using namespace std;
 
-Recorrido::Recorrido() {
-	this->estaciones = new Lista<Estacion*>;
-}
-
 Recorrido::Recorrido(string linea,
 		Estacion::TipoDeTransporte tipoDeTransporte) {
 	this->linea = linea;
@@ -30,16 +26,14 @@ Estacion::TipoDeTransporte Recorrido::obtenerTipoDeTransporte() {
 
 }
 
-bool Recorrido::debeContener(Estacion* estacion) {
+bool Recorrido::debeContener(Estacion *estacion) {
 	return (this->linea == estacion->obtenerLinea())
 			&& (this->tipoDeTransporte == estacion->obtenerTipoDeTransporte());
 }
 
-void Recorrido::agregarEstacion(Estacion* estacion) {
-	Estacion* nuevaEstacion = new Estacion(estacion->obtenerCoordenadas(),
-			estacion->obtenerLinea(), estacion->obtenerTipoDeTransporte(),
-			estacion->obtenerDireccion());
-	this->estaciones->agregar(nuevaEstacion);
+void Recorrido::agregarEstacion(Estacion *estacion) {
+
+	this->estaciones->agregar(estacion);
 }
 Recorrido::~Recorrido() {
 

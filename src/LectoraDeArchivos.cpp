@@ -4,7 +4,7 @@ using namespace std;
 
 void LectoraDeArchivos::leerEstacionesDeMetrobus(
 		string archivosDeEstacionesDeMetrobus,
-		AdministradorDeRecorridos* administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	ifstream entrada;
@@ -53,8 +53,9 @@ Estacion* LectoraDeArchivos::leerEstacionDeMetrobus(ifstream &entrada) {
 	getline(entrada, nombreSentido, ',');
 	getline(entrada, observacion);
 
-	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
-	Estacion* paradaDeMetrobus = new Estacion(coordenadasDeLaParada, metrobus,
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
+			atof(longitud.c_str()));
+	Estacion *paradaDeMetrobus = new Estacion(coordenadasDeLaParada, metrobus,
 			Estacion::METROBUS, calle1);
 
 	return paradaDeMetrobus;
@@ -63,7 +64,7 @@ Estacion* LectoraDeArchivos::leerEstacionDeMetrobus(ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeFerrocarril(
 		string archivosDeEstacionesDeFerrocarril,
-		AdministradorDeRecorridos* administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	ifstream entrada;
@@ -110,16 +111,19 @@ Estacion* LectoraDeArchivos::leerEstacionDeFerrocarril(ifstream &entrada) {
 	getline(entrada, comuna, ',');
 	getline(entrada, localidad, ',');
 	getline(entrada, partido);
-	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
-	Estacion* estacionFerrocarril = new Estacion(coordenadasDeLaParada, linea,
+
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
+			atof(longitud.c_str()));
+	Estacion *estacionFerrocarril = new Estacion(coordenadasDeLaParada, linea,
 			Estacion::FERROCARRIL, nombre);
+
 	return estacionFerrocarril;
 
 }
 
 void LectoraDeArchivos::leerEstacionesDeColectivo(
 		string archivosDeEstacionesDeColectivo,
-		AdministradorDeRecorridos* administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	ifstream entrada;
@@ -167,16 +171,18 @@ Estacion* LectoraDeArchivos::leerEstacionDeColectivo(ifstream &entrada) {
 	getline(entrada, rutaNombreLargo, ',');
 	getline(entrada, rutaDesc, ',');
 	getline(entrada, tipoRuta);
-	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
-	Estacion* estacionColectivo = new Estacion(coordenadasDeLaParada, rutaNombreCorto,
-			Estacion::COLECTIVO, nombre);
+
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
+			atof(longitud.c_str()));
+	Estacion *estacionColectivo = new Estacion(coordenadasDeLaParada,
+			rutaNombreCorto, Estacion::COLECTIVO, nombre);
 
 	return estacionColectivo;
 
 }
 
 void LectoraDeArchivos::leerGarajes(string archivosDeGarajes,
-		AdministradorDeRecorridos* administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	ifstream entrada;
@@ -230,11 +236,12 @@ Estacion* LectoraDeArchivos::leerGarage(ifstream &entrada) {
 	getline(entrada, observacion, ',');
 	getline(entrada, objeto, ',');
 	getline(entrada, dominioSalida, ',');
-
 	getline(entrada, codigoPostalArgentino);
-	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
-	Estacion* garage = new Estacion(coordenadasDeLaParada, "Estacionamiento", Estacion::GARAGE,
-			nombreDeLaCalle);
+
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
+			atof(longitud.c_str()));
+	Estacion *garage = new Estacion(coordenadasDeLaParada, "Estacionamiento",
+			Estacion::GARAGE, nombreDeLaCalle);
 
 	return garage;
 
@@ -242,7 +249,7 @@ Estacion* LectoraDeArchivos::leerGarage(ifstream &entrada) {
 
 void LectoraDeArchivos::leerEstacionesDeSubte(
 		string archivosDeEstacionesDeSubte,
-		AdministradorDeRecorridos* administradorDeRecorridos) {
+		AdministradorDeRecorridos *administradorDeRecorridos) {
 
 	/* crea el archivo y abre la ruta especificada */
 	ifstream entrada;
@@ -313,9 +320,10 @@ Estacion* LectoraDeArchivos::leerEstacionDeSubte(ifstream &entrada) {
 	getline(entrada, dominioSalida, ',');
 	getline(entrada, dominioOrigen);
 
-	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()), atof(longitud.c_str()));
-	Estacion* estacionDeSubte = new Estacion(coordenadasDeLaParada, linea, Estacion::SUBTE,
-			calle);
+	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
+			atof(longitud.c_str()));
+	Estacion *estacionDeSubte = new Estacion(coordenadasDeLaParada, linea,
+			Estacion::SUBTE, calle);
 
 	return estacionDeSubte;
 }
