@@ -17,13 +17,13 @@ public:
 private:
 
 	unsigned int distanciaTotalACaminar;
-	Estacion estacionInicio;
-	Estacion estacionDestino;
-	Estacion estacionBajadaDeCombinacion;
-	Estacion estacionSubidaDeCombinacion;
+	Estacion *estacionInicio;
+	Estacion *estacionDestino;
+	Estacion *estacionBajadaDeCombinacion;
+	Estacion *estacionSubidaDeCombinacion;
 	TipoDeViaje tipoDeViaje;
-	Coordenadas coordenadasIniciales;
-	Coordenadas coordenadasDestino;
+	Coordenadas *coordenadasIniciales;
+	Coordenadas *coordenadasDestino;
 
 public:
 
@@ -36,16 +36,16 @@ public:
 	 * pre: el viaje es directo.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
-			Estacion EstacionDestino);
+	Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
+			Estacion *EstacionDestino);
 
 	/*
 	 * pre: el viaje es con combinacion simple.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(unsigned int distanciaTotalACaminar, Estacion estacionInicio,
-			Estacion EstacionDestino, Estacion estacionBajadaDeCombinacion,
-			Estacion estacionSubidaDeCombinacion);
+	Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
+			Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
+			Estacion *estacionSubidaDeCombinacion);
 
 	/*
 	 * pre: recibe una instancia de viaje no vacia.
@@ -56,22 +56,22 @@ public:
 	/*
 	 * post: devuelve la estacion inicial de la instancia.
 	 */
-	Estacion obtenerEstacionInicial();
+	Estacion* obtenerEstacionInicial();
 
 	/*
 	 * post: devuelve la estacion de destino de la instancia.
 	 */
-	Estacion obtenerEstacionDestino();
+	Estacion* obtenerEstacionDestino();
 
 	/*
 	 * post: devuelve la estacion de bajada de combinacion de la instancia.
 	 */
-	Estacion obtenerEstacionBajadaDeCombinacion();
+	Estacion* obtenerEstacionBajadaDeCombinacion();
 
 	/*
 	 * post: devuelve la estacion de subida de combinacion de la instancia.
 	 */
-	Estacion obtenerEstacionSubidaDeCombinacion();
+	Estacion* obtenerEstacionSubidaDeCombinacion();
 
 	/*
 	 * post: devuelve true si el viaje es directo.
@@ -88,30 +88,30 @@ public:
 	/*
 	 * post: agrega coordenadas de inicio al viaje
 	 */
-	void agregarCoordenadasInicio(Coordenadas coordenadaInicial);
+	void agregarCoordenadasInicio(Coordenadas *coordenadaInicial);
 
 	/*
 	 * post: agrega coordenadas de destino al viaje
 	 */
 
-	void agregarCoordenadasDestino(Coordenadas coordenadaFinal);
+	void agregarCoordenadasDestino(Coordenadas *coordenadaFinal);
 
 	/*
 	 * post: agrega la primera estacion de subida al viaje
 	 */
 
-	void agregarEstacionCercanaAInicio(Estacion estacionCercanaAInicio);
+	void agregarEstacionCercanaAInicio(Estacion *estacionCercanaAInicio);
 	/*
 	 * post: agrega la  estacion de bajada del primer trayecto al viaje
 	 */
 
 	void agregarEstacionBajadaDeCombinacion(
-			Estacion estacionBajadaDeCombinacion);
+			Estacion *estacionBajadaDeCombinacion);
 
 	/*
 	 * post: agrega la  estacion de bajada en destino al viaje
 	 */
-	void agregarEstacionCercanaADestino(Estacion estacionCercanaADestino);
+	void agregarEstacionCercanaADestino(Estacion *estacionCercanaADestino);
 
 	/*
 	 * post: le agrega un tipo de viaje(combinado o directo) al viaje
@@ -123,12 +123,29 @@ public:
 	 */
 
 	void agregarEstacionSubidaDeCombinacion(
-			Estacion estacionSubidaDeCombinacion);
+			Estacion *estacionSubidaDeCombinacion);
 
 	/*
 	 * post: devuelve la distancia total que hay que caminar en el viaje
 	 */
 	double calcularDistaciaTotalACaminar();
+
+	/*
+	 * pre: el viaje debe ser combinado
+	 * post: devuelve la distancia total que hay que caminar en el viaje
+	 */
+	double calcularDistanciaViajeCombinado();
+
+	/*
+	 * pre: el viaje debe ser directo
+	 * post: devuelve la distancia total que hay que caminar en el viaje
+	 */
+	double calcularDistanciaViajeDirecto();
+
+	/*
+	 * post: elimina el viaje
+	 */
+	~Viaje();
 };
 
 #endif /* SRC_VIAJE_H_ */

@@ -20,8 +20,8 @@ class AlgoMaps {
 private:
 
 	AdministradorDeRecorridos *administradorDeRecorridos;
-	BuscadorDeViaje buscadorDeViajes;
-	Interfaz interfazDeUsuario;
+	BuscadorDeViaje* buscadorDeViajes;
+	Interfaz* interfazDeUsuario;
 
 public:
 	/*
@@ -36,7 +36,8 @@ public:
 	/*
 	 * pos: filtra el viaje directo y el viaje combinado que tengan menor distancia a pie
 	 */
-	Lista<Viaje*>* filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar);
+	void filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar,
+			Lista<Viaje*> *mejoresViajes);
 
 	/*
 	 * pos: devuelve el viaje que pertenezca a viajes y sea de tipo de viaje tipoDeViaje que

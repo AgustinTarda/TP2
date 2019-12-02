@@ -21,16 +21,16 @@ public:
 	AdministradorDeRecorridos(
 			const AdministradorDeRecorridos &otroAdministradorDeRecorridos);
 	/*
-	* PRE: La instancia recibida debe ser una Estacion no vacia
-	* POST: agrega la estacion a su recorrido
-	*/
-	void agregarEstacion(Estacion estacion);
+	 * PRE: La instancia recibida debe ser una Estacion no vacia
+	 * POST: agrega la estacion a su recorrido
+	 */
+	void agregarEstacion(Estacion *estacionAAgregar);
 
 	/*
 	 * PRE: recibe una Estacion que tiene una lista una linea asociada
 	 * POST: devuelve una lista de las estaciones de esa linea o recorrido
 	 */
-	Recorrido* obtenerRecorridoAlQuePertenece(Estacion estacion);
+	Recorrido* obtenerRecorridoAlQuePertenece(Estacion *estacion);
 
 	/*
 	 * POST: devuelve una lista de todos los recorridos de las lineas
@@ -41,7 +41,7 @@ public:
 	 * PRE: recibe una estacion con una linea asociado
 	 * POST: crea una instancia de recorrido de la linea asociada a la estacion
 	 */
-	void crearRecorridoPara(Estacion estacion);
+	void crearRecorridoPara(Estacion *estacion);
 
 	/*
 	 * POST: destruye el administrador de recorridos

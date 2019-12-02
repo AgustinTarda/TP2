@@ -6,31 +6,34 @@
  */
 //
 #include "AlgoMaps.h"
+using namespace std;
 
 AlgoMaps::AlgoMaps() {
 
 	this->administradorDeRecorridos = new AdministradorDeRecorridos;
+	this->interfazDeUsuario = new Interfaz;
+	this->buscadorDeViajes = new BuscadorDeViaje;
 
 	LectoraDeArchivos lectora;
 
-	std::string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
+	string archivoDeMetrobus = "datos/estaciones-de-metrobus.csv";
 	lectora.leerEstacionesDeMetrobus(archivoDeMetrobus,
 			this->administradorDeRecorridos);
 
-	std::string archivoDeFerrocarril = "datos/estaciones-de-ferrocarril.csv";
+	string archivoDeFerrocarril = "datos/estaciones-de-ferrocarril.csv";
 	lectora.leerEstacionesDeFerrocarril(archivoDeFerrocarril,
 			this->administradorDeRecorridos);
 
-	std::string archivoColectivos = "datos/paradas-de-colectivo.csv";
+	string archivoColectivos = "datos/paradas-de-colectivo.csv";
 	lectora.leerEstacionesDeColectivo(archivoColectivos,
 			this->administradorDeRecorridos);
 
-	std::string archivoSubte = "datos/bocas-de"
+	string archivoSubte = "datos/bocas-de"
 			"-subte.csv";
 	lectora.leerEstacionesDeSubte(archivoSubte,
 			this->administradorDeRecorridos);
 
-	//std::string archivoGarajes = "datos/garajes-comerciales.csv";
+	//string archivoGarajes = "datos/garajes-comerciales.csv";
 	//lectora.leerGarajes(archivoGarajes, this->administradorDeRecorridos);
 
 	//interfazDeUsuario.imprimirRecorridos(
@@ -38,30 +41,30 @@ AlgoMaps::AlgoMaps() {
 }
 
 void AlgoMaps::iniciarViaje() {
-	interfazDeUsuario.mostrarMensajeDeBienvenida();
+	interfazDeUsuario->mostrarMensajeDeBienvenida();
 
-	Coordenadas coordenadasDeInicio =
-	interfazDeUsuario.pedirCoordenadasDeInicio();
-	Coordenadas coordenadasDeDestino =
-	interfazDeUsuario.pedirCoordenadasDeDestino();
+	Coordenadas *coordenadasDeInicio = new Coordenadas(
+			interfazDeUsuario->pedirCoordenadasDeInicio());
+	Coordenadas *coordenadasDeDestino = new Coordenadas(
+			interfazDeUsuario->pedirCoordenadasDeDestino());
 
 	//Coordenadas de prueba
-	/*Coordenadas coordenadasDeInicio(-34.635670, -58.453803);
-	Coordenadas coordenadasDeDestino(-34.617654, -58.369460);*/
+	//Coordenadas *coordenadasDeInicio = new Coordenadas(-34.635670, -58.453803);
+	//Coordenadas *coordenadasDeDestino = new Coordenadas(-34.617654, -58.369460);
 
 	Lista<Viaje*> *viajes = new Lista<Viaje*>;
-	buscadorDeViajes.buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
-			*(this->administradorDeRecorridos), viajes);
+	Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
+
+	buscadorDeViajes->buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
+			this->administradorDeRecorridos, viajes);
 	if (!viajes->estaVacia()) {
 
-		Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
-		mejoresViajes = filtrarMejoresViajes(viajes);
-
-		interfazDeUsuario.imprimirViajes(coordenadasDeInicio,
+		filtrarMejoresViajes(viajes, mejoresViajes);
+		interfazDeUsuario->imprimirViajes(coordenadasDeInicio,
 				coordenadasDeDestino, this->administradorDeRecorridos,
 				mejoresViajes);
 	} else {
-		interfazDeUsuario.noSeEncontroViajesPosibles();
+		interfazDeUsuario->noSeEncontroViajesPosibles();
 	}
 
 	while (!viajes->estaVacia()) {
@@ -70,16 +73,18 @@ void AlgoMaps::iniciarViaje() {
 		viajes->remover(1);
 	}
 	delete viajes;
+	delete mejoresViajes;
+	delete coordenadasDeDestino;
+	delete coordenadasDeInicio;
 
 }
-Lista<Viaje*>* AlgoMaps::filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar) {
+void AlgoMaps::filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar,
+		Lista<Viaje*> *mejoresViajes) {
 
 	Viaje *mejorViajeDirecto = calcularMejorViajeDe(Viaje::DIRECTO,
 			viajesARevisar);
 	Viaje *mejorViajeConCombinacion = calcularMejorViajeDe(
 			Viaje::COMBINACION_SIMPLE, viajesARevisar);
-
-	Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
 
 	if (mejorViajeDirecto != NULL) {
 		mejoresViajes->agregar(mejorViajeDirecto);
@@ -89,8 +94,6 @@ Lista<Viaje*>* AlgoMaps::filtrarMejoresViajes(Lista<Viaje*> *viajesARevisar) {
 		mejoresViajes->agregar(mejorViajeConCombinacion);
 	}
 
-	return mejoresViajes;
-
 }
 
 Viaje* AlgoMaps::calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
@@ -98,7 +101,7 @@ Viaje* AlgoMaps::calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
 
 	bool seEncontroPrimerViaje = false;
 	double minimaDistanciaViaje;
-	Viaje *mejorViaje;
+	Viaje *mejorViaje = NULL;
 	Viaje *viajeAAnalizar;
 
 	viajes->iniciarCursor();
@@ -125,4 +128,6 @@ Viaje* AlgoMaps::calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
 AlgoMaps::~AlgoMaps() {
 
 	delete this->administradorDeRecorridos;
+	delete this->interfazDeUsuario;
+	delete this->buscadorDeViajes;
 }
