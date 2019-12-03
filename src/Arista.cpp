@@ -5,24 +5,27 @@
  *      Author: rochi
  */
 
-
 #include "Arista.h"
 
-Arista::Arista(Vertice* origen, Vertice* destino, int peso){
+Arista::Arista(Vertice *origen, Vertice *destino, int peso) {
 	this->origen = origen;
 	this->destino = destino;
 	this->peso = peso;
 }
 
-Vertice* Arista::obtenerOrigen(){
+Vertice* Arista::obtenerOrigen() {
 	return this->origen;
 }
 
-Vertice* Arista::obtenerDestino(){
+Vertice* Arista::obtenerDestino() {
 	return this->destino;
 }
 
-int Arista::obtenerPeso(){
+int Arista::obtenerPeso() {
 	return this->peso;
+}
+
+bool Arista::elDestinoEs(Vertice *vertice) {
+	return (this->destino = vertice);
 }
 
