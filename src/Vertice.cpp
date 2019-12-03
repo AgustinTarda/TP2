@@ -7,37 +7,69 @@
 #include "Vertice.h"
 
 /*Vertice::Vertice(Estacion* elemento, Lista<Arista*>* aristas) {
-	this->dato = elemento;
-	if (aristas != NULL) {
-		this->aristasSalientes = new Lista<Arista*>;
-		Arista* aristaActual;
-		aristas->iniciarCursor();
-		while (aristas->avanzarCursor()) {
-			aristaActual = aristas->obtenerCursor();
-			if ((aristaActual->obtenerOrigen())->obtenerDato() == this->dato) {
-				this->aristasSalientes->agregar(aristaActual);
-			}
-		}
-	}
-}*/
-Vertice::Vertice(Estacion* estacion){
+ this->dato = elemento;
+ if (aristas != NULL) {
+ this->aristasSalientes = new Lista<Arista*>;
+ Arista* aristaActual;
+ aristas->iniciarCursor();
+ while (aristas->avanzarCursor()) {
+ aristaActual = aristas->obtenerCursor();
+ if ((aristaActual->obtenerOrigen())->obtenerDato() == this->dato) {
+ this->aristasSalientes->agregar(aristaActual);
+ }
+ }
+ }
+ }*/
+Vertice::Vertice(Estacion *estacion) {
 	this->dato = estacion;
-	this->aristasSalientes = new Lista<Arista*>;
+	this->aristas = new Lista<Arista*>;
+	this->visitado = false;
 
 }
 
-void Vertice::agregarAdyacencia(Arista* aristaAgregada) {
-	this->aristasSalientes->agregar(aristaAgregada);
+void Vertice::agregarAdyacencia(Arista *aristaAgregada) {
+	this->aristas->agregar(aristaAgregada);
 }
 
 Estacion* Vertice::obtenerDato() {
 	return dato;
 }
-void Vertice::agregarDato(Estacion* estacion){
-	this-> dato = estacion;
+void Vertice::agregarDato(Estacion *estacion) {
+	this->dato = estacion;
+}
+
+bool Vertice::tieneCaminoCon(Vertice *vertice) {
+	bool tieneCamino = false;
+
+	this->aristas->iniciarCursor();
+	while (this->aristas->avanzarCursor() && !tieneCamino) {
+		Arista *aristaAAnalizar = aristas->obtenerCursor();
+		tieneCamino = aristaAAnalizar->elDestinoEs(vertice);
+	}
+
+	return tieneCamino;
+}
+
+Arista* Vertice::obtenerAristaQueConecta(Vertice *otroVertice) {
+	Arista *aristaBuscada = NULL;
+
+	this->aristas->iniciarCursor();
+	while (this->aristas->avanzarCursor() && aristaBuscada == NULL) {
+		Arista *aristaAAnalizar = aristas->obtenerCursor();
+		if (aristaAAnalizar->elDestinoEs(otroVertice)) {
+			aristaBuscada = aristaAAnalizar;
+		}
+	}
+
+	return aristaBuscada;
 }
 
 Vertice::~Vertice() {
-	delete this->aristasSalientes;
+	while (!aristas->estaVacia()) {
+		Arista *aristaAnalizada = this->aristas->obtener(1);
+		delete aristaAnalizada;
+		this->aristas->remover(1);
+	}
+	delete this->aristas;
 }
 
