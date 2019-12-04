@@ -128,6 +128,17 @@ double Viaje::calcularDistanciaViajeCombinado() {
 					(estacionSubidaDeCombinacion->obtenerCoordenadas()));
 }
 
+Coordenadas* Viaje::obtenerCoordenadaInicial() {
+	return this->coordenadasIniciales;
+}
+
+Coordenadas* Viaje::obtenerCoordenadaDestino() {
+	return this->coordenadasDestino;
+}
+
+
+
+
 Viaje::~Viaje() {
 
 }

@@ -14,7 +14,7 @@
 class Estacion {
 public:
 	enum TipoDeTransporte {
-		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE
+		SUBTE, COLECTIVO, METROBUS, FERROCARRIL, GARAGE, ORIGEN, DESTINO
 	};
 
 private:
@@ -28,8 +28,15 @@ public:
 	 * pre: recibe las coordenadas, la estacion, el tipo de transporte y la direccion.
 	 * post: crea una instancia de estacion con los datos recibidos.
 	 */
-	Estacion(Coordenadas coordenadas, std::string linea,
-			TipoDeTransporte tipoDeTransporte, std::string direccion);
+	Estacion(Coordenadas coordenadas,
+			TipoDeTransporte tipoDeTransporte,std::string linea, std::string direccion);
+
+	/*
+	 * pre: recibe las coordenadas y el tipo de transporte
+	 * post: crea una instancia de estacion con los datos recibidos.
+	 */
+	Estacion(Coordenadas* coordenadas,
+			TipoDeTransporte tipoDeTransporte);
 
 	/*
 	 * pre: recibe una instancia de estacion no vacia.

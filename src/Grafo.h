@@ -24,7 +24,13 @@ private:
 public:
 
 	Grafo();
+
 	bool estaVacio();
+	/*
+	 * pre: recibe la estacion de origen
+	 * post: la inserta en el grafo como la raiz
+	 */
+	void insertarVertice(Estacion *estacion);
 	void insertarVertice(Estacion *estacion, Vertice *verticeAnterior,
 			double peso);
 	Vertice* obtenerVerticeQueContiene(Estacion *estacion);
@@ -35,7 +41,7 @@ public:
 	void dijkstra();
 
 	/*
-	 * pos: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no
+	 * post: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no
 	 * tienen una arista que los una devuelve 10000000
 	 */
 	double obtenerPesoEntre(Vertice *verticeDeSalida,
@@ -46,7 +52,7 @@ public:
 	int tamanio();
 
 	/*
-	 * pos: elimina la instancia de Grafo
+	 * post: elimina la instancia de Grafo
 	 */
 	~Grafo();
 

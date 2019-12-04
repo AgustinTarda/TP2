@@ -143,6 +143,17 @@ public:
 	double calcularDistanciaViajeDirecto();
 
 	/*
+	 * pre: deben existir las coordenadas
+	 * post: devuelve las coordenadas iniciales del viaje
+	 */
+	Coordenadas* obtenerCoordenadaInicial();
+	/*
+	 * pre: deben existir las coordenadas
+	 * post: devuelve las coordenadas finales del viaje
+	 */
+	Coordenadas* obtenerCoordenadaDestino();
+
+	/*
 	 * post: elimina el viaje
 	 */
 	~Viaje();
