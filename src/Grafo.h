@@ -15,8 +15,6 @@
 static const int PESO_MAXIMO = 10000000;
 
 class Grafo {
-	friend class Arista;
-	friend class Vertice;
 private:
 
 	Lista<Vertice*> *vertices;
