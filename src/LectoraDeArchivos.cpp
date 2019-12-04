@@ -55,8 +55,8 @@ Estacion* LectoraDeArchivos::leerEstacionDeMetrobus(ifstream &entrada) {
 
 	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
 			atof(longitud.c_str()));
-	Estacion *paradaDeMetrobus = new Estacion(coordenadasDeLaParada, metrobus,
-			Estacion::METROBUS, calle1);
+	Estacion *paradaDeMetrobus = new Estacion(coordenadasDeLaParada,
+			Estacion::METROBUS, metrobus, calle1);
 
 	return paradaDeMetrobus;
 
@@ -114,8 +114,8 @@ Estacion* LectoraDeArchivos::leerEstacionDeFerrocarril(ifstream &entrada) {
 
 	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
 			atof(longitud.c_str()));
-	Estacion *estacionFerrocarril = new Estacion(coordenadasDeLaParada, linea,
-			Estacion::FERROCARRIL, nombre);
+	Estacion *estacionFerrocarril = new Estacion(coordenadasDeLaParada,
+			Estacion::FERROCARRIL, linea, nombre);
 
 	return estacionFerrocarril;
 
@@ -175,7 +175,7 @@ Estacion* LectoraDeArchivos::leerEstacionDeColectivo(ifstream &entrada) {
 	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
 			atof(longitud.c_str()));
 	Estacion *estacionColectivo = new Estacion(coordenadasDeLaParada,
-			rutaNombreCorto, Estacion::COLECTIVO, nombre);
+			 Estacion::COLECTIVO,rutaNombreCorto, nombre);
 
 	return estacionColectivo;
 
@@ -240,8 +240,8 @@ Estacion* LectoraDeArchivos::leerGarage(ifstream &entrada) {
 
 	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
 			atof(longitud.c_str()));
-	Estacion *garage = new Estacion(coordenadasDeLaParada, "Estacionamiento",
-			Estacion::GARAGE, nombreDeLaCalle);
+	Estacion *garage = new Estacion(coordenadasDeLaParada,
+			Estacion::GARAGE,"Estacionamiento", nombreDeLaCalle);
 
 	return garage;
 
@@ -322,8 +322,8 @@ Estacion* LectoraDeArchivos::leerEstacionDeSubte(ifstream &entrada) {
 
 	Coordenadas coordenadasDeLaParada(atof(latitud.c_str()),
 			atof(longitud.c_str()));
-	Estacion *estacionDeSubte = new Estacion(coordenadasDeLaParada, linea,
-			Estacion::SUBTE, calle);
+	Estacion *estacionDeSubte = new Estacion(coordenadasDeLaParada,
+			Estacion::SUBTE,linea, calle);
 
 	return estacionDeSubte;
 }

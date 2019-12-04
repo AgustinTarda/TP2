@@ -24,25 +24,31 @@ private:
 public:
 
 	Grafo();
+
 	bool estaVacio();
+	/*
+	 * pre: recibe la estacion de origen
+	 * post: la inserta en el grafo como la raiz
+	 */
+	void insertarVertice(Estacion *estacion);
 	void insertarVertice(Estacion *estacion, Vertice *verticeAnterior,
 			double peso);
 	Vertice* obtenerVerticeQueContiene(Estacion *estacion);
 
 	/*
-	 * pos: aplica el algoritmo de dijkstra para encontrar el mejor camino;
+	 * post: aplica el algoritmo de dijkstra para encontrar el mejor camino;
 	 */
 	void dijkstra();
 
 	/*
-	 * pos: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no
+	 * post: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no
 	 * tienen una arista que los una devuelve 10000000
 	 */
 	double obtenerPesoEntre(Vertice *verticeDeSalida,
 			Vertice *verticeDeLlegada);
 
 	/*
-	 * pos: elimina la instancia de Grafo
+	 * post: elimina la instancia de Grafo
 	 */
 	~Grafo();
 

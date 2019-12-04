@@ -234,4 +234,94 @@ void BuscadorDeViaje::buscarViajesDirectosPosibles(
 		}
 	}
 }
+void BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
+
+	Grafo* grafo = new Grafo;
+	Viaje* viaje = viajes->obtener(1);
+
+	Estacion* origen = new Estacion(viaje->obtenerCoordenadaInicial(),
+			Estacion::ORIGEN);
+	Estacion* destino = new Estacion(viaje->obtenerCoordenadaDestino(),
+			Estacion::DESTINO);
+	Coordenadas* coordenadasOrigen = viaje->obtenerCoordenadaInicial();
+
+	grafo->insertarVertice(origen);
+
+	viajes->iniciarCursor();
+	while (viajes->avanzarCursor()) {
+		Viaje* viajeActual = viajes->obtenerCursor();
+
+		Estacion* estacionInicial = viajeActual->obtenerEstacionInicial();
+		Estacion* estacionFinal = viajeActual->obtenerEstacionDestino();
+
+		grafo->insertarVertice(estacionInicial,
+				grafo->obtenerVerticeQueContiene(origen),
+				coordenadasOrigen->calcularDistancia(
+						estacionInicial->obtenerCoordenadas()));
+
+		if (viaje->obtenerTipoDeViaje() == Viaje::DIRECTO) {
+			agregarViajeDirectoAGrafo(grafo, estacionFinal, estacionInicial,
+					origen, destino);
+
+		} else {
+			agregarViajeCombinadoAGrafo(viajeActual, grafo, estacionFinal,
+					estacionInicial, origen, destino);
+		}
+	}
+}
+
+void BuscadorDeViaje::agregarViajeDirectoAGrafo(Grafo* grafo,
+		Estacion* estacionFinal, Estacion* estacionInicial, Estacion* origen,
+		Estacion* destino) {
+	Coordenadas coordenadasEstacionInicial =
+			estacionInicial->obtenerCoordenadas();
+	Coordenadas coordenadasEstacionFinal = estacionFinal->obtenerCoordenadas();
+
+	grafo->insertarVertice(estacionFinal,
+			grafo->obtenerVerticeQueContiene(estacionInicial),
+			coordenadasEstacionInicial.calcularDistancia(
+					coordenadasEstacionFinal));
+	grafo->insertarVertice(destino,
+			grafo->obtenerVerticeQueContiene(estacionFinal),
+			coordenadasEstacionFinal.calcularDistancia(
+					destino->obtenerCoordenadas()));
+
+}
+
+void BuscadorDeViaje::agregarViajeCombinadoAGrafo(Viaje* viajeActual,
+		Grafo* grafo, Estacion* estacionFinal, Estacion* estacionInicial,
+		Estacion* origen, Estacion* destino) {
+
+	Estacion* CombinacionBajada =
+			viajeActual->obtenerEstacionBajadaDeCombinacion();
+	Estacion* CombinacionSubida =
+			viajeActual->obtenerEstacionSubidaDeCombinacion();
+	Coordenadas coordenadasCombinacionBajada =
+			CombinacionBajada->obtenerCoordenadas();
+	Coordenadas coordenadasCombinacionSubida =
+			CombinacionSubida->obtenerCoordenadas();
+	Coordenadas coordenadasEstacionInicial =
+			estacionInicial->obtenerCoordenadas();
+	Coordenadas coordenadasEstacionFinal = estacionFinal->obtenerCoordenadas();
+
+	grafo->insertarVertice(CombinacionBajada,
+			grafo->obtenerVerticeQueContiene(estacionInicial),
+			coordenadasEstacionInicial.calcularDistancia(
+					coordenadasCombinacionBajada));
+
+	grafo->insertarVertice(CombinacionSubida,
+			grafo->obtenerVerticeQueContiene(CombinacionBajada),
+			coordenadasCombinacionBajada.calcularDistancia(
+					coordenadasCombinacionSubida));
+
+	grafo->insertarVertice(estacionFinal,
+			grafo->obtenerVerticeQueContiene(CombinacionSubida),
+			coordenadasCombinacionSubida.calcularDistancia(
+					coordenadasEstacionFinal));
+
+	grafo->insertarVertice(destino,
+			grafo->obtenerVerticeQueContiene(estacionFinal),
+			coordenadasEstacionFinal.calcularDistancia(
+					destino->obtenerCoordenadas()));
+}
 

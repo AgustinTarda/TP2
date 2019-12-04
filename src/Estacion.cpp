@@ -8,14 +8,19 @@
 #include "Estacion.h"
 using namespace std;
 
-Estacion::Estacion(Coordenadas coordenadas, string linea,
-		TipoDeTransporte tipoDeTransporte, string direccionDeParada) {
+Estacion::Estacion(Coordenadas coordenadas,
+		TipoDeTransporte tipoDeTransporte, string linea, string direccionDeParada) {
 	this->coordenadas = coordenadas;
 	this->linea = linea;
 	this->tipoDeTransporte = tipoDeTransporte;
 	this->direccion = direccionDeParada;
 
 }
+Estacion::Estacion(Coordenadas* coordenadas, TipoDeTransporte tipoDeTransporte){
+	this->coordenadas = *coordenadas;
+	this->tipoDeTransporte = tipoDeTransporte;
+}
+
 Estacion::Estacion(const Estacion &otraParada) {
 	this->coordenadas = otraParada.coordenadas;
 	this->linea = otraParada.linea;
