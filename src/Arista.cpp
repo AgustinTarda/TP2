@@ -26,6 +26,6 @@ int Arista::obtenerPeso() {
 }
 
 bool Arista::elDestinoEs(Vertice *vertice) {
-	return (this->destino = vertice);
+	return (this->destino == vertice);
 }
 

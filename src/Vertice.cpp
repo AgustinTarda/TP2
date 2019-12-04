@@ -68,6 +68,10 @@ bool Vertice::fueVisitado() {
 	return this->visitado;
 }
 
+void Vertice::marcarVisitado(){
+	this->visitado = true;
+}
+
 Vertice::~Vertice() {
 	while (!aristas->estaVacia()) {
 		Arista *aristaAnalizada = this->aristas->obtener(1);
