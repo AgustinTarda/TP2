@@ -16,6 +16,7 @@
 #include "AdministradorDeRecorridos.h"
 #include "Recorrido.h"
 #include "Viaje.h"
+#include "Grafo.h"
 
 static const int DISTANCIA_MAXIMA_A_CAMINAR = 600;
 
@@ -91,6 +92,27 @@ public:
 			Lista<Estacion*> *estacionesCercanasDestino,
 			Lista<Viaje*> *viajesPosibles);
 
+	/*
+	 * pre: recibe una lista de viajes no vacia
+	 * post: busca el mejor viaje con grafos
+	 */
+	void mejorViajeConGrafo(Lista<Viaje*>* viajes);
+
+	/*
+	 * pre: recibe una instancia de grafo, y las estaciones de origen, destino y la inicial y final
+	 * post: inserta los vertices de las estaciones correspondientes en el grafo
+	 */
+	void agregarViajeDirectoAGrafo(Grafo* grafo,
+			Estacion* estacionFinal, Estacion* estacionInicial,
+			Estacion* origen, Estacion* destino);
+
+	/*
+	 * pre: recibe el viaje, una instancia de grafo, y las estaciones de origen, destino y la inicial y final
+	 * post: inserta los vertices de las estaciones correspondientes en el grafo
+	 */
+	void agregarViajeCombinadoAGrafo(Viaje* viajeActual,
+			Grafo* grafo, Estacion* estacionFinal, Estacion* estacionInicial,
+			Estacion* origen, Estacion* destino);
 };
 
 #endif /* SRC_BUSCADORDEVIAJE_H_ */

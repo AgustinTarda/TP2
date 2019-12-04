@@ -37,6 +37,14 @@ Vertice* Grafo::obtenerVerticeQueContiene(Estacion *estacion) {
 	return verticeBuscado;
 }
 
+void Grafo::insertarVertice(Estacion *estacion){
+
+	Vertice* nuevoVertice = new Vertice(estacion);
+	this->vertices->agregar(nuevoVertice);
+
+	this->tamanio +=1;
+}
+
 void Grafo::insertarVertice(Estacion *estacion, Vertice *verticeAnterior,
 		double peso) {
 
