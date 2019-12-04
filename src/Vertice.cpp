@@ -64,6 +64,10 @@ Arista* Vertice::obtenerAristaQueConecta(Vertice *otroVertice) {
 	return aristaBuscada;
 }
 
+bool Vertice::fueVisitado() {
+	return this->visitado;
+}
+
 Vertice::~Vertice() {
 	while (!aristas->estaVacia()) {
 		Arista *aristaAnalizada = this->aristas->obtener(1);

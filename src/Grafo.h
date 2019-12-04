@@ -12,6 +12,7 @@
 #include "Lista.h"
 #include "Vertice.h"
 #include "Arista.h"
+static const int PESO_MAXIMO = 10000000;
 
 class Grafo {
 	friend class Arista;
@@ -19,7 +20,6 @@ class Grafo {
 private:
 
 	Lista<Vertice*> *vertices;
-	int tamanio;
 
 public:
 
@@ -36,7 +36,7 @@ public:
 	Vertice* obtenerVerticeQueContiene(Estacion *estacion);
 
 	/*
-	 * post: aplica el algoritmo de dijkstra para encontrar el mejor camino;
+	 * pos: aplica el algoritmo de dijkstra para encontrar el mejor camino
 	 */
 	void dijkstra();
 
@@ -46,6 +46,10 @@ public:
 	 */
 	double obtenerPesoEntre(Vertice *verticeDeSalida,
 			Vertice *verticeDeLlegada);
+	/*
+	 * pos: devuelve la cantidad de vertices del grafo
+	 */
+	int tamanio();
 
 	/*
 	 * post: elimina la instancia de Grafo
