@@ -34,9 +34,9 @@ public:
 	Vertice* obtenerVerticeQueContiene(Estacion *estacion);
 
 	/*
-	 * pos: aplica el algoritmo de dijkstra para encontrar el mejor camino
+	 * pos: aplica el algoritmo de dijkstra para encontrar el mejor camino hacia destino
 	 */
-	void dijkstra();
+	void dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen );
 
 	/*
 	 * post: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no

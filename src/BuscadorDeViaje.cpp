@@ -245,6 +245,7 @@ void BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
 			Estacion::DESTINO);
 	Coordenadas* coordenadasOrigen = viaje->obtenerCoordenadaInicial();
 
+//Lleno el grafo
 	grafo->insertarVertice(origen);
 
 	viajes->iniciarCursor();
@@ -263,11 +264,19 @@ void BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
 			agregarViajeDirectoAGrafo(grafo, estacionFinal, estacionInicial,
 					origen, destino);
 
-		} else {
+		} else if (viaje->obtenerTipoDeViaje() == Viaje::COMBINACION_SIMPLE) {
 			agregarViajeCombinadoAGrafo(viajeActual, grafo, estacionFinal,
 					estacionInicial, origen, destino);
 		}
 	}
+//aplico dijkstra
+	grafo->dijkstra(grafo->obtenerVerticeQueContiene(destino),grafo->obtenerVerticeQueContiene(origen));
+
+
+
+	delete grafo;
+	delete origen;
+	delete destino;
 }
 
 void BuscadorDeViaje::agregarViajeDirectoAGrafo(Grafo* grafo,

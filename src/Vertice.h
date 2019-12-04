@@ -42,6 +42,11 @@ public:
 	 */
 	bool fueVisitado();
 
+	/*
+	 * pos: marca el vertice como visitado
+	 */
+	void marcarVisitado();
+
 	~Vertice();
 };
 

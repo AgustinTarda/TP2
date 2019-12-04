@@ -18,7 +18,7 @@
 #include "Viaje.h"
 #include "Grafo.h"
 
-static const int DISTANCIA_MAXIMA_A_CAMINAR = 600;
+static const int DISTANCIA_MAXIMA_A_CAMINAR = 300;
 
 class BuscadorDeViaje {
 private:
