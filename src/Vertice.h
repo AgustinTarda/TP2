@@ -37,6 +37,11 @@ public:
 	 */
 	Arista* obtenerAristaQueConecta(Vertice *otroVertice);
 
+	/*
+	 * pos: devuelve si esta marcado
+	 */
+	bool fueVisitado();
+
 	~Vertice();
 };
 
