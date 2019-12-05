@@ -8,7 +8,6 @@
 //
 Viaje::Viaje() {
 	this->tipoDeViaje = DIRECTO;
-	this->distanciaTotalACaminar = 0;
 	this->estacionInicio = NULL;
 	this->estacionDestino = NULL;
 	this->estacionBajadaDeCombinacion = NULL;
@@ -16,23 +15,21 @@ Viaje::Viaje() {
 	this->coordenadasDestino = NULL;
 	this->coordenadasIniciales = NULL;
 }
-Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
-		Estacion *EstacionDestino) {
+Viaje::Viaje(Estacion *estacionInicio,
+		Estacion *estacionDestino) {
 	this->tipoDeViaje = DIRECTO;
-	this->distanciaTotalACaminar = distanciaTotalACaminar;
 	this->estacionInicio = estacionInicio;
-	this->estacionDestino = EstacionDestino;
+	this->estacionDestino = estacionDestino;
 	this->estacionBajadaDeCombinacion = NULL;
 	this->estacionSubidaDeCombinacion = NULL;
 	this->coordenadasDestino = NULL;
 	this->coordenadasIniciales = NULL;
 }
 
-Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
+Viaje::Viaje(Estacion *estacionInicio,
 		Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
 		Estacion *estacionSubidaDeCombinacion) {
 	this->tipoDeViaje = COMBINACION_SIMPLE;
-	this->distanciaTotalACaminar = distanciaTotalACaminar;
 	this->estacionInicio = estacionInicio;
 	this->estacionDestino = EstacionDestino;
 	this->estacionBajadaDeCombinacion = estacionBajadaDeCombinacion;
@@ -40,10 +37,30 @@ Viaje::Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
 	this->coordenadasDestino = NULL;
 	this->coordenadasIniciales = NULL;
 }
+Viaje::Viaje(Estacion *estacionInicio,
+		Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
+		Estacion *estacionSubidaDeCombinacion, Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino){
+	this->tipoDeViaje = COMBINACION_SIMPLE;
+	this->estacionInicio = estacionInicio;
+	this->estacionDestino = EstacionDestino;
+	this->estacionBajadaDeCombinacion = estacionBajadaDeCombinacion;
+	this->estacionSubidaDeCombinacion = estacionSubidaDeCombinacion;
+	this->coordenadasDestino = coordenadasIniciales;
+	this->coordenadasIniciales = coordenadasDestino;
+}
+Viaje::Viaje(Estacion *estacionInicio,
+		Estacion *estacionDestino, Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino) {
+	this->tipoDeViaje = DIRECTO;
+	this->estacionInicio = estacionInicio;
+	this->estacionDestino = estacionDestino;
+	this->estacionBajadaDeCombinacion = NULL;
+	this->estacionSubidaDeCombinacion = NULL;
+	this->coordenadasDestino = coordenadasDestino;
+	this->coordenadasIniciales = coordenadasIniciales;
+}
 
 Viaje::Viaje(const Viaje &otroViaje) {
 	this->tipoDeViaje = otroViaje.tipoDeViaje;
-	this->distanciaTotalACaminar = otroViaje.distanciaTotalACaminar;
 	this->estacionInicio = otroViaje.estacionInicio;
 	this->estacionDestino = otroViaje.estacionDestino;
 	this->estacionBajadaDeCombinacion = otroViaje.estacionBajadaDeCombinacion;

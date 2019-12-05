@@ -59,14 +59,13 @@ void Grafo::insertarVertice(Estacion *estacion, Vertice *verticeAnterior,
 	}
 }
 
-void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
-//Armo la matriz de pesos
-	//int **pesos = new int*[this->tamanio() - 1];
+Lista<Estacion*>* Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
+
+	//Armo la matriz de pesos
 	Lista<Lista<double*>*>* pesos = new Lista<Lista<double*>*>;
 	for (int i = 1; i <= this->tamanio(); i++) {
-		//pesos[i] = new int[this->tamanio() - 1];
-		Lista<double*>* lisaPesos = new Lista<double*>;
-		pesos->agregar(lisaPesos);
+		Lista<double*>* listaPesos = new Lista<double*>;
+		pesos->agregar(listaPesos);
 		for (int j = 1; j <= this->tamanio(); j++) {
 			Vertice *verticeDeSalida = this->vertices->obtener(i);
 			Vertice *verticeDeLlegada = this->vertices->obtener(j);
@@ -91,10 +90,6 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 		double *peso = new double(
 				this->obtenerPesoEntre(verticeDeSalida,
 						candidatos->obtener(i)));
-		std::cout << (*peso) << " , "
-				<< verticeDeSalida->obtenerDato()->obtenerDireccion() << " , "
-				<< candidatos->obtener(i)->obtenerDato()->obtenerDireccion()
-				<< std::endl;
 		costes->agregar(peso, i);
 		ultimosCandidatosQueModificaronElCoste->agregar(verticeDeSalida, i);
 	}
@@ -102,10 +97,10 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 //Aplico el algoritmo
 	int cantidadDeCandidatos = candidatos->contarElementos();
 	bool seHicieronCambios = true;
-	while (cantidadDeCandidatos != 0) {
+	while (cantidadDeCandidatos > 0) {
 		seHicieronCambios = false;
 
-//Busco el candidato de menor coste no visitado
+		//Busco el candidato de menor coste no visitado
 		Vertice *verticeAProcesar = NULL;
 		int posicionDelVerticeAProcesar = 1;
 		int posicionDelCandidato = 1;
@@ -124,21 +119,20 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 			posicionDelCandidato++;
 		}
 		candidatos->obtener(posicionDelVerticeAProcesar)->marcarVisitado();
-		std::cout << posicionDelVerticeAProcesar << std::endl;
 		//Utilizo el candidato
 
 		for (int posicionDelVerticeAnalizado = 1;
-				posicionDelVerticeAnalizado <= this->tamanio();
+				posicionDelVerticeAnalizado <= costes->contarElementos();
 				posicionDelVerticeAnalizado++) {
 
-			double costeActual = 0;
-			costeActual = *(costes->obtener(posicionDelVerticeAnalizado));
-			double nuevoCoste = *(costes->obtener(posicionDelVerticeAProcesar))
-					+ *(pesos->obtener(posicionDelVerticeAProcesar)->obtener(
-							posicionDelVerticeAnalizado));
+			double costeActual = *(costes->obtener(posicionDelVerticeAnalizado));
+			double nuevoCoste =
+					*(costes->obtener(posicionDelVerticeAProcesar))
+							+ *(pesos->obtener(posicionDelVerticeAProcesar + 1)->obtener(
+									posicionDelVerticeAnalizado + 1));
 			if (posicionDelVerticeAnalizado != posicionDelVerticeAProcesar
-					&& nuevoCoste < costeActual) {
-
+					&& nuevoCoste < costeActual
+					&& !candidatos->obtener(posicionDelVerticeAnalizado)->fueVisitado()) {
 				double *viejoCoste = costes->obtener(
 						posicionDelVerticeAnalizado);
 				*viejoCoste = nuevoCoste;
@@ -153,9 +147,10 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 
 //Extraigo el mejor camino
 
-	Lista<Estacion*> estacionesDelViajeFinal;
-	estacionesDelViajeFinal.agregar(verticeDestino->obtenerDato());
+	Lista<Estacion*>* estacionesDelViajeFinal = new Lista<Estacion*>;;
+	estacionesDelViajeFinal->agregar(verticeDestino->obtenerDato());
 
+	//Encuentro posicion de destino
 	bool seEncontro = false;
 	int posicionDelVerticeDestino = 0;
 	candidatos->iniciarCursor();
@@ -163,24 +158,22 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 		posicionDelVerticeDestino++;
 		seEncontro = (candidatos->obtenerCursor() == verticeDestino);
 	}
-
 	Vertice* modificadorAnterior =
 			ultimosCandidatosQueModificaronElCoste->obtener(
 					posicionDelVerticeDestino);
-	estacionesDelViajeFinal.agregar(modificadorAnterior->obtenerDato());
-
+	estacionesDelViajeFinal->agregar(modificadorAnterior->obtenerDato());
 	while (modificadorAnterior != verticeDeSalida) {
-		bool seEncontro = false;
+		bool seEncontroVertice = false;
 		int posicionDelVertice = 0;
-		while (!seEncontro && candidatos->avanzarCursor()) {
+		candidatos->iniciarCursor();
+		while (!seEncontroVertice && candidatos->avanzarCursor()) {
 			posicionDelVertice++;
-			seEncontro = (candidatos->obtenerCursor() == modificadorAnterior);
+			seEncontroVertice = (candidatos->obtenerCursor()
+					== modificadorAnterior);
 		}
-
-		Vertice* modificadorAnterior =
-				ultimosCandidatosQueModificaronElCoste->obtener(
-						posicionDelVerticeDestino);
-		estacionesDelViajeFinal.agregar(modificadorAnterior->obtenerDato());
+		modificadorAnterior = ultimosCandidatosQueModificaronElCoste->obtener(
+				posicionDelVertice);
+		estacionesDelViajeFinal->agregar(modificadorAnterior->obtenerDato());
 	}
 
 //Elimino la lista de costes
@@ -207,6 +200,11 @@ void Grafo::dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen) {
 		pesos->remover(1);
 	}
 	delete pesos;
+
+
+
+
+	return estacionesDelViajeFinal;
 }
 
 double Grafo::obtenerPesoEntre(Vertice *verticeDeSalida,

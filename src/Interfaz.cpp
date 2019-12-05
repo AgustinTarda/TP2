@@ -77,31 +77,28 @@ void Interfaz::imprimirEstaciones(Lista<Estacion*> *estaciones) {
 
 void Interfaz::imprimirViajes(Coordenadas *coordenadasDeInicio,
 		Coordenadas *coordenadasDeDestino,
-		AdministradorDeRecorridos *administradorDeRecorridos,
-		Lista<Viaje*> *viajes) {
+		AdministradorDeRecorridos *administradorDeRecorridos, Viaje* viaje) {
 	DibujadorDeMapa mapa;
-	viajes->iniciarCursor();
-	while (viajes->avanzarCursor()) {
-		Viaje *viajeAImprimir = viajes->obtenerCursor();
-		if (viajeAImprimir->esDirecto()) {
-			imprimirViajeDirecto(*viajeAImprimir);
+	if (viaje->esDirecto()) {
+		imprimirViajeDirecto(*viaje);
 
-			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
-					coordenadasDeDestino, *viajeAImprimir,
-					administradorDeRecorridos);
+		// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
+		this->imprimirMapaDeViajeDirecto(coordenadasDeInicio,
+				coordenadasDeDestino, *viaje, administradorDeRecorridos);
 
-		} else if (viajeAImprimir->esConCombinacionSimple()) {
-			imprimirViajeConCombinacionSimple(*viajeAImprimir);
+	} else if (viaje->esConCombinacionSimple()) {
+		imprimirViajeConCombinacionSimple(*viaje);
 
-			// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
-			this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
-					coordenadasDeDestino, *viajeAImprimir,
-					administradorDeRecorridos);
-
-		}
+		// Imprime los viajes, descomentar y usar este cuando se termine de probar todo
+		this->imprimirMapaDeViajeCombinacion(coordenadasDeInicio,
+				coordenadasDeDestino, *viaje, administradorDeRecorridos);
 
 	}
+
+	imprimirCostoViaje(calcularPrecio(viaje));
+
+	delete viaje;
+
 }
 
 void Interfaz::imprimirViajes(Lista<Viaje*> *viajes) {
@@ -139,13 +136,12 @@ void Interfaz::imprimirMapaDeViajeDirecto(Coordenadas *coordenadasInicial,
 				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 0,
 				0, 0);
 	}
-	Estacion *estacionFinal= viaje.obtenerEstacionDestino();
-		mapa.dibujarPunto(
-				mapa.convertidorDeCoordenadasAPixelsLongitud(
-						estacionFinal->obtenerCoordenadas()),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(
-						estacionFinal->obtenerCoordenadas()), 5, 0, 255, 0);
-
+	Estacion *estacionFinal = viaje.obtenerEstacionDestino();
+	mapa.dibujarPunto(
+			mapa.convertidorDeCoordenadasAPixelsLongitud(
+					estacionFinal->obtenerCoordenadas()),
+			mapa.convertidorDeCoordenadasAPixelsLatitud(
+					estacionFinal->obtenerCoordenadas()), 5, 0, 255, 0);
 
 	Estacion *estacionInicial = viaje.obtenerEstacionInicial();
 	mapa.dibujarPunto(
@@ -181,7 +177,7 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas *coordenadasInicial,
 
 	estacionesPrimerTramo->iniciarCursor();
 	while (estacionesPrimerTramo->avanzarCursor()) {
-		Estacion *estacionLeida=estacionesPrimerTramo->obtenerCursor();
+		Estacion *estacionLeida = estacionesPrimerTramo->obtenerCursor();
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
@@ -198,35 +194,34 @@ void Interfaz::imprimirMapaDeViajeCombinacion(Coordenadas *coordenadasInicial,
 	estacionesSegundoTramo->iniciarCursor();
 
 	while (estacionesSegundoTramo->avanzarCursor()) {
-		Estacion *estacionLeida=estacionesSegundoTramo->obtenerCursor();
+		Estacion *estacionLeida = estacionesSegundoTramo->obtenerCursor();
 		Coordenadas coordenadas(estacionLeida->obtenerCoordenadas());
 		mapa.dibujarPunto(
 				mapa.convertidorDeCoordenadasAPixelsLongitud(coordenadas),
-				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2, 128,
-				0, 0);
+				mapa.convertidorDeCoordenadasAPixelsLatitud(coordenadas), 2,
+				128, 0, 0);
 	}
 
-	Estacion *estacionFinal=viaje.obtenerEstacionDestino();
+	Estacion *estacionFinal = viaje.obtenerEstacionDestino();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionFinal->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
 					estacionFinal->obtenerCoordenadas()), 5, 0, 255, 0);
-	Estacion *estacionInicial= viaje.obtenerEstacionInicial();
+	Estacion *estacionInicial = viaje.obtenerEstacionInicial();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionInicial->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
 					estacionInicial->obtenerCoordenadas()), 5, 255, 0, 255);
 
-
-	Estacion *estacionSubida=viaje.obtenerEstacionSubidaDeCombinacion();
+	Estacion *estacionSubida = viaje.obtenerEstacionSubidaDeCombinacion();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionSubida->obtenerCoordenadas()),
 			mapa.convertidorDeCoordenadasAPixelsLatitud(
 					estacionSubida->obtenerCoordenadas()), 4, 0, 0, 255);
-	Estacion *estacionBajada=viaje.obtenerEstacionBajadaDeCombinacion();
+	Estacion *estacionBajada = viaje.obtenerEstacionBajadaDeCombinacion();
 	mapa.dibujarPunto(
 			mapa.convertidorDeCoordenadasAPixelsLongitud(
 					estacionBajada->obtenerCoordenadas()),
@@ -276,7 +271,9 @@ void Interfaz::imprimirViajeConCombinacionSimple(
 			<< estacionInicio->obtenerLinea() << " ubicada en: "
 			<< estacionInicio->obtenerDireccion()
 			<< " luego bajese en la estacion ubicada en "
-			<< estacionBajada->obtenerDireccion() << endl
+			<< estacionBajada->obtenerDireccion()
+			<< estacionBajada->obtenerDireccion() <<endl
+
 			<< "Luego camine y subase en la estacion de "
 			<< estacionSubida->imprimirTipoDeTransporte() << " linea: "
 			<< estacionSubida->obtenerLinea() << " ubicada en: "
@@ -289,5 +286,48 @@ void Interfaz::imprimirViajeConCombinacionSimple(
 void Interfaz::noSeEncontroViajesPosibles() {
 
 	cout << "No se encontro ningun viaje. Lo sentimos prube de nuevo" << endl;
+}
+
+double Interfaz::calcularPrecio(Viaje* viaje) {
+	double costo;
+	Estacion* estacionInicial = viaje->obtenerEstacionInicial();
+
+	if (viaje->obtenerTipoDeViaje() == Viaje::DIRECTO) {
+
+		costo = obtenerCostoDelTransporte(
+				estacionInicial->obtenerTipoDeTransporte());
+
+	} else if (viaje->obtenerTipoDeViaje() == Viaje::COMBINACION_SIMPLE) {
+		Estacion* estacionSubida = viaje->obtenerEstacionSubidaDeCombinacion();
+
+		costo = obtenerCostoDelTransporte(
+				estacionInicial->obtenerTipoDeTransporte())
+				+ obtenerCostoDelTransporte(
+						estacionSubida->obtenerTipoDeTransporte());
+	}
+
+	return costo;
+}
+double Interfaz::obtenerCostoDelTransporte(
+		Estacion::TipoDeTransporte tipoDeTransporte) {
+	double precio;
+
+	if (tipoDeTransporte == Estacion::COLECTIVO) {
+		precio = PRECIO_COLECTIVO;
+
+	} else if (tipoDeTransporte == Estacion::SUBTE) {
+		precio = PRECIO_SUBTE;
+
+	} else if (tipoDeTransporte == Estacion::METROBUS) {
+		precio = PRECIO_METROBUS;
+	} else if (tipoDeTransporte == Estacion::FERROCARRIL) {
+		precio = PRECIO_FERROCARRIL;
+	}
+	return precio;
+
+}
+
+void Interfaz::imprimirCostoViaje(double costo){
+	cout<< "El costo del viaje es: " << costo << endl;
 }
 

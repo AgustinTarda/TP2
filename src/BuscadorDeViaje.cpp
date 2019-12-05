@@ -217,13 +217,9 @@ void BuscadorDeViaje::buscarViajesDirectosPosibles(
 			if (estacionCercanaAInicio->obtenerLinea()
 					== estacionCercanaADestino->obtenerLinea()) {
 
-				unsigned int distanciaACaminar =
-						coordenadaInicial->calcularDistancia(
-								estacionCercanaAInicio->obtenerCoordenadas())
-								+ coordenadaFinal->calcularDistancia(
-										estacionCercanaADestino->obtenerCoordenadas());
 
-				Viaje *viajeActual = new Viaje(distanciaACaminar,
+
+				Viaje *viajeActual = new Viaje(
 						estacionCercanaAInicio, estacionCercanaADestino);
 				viajeActual->agregarCoordenadasInicio(coordenadaInicial);
 				viajeActual->agregarCoordenadasDestino(coordenadaFinal);
@@ -234,7 +230,7 @@ void BuscadorDeViaje::buscarViajesDirectosPosibles(
 		}
 	}
 }
-void BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
+Viaje* BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
 
 	Grafo* grafo = new Grafo;
 	Viaje* viaje = viajes->obtener(1);
@@ -270,13 +266,40 @@ void BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
 		}
 	}
 //aplico dijkstra
-	grafo->dijkstra(grafo->obtenerVerticeQueContiene(destino),grafo->obtenerVerticeQueContiene(origen));
+	Lista<Estacion*>* estacionesMejorViaje = grafo->dijkstra(
+			grafo->obtenerVerticeQueContiene(destino),
+			grafo->obtenerVerticeQueContiene(origen));
 
+	Viaje* MejorViaje = ordenarEstacionesMejorViaje(estacionesMejorViaje, viaje->obtenerCoordenadaInicial(), viaje->obtenerCoordenadaDestino());
 
-
+	delete estacionesMejorViaje;
 	delete grafo;
 	delete origen;
 	delete destino;
+
+
+	return MejorViaje;
+}
+
+Viaje* BuscadorDeViaje::ordenarEstacionesMejorViaje(Lista<Estacion*>* estacionesMejorViaje, Coordenadas* coordenadasOrigen, Coordenadas* coordenadasDestino) {
+	Viaje* viaje;
+
+	if (estacionesMejorViaje->contarElementos() == 4) {
+		Estacion* estacionInicial = estacionesMejorViaje->obtener(3);
+		Estacion* estacionFinal = estacionesMejorViaje->obtener(2);
+
+		viaje = new Viaje(estacionInicial, estacionFinal, coordenadasOrigen, coordenadasDestino);
+
+	} else if (estacionesMejorViaje->contarElementos() == 6) {
+		Estacion* estacionInicial = estacionesMejorViaje->obtener(5);
+		Estacion* combinacionBajada = estacionesMejorViaje->obtener(4);
+		Estacion* combinacionSubida = estacionesMejorViaje->obtener(3);
+		Estacion* estacionFinal = estacionesMejorViaje->obtener(2);
+
+		viaje = new Viaje(estacionInicial, estacionFinal, combinacionBajada,combinacionSubida, coordenadasOrigen, coordenadasDestino);
+	}
+
+	return viaje;
 }
 
 void BuscadorDeViaje::agregarViajeDirectoAGrafo(Grafo* grafo,

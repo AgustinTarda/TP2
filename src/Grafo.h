@@ -36,7 +36,7 @@ public:
 	/*
 	 * pos: aplica el algoritmo de dijkstra para encontrar el mejor camino hacia destino
 	 */
-	void dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen );
+	Lista<Estacion*>* dijkstra(Vertice* verticeDestino, Vertice* verticeOrigen );
 
 	/*
 	 * post: devuelve el peso entre verticeDeSalida y verticeDeLlegada, si no

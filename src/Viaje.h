@@ -16,7 +16,6 @@ public:
 	};
 private:
 
-	unsigned int distanciaTotalACaminar;
 	Estacion *estacionInicio;
 	Estacion *estacionDestino;
 	Estacion *estacionBajadaDeCombinacion;
@@ -36,16 +35,33 @@ public:
 	 * pre: el viaje es directo.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
+	Viaje(Estacion *estacionInicio,
 			Estacion *EstacionDestino);
 
 	/*
 	 * pre: el viaje es con combinacion simple.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(unsigned int distanciaTotalACaminar, Estacion *estacionInicio,
+	Viaje(Estacion *estacionInicio,
 			Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
 			Estacion *estacionSubidaDeCombinacion);
+
+	/*
+	 * pre: el viaje es con combinacion simple.
+	 * post: crea una instancia de viaje con los datos recibidos.
+	 */
+	Viaje(Estacion *estacionInicio,
+			Estacion *estacionDestino, Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino);
+
+
+	/*
+	 * pre: el viaje es con combinacion.
+	 * post: crea una instancia de viaje con los datos recibidos.
+	 */
+	Viaje(Estacion *estacionInicio,
+			Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
+			Estacion *estacionSubidaDeCombinacion,
+			Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino);
 
 	/*
 	 * pre: recibe una instancia de viaje no vacia.
