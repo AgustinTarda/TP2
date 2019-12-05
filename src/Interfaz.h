@@ -16,6 +16,11 @@
 #include "DibujadorDeMapa.h"
 #include "AdministradorDeRecorridos.h"
 
+static const double PRECIO_SUBTE = 25;
+static const double PRECIO_COLECTIVO = 20;
+static const double PRECIO_METROBUS = 22;
+static const double PRECIO_FERROCARRIL = 15;
+
 class Interfaz {
 private:
 
@@ -89,8 +94,7 @@ public:
 	 */
 	void imprimirViajes(Coordenadas *coordenadasDeInicio,
 			Coordenadas *coordenadasDeDestino,
-			AdministradorDeRecorridos *administradorDeRecorridos,
-			Lista<Viaje*> *viajes);
+			AdministradorDeRecorridos *administradorDeRecorridos, Viaje*viaje);
 
 	/*
 	 * pre: las coordenadas del punto inicial, el viaje a imprimir y los recorridos de las lineas
@@ -103,6 +107,28 @@ public:
 	 * post: imprime un mensaje indicando que no hat viajes posibles
 	 */
 	void noSeEncontroViajesPosibles();
+
+	/*
+	 * pre: recibe una instancia de viaje
+	 * post: calcula el costo del viaje
+	 */
+	double calcularPrecio(Viaje* viaje);
+
+	/*
+	 * pre: recibe un tipo de transporte
+	 * post: devuelve el precio de ese transporte
+	 *
+	 */
+	double obtenerCostoDelTransporte(
+			Estacion::TipoDeTransporte tipoDeTransporte);
+
+	/*
+	 * pre: recibe el costo de un viaje
+	 * post: imprime el costo
+	 *
+	 */
+	void imprimirCostoViaje(double costo);
+
 };
 
 #endif /* SRC_INTERFAZ_H_ */

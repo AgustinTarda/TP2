@@ -42,29 +42,29 @@ AlgoMaps::AlgoMaps() {
 
 void AlgoMaps::iniciarViaje() {
 	interfazDeUsuario->mostrarMensajeDeBienvenida();
-/*
-	Coordenadas *coordenadasDeInicio = new Coordenadas(
-			interfazDeUsuario->pedirCoordenadasDeInicio());
-	Coordenadas *coordenadasDeDestino = new Coordenadas(
-			interfazDeUsuario->pedirCoordenadasDeDestino());
-*/
+
+	 //Coordenadas *coordenadasDeInicio = new Coordenadas(
+	/// interfazDeUsuario->pedirCoordenadasDeInicio());
+	 //Coordenadas *coordenadasDeDestino = new Coordenadas(
+	 //interfazDeUsuario->pedirCoordenadasDeDestino());
+
 	//Coordenadas de prueba
 	Coordenadas *coordenadasDeInicio = new Coordenadas(-34.635670, -58.453803);
 	Coordenadas *coordenadasDeDestino = new Coordenadas(-34.617654, -58.369460);
 
 	Lista<Viaje*> *viajes = new Lista<Viaje*>;
-	Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
+	//Lista<Viaje*> *mejoresViajes = new Lista<Viaje*>;
 
 	buscadorDeViajes->buscarViaje(coordenadasDeInicio, coordenadasDeDestino,
 			this->administradorDeRecorridos, viajes);
 	if (!viajes->estaVacia()) {
 
-		buscadorDeViajes->mejorViajeConGrafo(viajes);
+		//filtrarMejoresViajes(viajes, mejoresViajes);
+		Viaje* mejorViaje = buscadorDeViajes->mejorViajeConGrafo(viajes);
 
-		filtrarMejoresViajes(viajes, mejoresViajes);
 		interfazDeUsuario->imprimirViajes(coordenadasDeInicio,
 				coordenadasDeDestino, this->administradorDeRecorridos,
-				mejoresViajes);
+				mejorViaje);
 	} else {
 		interfazDeUsuario->noSeEncontroViajesPosibles();
 	}
@@ -75,7 +75,6 @@ void AlgoMaps::iniciarViaje() {
 		viajes->remover(1);
 	}
 	delete viajes;
-	delete mejoresViajes;
 	delete coordenadasDeDestino;
 	delete coordenadasDeInicio;
 
