@@ -68,6 +68,7 @@ public:
 	 * post: imprime por pantalla el tipo de transporte de la instancia.
 	 */
 	std::string imprimirTipoDeTransporte();
+
 	/*
 	 * post: Se elimina la estacion.
 	 */

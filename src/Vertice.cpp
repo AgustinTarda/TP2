@@ -6,20 +6,6 @@
  */
 #include "Vertice.h"
 
-/*Vertice::Vertice(Estacion* elemento, Lista<Arista*>* aristas) {
- this->dato = elemento;
- if (aristas != NULL) {
- this->aristasSalientes = new Lista<Arista*>;
- Arista* aristaActual;
- aristas->iniciarCursor();
- while (aristas->avanzarCursor()) {
- aristaActual = aristas->obtenerCursor();
- if ((aristaActual->obtenerOrigen())->obtenerDato() == this->dato) {
- this->aristasSalientes->agregar(aristaActual);
- }
- }
- }
- }*/
 Vertice::Vertice(Estacion *estacion) {
 	this->dato = estacion;
 	this->aristas = new Lista<Arista*>;
@@ -68,7 +54,7 @@ bool Vertice::fueVisitado() {
 	return this->visitado;
 }
 
-void Vertice::marcarVisitado(){
+void Vertice::marcarVisitado() {
 	this->visitado = true;
 }
 

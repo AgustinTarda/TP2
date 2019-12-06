@@ -45,6 +45,7 @@ public:
 	 */
 	Viaje* calcularMejorViajeDe(Viaje::TipoDeViaje tipoDeViaje,
 			Lista<Viaje*> *viajes);
+
 	/*
 	 * pos: elimina la instancia de algo maps
 	 */

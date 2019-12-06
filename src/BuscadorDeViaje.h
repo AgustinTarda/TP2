@@ -46,6 +46,7 @@ public:
 			Lista<Estacion*> *estacionesCercanasDestino,
 			AdministradorDeRecorridos *administradorDeRecorridos,
 			Lista<Viaje*> *viajesPosibles);
+
 	/*
 	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con los
 	 *  recorridos de las estaciones estacionesCercanasDestino
@@ -54,6 +55,7 @@ public:
 			AdministradorDeRecorridos *administradorDeRecorridos,
 			Lista<Estacion*> *estacionesCercanasDestino,
 			Viaje &posibleViajeConCombinacion, Lista<Viaje*> *viajesPosibles);
+
 	/*
 	 *  post: analiza si posibleViajeConCombinacion tiene alguna combinacion con
 	 *  estacionesDelRecorridoFinal, de tener una combinacion guarda el viaje en viajesPosibles

@@ -18,9 +18,25 @@ private:
 	Vertice *destino;
 	double peso;
 public:
+
+	/*
+	 * pos: crea una instancia de Vertice
+	 */
 	Arista(Vertice *origen, Vertice *destino, int peso);
+
+	/*
+	 * pos: devuelve el vertice del origen
+	 */
 	Vertice* obtenerOrigen();
+
+	/*
+	 * pos: devuelve el vertice del destino
+	 */
 	Vertice* obtenerDestino();
+
+	/*
+	 * pos: devuelve el peso/coste de la arista
+	 */
 	int obtenerPeso();
 
 	/*

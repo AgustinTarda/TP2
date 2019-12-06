@@ -35,31 +35,29 @@ public:
 	 * pre: el viaje es directo.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(Estacion *estacionInicio,
-			Estacion *EstacionDestino);
+	Viaje(Estacion *estacionInicio, Estacion *EstacionDestino);
 
 	/*
 	 * pre: el viaje es con combinacion simple.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(Estacion *estacionInicio,
-			Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
+	Viaje(Estacion *estacionInicio, Estacion *EstacionDestino,
+			Estacion *estacionBajadaDeCombinacion,
 			Estacion *estacionSubidaDeCombinacion);
 
 	/*
 	 * pre: el viaje es con combinacion simple.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(Estacion *estacionInicio,
-			Estacion *estacionDestino, Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino);
-
+	Viaje(Estacion *estacionInicio, Estacion *estacionDestino,
+			Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino);
 
 	/*
 	 * pre: el viaje es con combinacion.
 	 * post: crea una instancia de viaje con los datos recibidos.
 	 */
-	Viaje(Estacion *estacionInicio,
-			Estacion *EstacionDestino, Estacion *estacionBajadaDeCombinacion,
+	Viaje(Estacion *estacionInicio, Estacion *EstacionDestino,
+			Estacion *estacionBajadaDeCombinacion,
 			Estacion *estacionSubidaDeCombinacion,
 			Coordenadas* coordenadasIniciales, Coordenadas* coordenadasDestino);
 
@@ -94,6 +92,9 @@ public:
 	 */
 	bool esDirecto();
 
+	/*
+	 * post: devuelve el tipo de viaje
+	 */
 	TipoDeViaje obtenerTipoDeViaje();
 
 	/*
@@ -109,18 +110,16 @@ public:
 	/*
 	 * post: agrega coordenadas de destino al viaje
 	 */
-
 	void agregarCoordenadasDestino(Coordenadas *coordenadaFinal);
 
 	/*
 	 * post: agrega la primera estacion de subida al viaje
 	 */
-
 	void agregarEstacionCercanaAInicio(Estacion *estacionCercanaAInicio);
+
 	/*
 	 * post: agrega la  estacion de bajada del primer trayecto al viaje
 	 */
-
 	void agregarEstacionBajadaDeCombinacion(
 			Estacion *estacionBajadaDeCombinacion);
 
@@ -137,7 +136,6 @@ public:
 	/*
 	 * post: agrega la  estacion de subida del segundo trayecto al viaje
 	 */
-
 	void agregarEstacionSubidaDeCombinacion(
 			Estacion *estacionSubidaDeCombinacion);
 
@@ -163,6 +161,7 @@ public:
 	 * post: devuelve las coordenadas iniciales del viaje
 	 */
 	Coordenadas* obtenerCoordenadaInicial();
+
 	/*
 	 * pre: deben existir las coordenadas
 	 * post: devuelve las coordenadas finales del viaje

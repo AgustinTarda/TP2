@@ -21,10 +21,27 @@ private:
 	bool visitado;
 
 public:
-	//Vertice(Estacion* elemento, Lista<Arista*>* aristas);
+	/*
+	 * pre: recibe un puntero a una estacion
+	 * pos: crea una instancia de vertice con la estacion de dato
+	 */
 	Vertice(Estacion *estacion);
+
+	/*
+	 * pre: recibe un puntero a una arista
+	 * pos: agrega la arista adyacente
+	 */
 	void agregarAdyacencia(Arista *aristaAgregada);
+
+	/*
+	 * pos: devuelve el dato del vertice
+	 */
 	Estacion* obtenerDato();
+
+	/*
+	 * pre: recibe un puntero a una estacion
+	 * pos: agrega la estacion al vertice
+	 */
 	void agregarDato(Estacion *estacion);
 
 	/*
@@ -47,6 +64,9 @@ public:
 	 */
 	void marcarVisitado();
 
+	/*
+	 * pos: elimina la instancia
+	 */
 	~Vertice();
 };
 
