@@ -266,7 +266,7 @@ Viaje* BuscadorDeViaje::mejorViajeConGrafo(Lista<Viaje*>* viajes) {
 		}
 	}
 //aplico dijkstra
-	Lista<Estacion*>* estacionesMejorViaje = grafo->dijkstra(
+	Lista<Estacion*>* estacionesMejorViaje = grafo->obtenerMejorCaminoConDijkstra(
 			grafo->obtenerVerticeQueContiene(destino),
 			grafo->obtenerVerticeQueContiene(origen));
 
