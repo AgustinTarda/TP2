@@ -59,9 +59,7 @@ void AlgoMaps::iniciarViaje() {
 			this->administradorDeRecorridos, viajes);
 	if (!viajes->estaVacia()) {
 
-		//filtrarMejoresViajes(viajes, mejoresViajes);
 		Viaje* mejorViaje = buscadorDeViajes->mejorViajeConGrafo(viajes);
-
 		interfazDeUsuario->imprimirViajes(coordenadasDeInicio,
 				coordenadasDeDestino, this->administradorDeRecorridos,
 				mejorViaje);
@@ -74,6 +72,7 @@ void AlgoMaps::iniciarViaje() {
 		delete viajeAEliminar;
 		viajes->remover(1);
 	}
+
 	delete viajes;
 	delete coordenadasDeDestino;
 	delete coordenadasDeInicio;
