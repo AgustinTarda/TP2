@@ -10,30 +10,30 @@
 
 #include "Grafo.h"
 
-template<class T> class Dijkstra{
+class CaminosMinimos{
 private:
 	int* pesos[];
-	Grafo<T> grafo;
+	Grafo grafo;
 	int cantidadDeNodos;
 public:
-	Dijkstra(){
-		this->grafo = new Grafo<T>;
-		pesos = NULL;
+	CaminosMinimos(){
+		this->grafo = new Grafo;
+		pesos = 0;
 		cantidadDeNodos = 0;
 	}
-	void agregarNodo(T elemento){
-		this->grafo->agragarVertice(elemento);
+	void agregarNodo(NodoGrafo* elemento){
+		this->grafo->agregarVertice(elemento);
 		cantidadDeNodos++;
 	}
-	void agregarArista(T inicio, T fin, int peso){
+	void agregarArista(NodoGrafo* inicio, NodoGrafo* fin, int peso){
 		this->grafo(inicio, fin);
 	}
-	Lista<T>* buscarCaminosMinimos(T inicio, T fin){
+	void buscarCaminosMinimos(NodoGrafo* inicio, NodoGrafo* fin, Lista<Arista*>* resultado){
 
 	}
-	~Dijkstra(){
+	~CaminosMinimos(){
 		delete this->grafo;
-		if(this->pesos != NULL){
+		if(this->pesos != 0){
 			delete this->pesos;
 		}
 	}

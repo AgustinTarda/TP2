@@ -14,10 +14,12 @@
 class Heap {
 private:
 	Lista<Arista*>* datos;
-	int cantidadDeDatos;
-	void heapify();
+	void intercambio(unsigned int posicion, unsigned int otraPosicion);
 public:
 	Heap(Lista<Arista*>* aristas);
+	void acolar(Arista* elemento);
+	Arista* desacolar();
+	~Heap();
 };
 
 #endif /* SRC_HEAP_H_ */

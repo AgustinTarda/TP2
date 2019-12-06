@@ -79,7 +79,7 @@ public:
 	T obtener(unsigned int posicion);
 
 	/*
-	 * pre : posicioó pertenece al intervalo: [1, contarElementos()]
+	 * pre : posicion pertenece al intervalo: [1, contarElementos()]
 	 * post: cambia el elemento en la posición indicada por el
 	 *       elemento dado.
 	 */
@@ -116,6 +116,12 @@ public:
 	 *
 	 */
 	T obtenerCursor();
+
+	/*
+	 * pre : posicion y otraPosicion pertenecen al intervalo: [1, contarElementos()]
+	 * post: intercambia los nodos de en los lugares posicion y otraPosicion de la lista
+	 */
+	void intercambio(unsigned int posicion, unsigned int otraPosicion);
 
 	/*
 	 * post: libera los recursos asociados a la Lista.
@@ -284,6 +290,13 @@ template<class T> Lista<T>::~Lista() {
 
 		delete aBorrar;
 	}
+}
+
+template<class T> void Lista<T>::intercambio(unsigned int posicion, unsigned int otraPosicion){
+	T auxiliar;
+	auxiliar = this->obtener(posicion);
+	this->asignar(this->obtener(otraPosicion), posicion);
+	this->asignar(auxiliar, otraPosicion);
 }
 
 template<class T> Nodo<T>* Lista<T>::obtenerNodo(unsigned int posicion) {
